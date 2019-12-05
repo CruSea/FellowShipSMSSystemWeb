@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NotificationsComponent } from './notifications.component';
+import { AdminPagesLayoutComponent } from './admin-pages-layout.component';
 
-describe('NotificationsComponent', () => {
-  let component: NotificationsComponent;
-  let fixture: ComponentFixture<NotificationsComponent>;
+describe('AdminPagesLayoutComponent', () => {
+  let component: AdminPagesLayoutComponent;
+  let fixture: ComponentFixture<AdminPagesLayoutComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NotificationsComponent ]
+      declarations: [ AdminPagesLayoutComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NotificationsComponent);
+    fixture = TestBed.createComponent(AdminPagesLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

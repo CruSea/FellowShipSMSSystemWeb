@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IconsComponent } from './icons.component';
+import { AuthPagesLayoutComponent } from './auth-pages-layout.component';
 
-describe('IconsComponent', () => {
-  let component: IconsComponent;
-  let fixture: ComponentFixture<IconsComponent>;
+describe('AuthPagesLayoutComponent', () => {
+  let component: AuthPagesLayoutComponent;
+  let fixture: ComponentFixture<AuthPagesLayoutComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IconsComponent ]
+      declarations: [ AuthPagesLayoutComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IconsComponent);
+    fixture = TestBed.createComponent(AuthPagesLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

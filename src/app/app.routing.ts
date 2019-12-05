@@ -1,32 +1,41 @@
-import { NgModule } from '@angular/core';
-import { CommonModule, } from '@angular/common';
-import { BrowserModule  } from '@angular/platform-browser';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {CommonModule,} from '@angular/common';
+import {BrowserModule} from '@angular/platform-browser';
+import {Routes, RouterModule} from '@angular/router';
+import {AdminPagesLayoutComponent} from './layouts/admin-pages-layout/admin-pages-layout.component';
+import {AuthPagesLayoutComponent} from './layouts/auth-pages-layout/auth-pages-layout.component';
 
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-
-const routes: Routes =[
-  {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
-  }, {
-    path: '',
-    component: AdminLayoutComponent,
-    children: [
-        {
-      path: '',
-      loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
-  }]}
+const routes: Routes = [
+    {
+        path: '',
+        redirectTo: 'auth/login',
+        pathMatch: 'full',
+    }, {
+        path: '',
+        component: AdminPagesLayoutComponent,
+        children: [
+            {
+                path: 'admin',
+                loadChildren: './admin-pages/admin-pages.module#AdminPagesModule'
+            }]
+    }, {
+        path: '',
+        component: AuthPagesLayoutComponent,
+        children: [
+            {
+                path: 'auth',
+                loadChildren: './auth-pages/auth-pages.module#AuthPagesModule'
+            }]
+    }
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    BrowserModule,
-    RouterModule.forRoot(routes)
-  ],
-  exports: [
-  ],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        RouterModule.forRoot(routes)
+    ],
+    exports: [],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
