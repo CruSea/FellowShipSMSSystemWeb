@@ -8,33 +8,33 @@ declare interface RouteInfo {
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
-    { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
-    { path: '/user-profile', title: 'User Profile',  icon:'person', class: '' },
-    { path: '/table-list', title: 'Table List',  icon:'content_paste', class: '' },
-    { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
-    { path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '' },
-    { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
-    { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
-    { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
+    { path: '/admin/dashboard', title: 'Dashboard', icon: '', class: '' },
+    { path: '/admin/contact-list', title: 'Manage Contact',  icon: '', class: '' },
+    // { path: '/admin/group-contacts', title: 'Group Contact',  icon: '', class: '' },
+    { path: '/admin/contact-message', title: 'Messages',  icon: '', class: '' },
+    { path: '/admin/sms-survey', title: 'SMS Survey',  icon: '', class: '' },
+    { path: '/admin/register', title: 'Register Admin',  icon : '', class: '' },
+    // { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
+    // { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
 ];
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+    selector: 'app-sidebar',
+    templateUrl: './sidebar.component.html',
+    styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  menuItems: any[];
+    menuItems: any[];
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit() {
-    this.menuItems = ROUTES.filter(menuItem => menuItem);
-  }
-  isMobileMenu() {
-      if ($(window).width() > 991) {
-          return false;
-      }
-      return true;
-  };
+    ngOnInit() {
+        this.menuItems = ROUTES.filter(menuItem => menuItem);
+    }
+    isMobileMenu() {
+        if ($(window).width() > 991) {
+            return false;
+        }
+        return true;
+    };
 }
