@@ -1,0 +1,40 @@
+<div class="card shadow" style="float: left; margin-top: 40px;height: 100px; width: 1200px;margin-left: 20px;">
+  <div class="card-header" style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;">
+    <button mat-button (click)="addContact()" class="btn btn-primary-outline">ADD CONTACT | IMPORT CONTACT | </button>
+    <h6></h6>
+
+    <hr>
+  </div>
+</div>
+
+<div class="card shadow mb-4" style="float: left; margin-top: 70px; width: 1200px;margin-left: 20px;">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+        <tr>
+          <th>Full Name</th>
+          <th>Phone number</th>
+          <th>Email</th>
+          <th>Fellow department</th>
+          <th>Graduate year</th>
+          <th>Gender</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let Contact of ContactList">
+          <td>{{Contact.full_name }}</td>
+          <td>{{Contact.phone_num}}</td>
+          <td>{{Contact.email}}</td>
+          <td>{{Contact.fellow_dep}}</td>
+          <td>{{Contact.graduate_date}}</td>
+          <!--   <td>{{Contact.gender}}</td> -->
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -12,6 +12,8 @@ import { MatDialogModule, MatCardModule, MatExpansionPanel } from '@angular/mate
 import {MatListModule} from '@angular/material';
 
 import {MatExpansionModule} from '@angular/material/expansion';
+import {AddContactComponent} from "app/admin-pages/add-contact/add-contact.component";
+import {ContactsService} from "./admin-pages/add-contact/contacts.service";
 //import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
@@ -36,8 +38,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
         AppComponent,
         AdminPagesLayoutComponent,
         AuthPagesLayoutComponent,
-
+        AddContactComponent
     ],
+    entryComponents:[AddContactComponent],
+    providers: [ContactsService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
