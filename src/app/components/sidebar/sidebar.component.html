@@ -1,65 +1,166 @@
 <div class="logo">
-    <a href="https://www.creative-tim.com" class="simple-text">
+    <a href="https://www.gcmethiopia.org" class="simple-text">
         <div class="logo-img">
-            <img src="/assets/img/angular2-logo-red.png"/>
+            <!--  <img src="/assets/img/angular2-logo-red.png"/> -->
         </div>
-        Creative Tim
+        Fellowship SMS
     </a>
 </div>
+
+
 <div class="sidebar-wrapper">
-  <div *ngIf="isMobileMenu()">
-    <form class="navbar-form">
-      <span class="bmd-form-group">
-        <div class="input-group no-border">
-          <input type="text" value="" class="form-control" placeholder="Search...">
-          <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
-            <i class="material-icons">search</i>
-            <div class="ripple-container"></div>
-          </button>
-        </div>
-      </span>
-    </form>
-    <ul class="nav navbar-nav nav-mobile-menu">
-        <li class="nav-item">
-            <a class="nav-link" href="#pablo">
-                <i class="material-icons">dashboard</i>
-                <p>
-                    <span class="d-lg-none d-md-block">Stats</span>
-                </p>
-            </a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link" href="#pablo" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="material-icons">notifications</i>
-                <span class="notification">5</span>
-                <p>
-                    <span class="d-lg-none d-md-block">Some Actions</span>
-                </p>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-                <a class="dropdown-item" href="#">Another Notification</a>
-                <a class="dropdown-item" href="#">Another One</a>
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#pablo">
-                <i class="material-icons">person</i>
-                <p>
-                    <span class="d-lg-none d-md-block">Account</span>
-                </p>
-            </a>
-        </li>
-    </ul>
-  </div>
+
     <ul class="nav">
         <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
             <a class="nav-link" [routerLink]="[menuItem.path]">
                 <i class="material-icons">{{menuItem.icon}}</i>
                 <p>{{menuItem.title}}</p>
             </a>
+            <mat-expansion-panel *ngIf="menuItem.title === 'Manage Contact'" style="cursor: pointer;">
+                <mat-expansion-panel-header style="margin-bottom: 0">
+                    <mat-panel-title><i class="material-icons">{{menuItem.icon}}</i>  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-list style="margin-top: 0">
+                    <mat-list-item>
+                        <a class="btn"  [routerLink]="[menuItem.path]">
+                            <i style="font-size: 22px"></i>
+                            Contact List</a>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <a class="btn" routerLink="/admin/group-contacts">
+                            Group Contact
+                        </a>
+                    </mat-list-item>
+                </mat-list>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel *ngIf="menuItem.title === 'Messages'" style="cursor: pointer;">
+                <mat-expansion-panel-header style="margin-bottom: 0">
+                    <mat-panel-title><i class="material-icons">{{menuItem.icon}}</i>  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-list style="margin-top: 0">
+                    <mat-list-item>
+                        <a class="btn"  [routerLink]="[menuItem.path]">
+                            <i style="font-size: 22px"></i>
+                            Contact Messages</a>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <a class="btn" routerLink="/admin/group-message">
+                            Group Messages
+                        </a>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <a class="btn" routerLink="/admin/scheduled-message">
+                            Scheduled Messages
+                        </a>
+                    </mat-list-item>
+                </mat-list>
+            </mat-expansion-panel>
+
         </li>
     </ul>
 </div>
+
+
+<!--<div class="sidebar-wrapper">
+  <div *ngIf="isMobileMenu()">
+  </div>
+    <ul class="nav">
+        <li routerLinkActive="active">
+            <mat-expansion-panel >
+                <mat-expansion-panel-header style="margin-bottom: 0">
+                    <mat-panel-title> <i class="material-icons">{{menuItem.icon}}</i> Contacts </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-list style="margin-top: 0">
+                    <mat-list-item>
+                        <a class="Flink" >
+                            <i style="font-size: 22px" class="fa fa-user"></i>
+                            Contacts List</a>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <a class="Flink" >
+                            <i style="font-size: 22px" class="fa fa-users"></i>
+                            Teams</a>
+                    </mat-list-item>
+                </mat-list>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header style="margin-bottom: 0">
+                    <mat-panel-title><i class="material-icons">{{menuItem.icon}}</i> Post Graduates</mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-list style="margin-top: 0">
+                    <mat-list-item>
+                        <a class="Flink"  >
+                            <i style="font-size: 22px" class="fa fa-user"></i>
+                            Graduates List</a>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <a class="Flink">
+                            <i style="font-size: 22px" class="fa fa-users"></i>
+                            Graduates Team</a>
+                    </mat-list-item>
+                </mat-list>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header style="margin-bottom: 0">
+                    <mat-panel-title><i class="material-icons">{{menuItem.icon}}</i>Events</mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-list style="margin-top: 0">
+                    <mat-list-item>
+                        <a class="Flink" >
+                            <i style="font-size: 22px" class="material-icons">{{menuItem.icon}}</i>
+                            events</a>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <a class="Flink"  >
+                            <i style="font-size: 22px" class="fa fa-key"></i>
+                            registration key</a>
+                    </mat-list-item>
+                </mat-list>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header style="margin-bottom: 0">
+                    <mat-panel-title>
+                        <i class="material-icons">{{menuItem.icon}}</i>
+                        Message
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-list style="margin-top: 0">
+                    <mat-list-item>
+                        <a style="margin-right: 5px" class="Flink" >
+                            <i style="font-size: 20px" class="fa fa-envelope-open"></i>
+                            Sent Messages</a>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <a style="margin-right: 5px" class="Flink" >
+                            <i style="font-size: 22px" class="fa fa-inbox"></i>
+                            Received Messages</a>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <a style="margin-right: 5px" class="Flink" >
+                            <i style="font-size: 22px" class="fa fa-comments"></i>
+                            Group Messages</a>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <a style="margin-right: 5px" class="Flink">
+                            <i style="font-size: 20px" class="fa fa-bell"></i>
+                            Periodic Messages</a>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <a style="margin-right: 5px" class="Flink" >
+                            <i style="font-size: 20px" class="fa fa-hourglass-end"></i>
+                            Scheduled Messages</a>
+                    </mat-list-item>
+                </mat-list>
+            </mat-expansion-panel>
+
+
+
+            <a class="nav-link">
+                <i class="material-icons">{{menuItem.icon}}</i>
+            </a>
+        </li>
+    </ul>
+</div> -->
+

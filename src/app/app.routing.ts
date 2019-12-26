@@ -10,13 +10,20 @@ const routes: Routes = [
         path: '',
         redirectTo: 'auth/login',
         pathMatch: 'full',
-    }, {
+    },
+    {
+        path: '',
+        redirectTo: 'auth/sign-up',
+        pathMatch: 'full',
+    },
+    {
         path: '',
         component: AdminPagesLayoutComponent,
         children: [
             {
                 path: 'admin',
                 loadChildren: './admin-pages/admin-pages.module#AdminPagesModule'
+                // loadChildren: './layouts/admin-pages-layout/admin-page-layout.module#AdminLayoutModule'
             }]
     }, {
         path: '',
@@ -26,7 +33,7 @@ const routes: Routes = [
                 path: 'auth',
                 loadChildren: './auth-pages/auth-pages.module#AuthPagesModule'
             }]
-    }
+    },
 ];
 
 @NgModule({
