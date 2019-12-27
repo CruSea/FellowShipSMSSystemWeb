@@ -1,3 +1,37 @@
-<p>
-  group-message works!
-</p>
+<div class="card shadow" style="float: left; margin-top: 40px;height: 100px; width: 1200px;margin-left: 20px;">
+  <div class="card-header" style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;">
+    <h6>Contact Groups</h6>
+    <button mat-button (click)="add_group_message()" class="btn btn-primary-outline">New Group Message </button>
+    <hr>
+  </div>
+</div>
+
+<div class="card shadow mb-4" style="float: left; margin-top: 70px; width: 1200px;margin-left: 20px;">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Group Contact DataTables </h6>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+        <tr>
+          <th># Sent Message</th>
+          <th>Group Name</th>
+          <th>Campaign Name</th>
+          <th>Sent Msg Count</th>
+          <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let Contact of ContactList">
+          <td>{{Contact.group_message }}</td>
+          <td>{{Contact.group_name}}</td>
+          <td></td>
+          <td></td>
+          <td>{{myDate | date : 'short'}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

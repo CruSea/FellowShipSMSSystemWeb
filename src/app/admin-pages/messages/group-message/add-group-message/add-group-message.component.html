@@ -1,0 +1,41 @@
+
+<div class="card-body" style="width: 570px; height: 600px;">
+  <div mat-dialog-content>
+    <form  (submit)="onSubmit()" [formGroup]="_contactForm">
+      <div class="form-group">
+        <label>New Group Message</label>
+        <br>
+        <br>
+        <mat-expansion-panel  style="cursor: pointer;" formControlName="group_name">
+          <mat-expansion-panel-header style="margin-bottom: 0">
+            <mat-panel-title>Contact Group</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-list style="margin-top: 0">
+            <mat-list-item  class="form-control">
+              <a>
+                Art Team
+              </a>
+            </mat-list-item>
+          </mat-list>
+        </mat-expansion-panel>
+      </div>
+      <br>
+      <br>
+      <div class="form-group">
+        <label for="comment">Add Your message here</label>
+        <textarea class="form-control"
+                  id="comment"
+                  rows="6"
+                  style="height: 250px;"
+                  class="form-control"
+                  formControlName="group_message"
+                  ngModel
+                  name="contact_message" >
+
+        </textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Send Group Message</button>
+    </form>
+  </div>
+</div>
+

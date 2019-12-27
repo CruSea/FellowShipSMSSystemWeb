@@ -18,6 +18,8 @@ import {GroupContactsService} from "./admin-pages/group-contacts/add-group/group
 import {AddGroupComponent} from "./admin-pages/group-contacts/add-group/add-group.component";
 import {ContactMessageService} from "./admin-pages/messages/contact-message/add-contact-message/contact-message.service";
 import {AddContactMessageComponent} from "./admin-pages/messages/contact-message/add-contact-message/add-contact-message.component";
+import {GroupMessageService} from "./admin-pages/messages/group-message/add-group-message/GroupMessage.service";
+import {AddGroupMessageComponent} from "./admin-pages/messages/group-message/add-group-message/add-group-message.component";
 //import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
@@ -44,10 +46,11 @@ import {AddContactMessageComponent} from "./admin-pages/messages/contact-message
         AuthPagesLayoutComponent,
         AddGroupComponent,
         AddContactComponent,
-        AddContactMessageComponent
+        AddContactMessageComponent,
+        AddGroupMessageComponent
     ],
-    entryComponents: [AddContactComponent, AddGroupComponent,AddContactMessageComponent],
-    providers: [ContactsService, GroupContactsService,ContactMessageService],
+    entryComponents: [AddContactComponent, AddGroupComponent,AddContactMessageComponent,AddGroupMessageComponent],
+    providers: [ContactsService, GroupContactsService,ContactMessageService,GroupMessageService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

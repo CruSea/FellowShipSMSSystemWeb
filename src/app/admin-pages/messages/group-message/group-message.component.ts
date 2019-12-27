@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import {GroupMessageService} from './add-group-message/GroupMessage.service';
+import {AddGroupMessageComponent} from './add-group-message/add-group-message.component';
 
 @Component({
   selector: 'app-group-message',
@@ -6,10 +9,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./group-message.component.scss']
 })
 export class GroupMessageComponent implements OnInit {
+  myDate = Date.now();
 
-  constructor() { }
+  ispopupOpened = false;
+  constructor(private dialog?: MatDialog,
+              private _contactService?: GroupMessageService) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  get ContactList() {
+    return this._contactService.getAllContacts();
+  }
+
+  add_group_message() {
+    this.ispopupOpened = true;
+    const dialogRef = this.dialog.open(AddGroupMessageComponent, {
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.ispopupOpened = false;
+    })
   }
 
 }
