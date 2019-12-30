@@ -11,5 +11,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
+  oSubmit(){
+    console.log('ccorect')
+
+  }
 
 }
