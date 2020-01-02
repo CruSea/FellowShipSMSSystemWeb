@@ -4,6 +4,9 @@ import {ContactsService} from './contacts.service';
 import {FormBuilder, FormControl, Validators} from '@angular/forms';
 //import {ToastrService} from 'ngx-toastr';
 import {AddContactService} from '../../service/add-contact/add-contact.service';
+import {HttpErrorResponse, HttpHeaders} from "@angular/common/http";
+// @ts-ignore
+import moment = require("moment");
 
 
 export interface ContactsModalInterface {
@@ -23,6 +26,8 @@ export interface ContactsModalInterface {
 
 export class AddContactComponent implements OnInit {
   public _contactForm: any;
+
+  date = new FormControl(moment());
 
   constructor(private _formBuilder: FormBuilder,
               private contactService: AddContactService,
@@ -48,9 +53,29 @@ export class AddContactComponent implements OnInit {
       phone_num: ['', [Validators.required]],
       email: ['', [Validators.required]],
       fellow_dep: ['', [Validators.required]],
+      acadamic_dep:['',[Validators.required]],
       graduate_date: ['', [Validators.required]],
       // gender:['',[Validators.required]],
     });
+  }
+
+  contactsModal(contactsModalInterface: ContactsModalInterface) {
+    contactsModalInterface['graduate_date'] = moment(this.date.value.toString()).year().toString();
+    const headers = new HttpHeaders()
+        .append('Access-Control-Allow-Origin', '*')
+        .append('Access-Control-Allow-Methods', 'POST')
+        .append('X-Requested-With', 'XMLHttpRequest')
+        .append('Access-Control-Allow-Headers', 'Content-Type');
+       // .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
+       // .append('Authorization', 'Bearer ' + this.storageService.getStorage('accessToken'));
+    return this.contactService.create(contactsModalInterface, headers, '/contact')
+        .subscribe((res: {message: string}) => {
+          this.dialogRef.close();
+        //  this.toastr.success('new under graduate member added successfully', 'Contact', {timeOut: 3000});
+        }, (httpErrorResponse: HttpErrorResponse) => {
+         // this.toastr.error(httpErrorResponse.error.error, 'Error', {timeOut: 10000});
+          console.log(httpErrorResponse);
+        })
   }
 
 }

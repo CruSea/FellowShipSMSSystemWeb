@@ -1,6 +1,7 @@
 <div class="card-body" style="width: 640px; height: 510px;">
   <div mat-dialog-content>
-    <form  (submit)="onSubmit()" [formGroup]="_contactForm">
+
+    <form (submit)="onSubmit()" [formGroup]="_contactForm" (ngSubmit)="contactsModal(_contactForm.value)">
       <div class="form-group">
         <label for="fullname">Full Name</label>
         <input type="text"
@@ -36,6 +37,15 @@
                formControlName="fellow_dep"
                ngModel
                name="fellow_dep">
+      </div>
+      <div class="form-group">
+        <label for="fellowDepartment">Acadamic Department</label>
+        <input type="text"
+               id="acadamicDepartment"
+               class="form-control"
+               formControlName="acadamic_dep"
+               ngModel
+               name="acadamic_dep">
       </div>
       <div class="form-group">
         <label for="graduateDate">Graduation Date</label>

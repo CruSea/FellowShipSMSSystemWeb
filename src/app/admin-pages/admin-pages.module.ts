@@ -15,7 +15,8 @@ import {GroupedContactsComponent} from './group-contacts/grouped-contacts/groupe
 import { BulkSmsComponent } from './messages/contact-message/bulk-sms.component';
 import { GroupMessageComponent } from './messages/group-message/group-message.component';
 import { ScheduledMessageComponent } from './messages/scheduled-message/scheduled-message.component';
-import { SuperDashboardComponent } from './super-dashboard/super-dashboard.component';
+import { SuperDashboardComponent } from '../super-admin-pages/super-dashboard/super-dashboard.component';
+import { AdminsListComponent } from '../super-admin-pages/admins-list/admins-list.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { SuperDashboardComponent } from './super-dashboard/super-dashboard.compo
         GroupMessageComponent,
         ScheduledMessageComponent,
         SuperDashboardComponent,
+        AdminsListComponent,
     ],
     exports: [
         FormsModule,
