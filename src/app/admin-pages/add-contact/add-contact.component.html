@@ -1,0 +1,74 @@
+<div class="card-body" style="width: 640px; height: 510px;">
+  <div mat-dialog-content>
+
+    <form (submit)="onSubmit()" [formGroup]="_contactForm" (ngSubmit)="contactsModal(_contactForm.value)">
+      <div class="form-group">
+        <label for="fullname">Full Name</label>
+        <input type="text"
+               id="fullname"
+               class="form-control"
+               formControlName="full_name"
+               ngModel
+               name="full_name">
+      </div>
+      <div class="form-group">
+        <label for="pnumber">Phone Number</label>
+        <input type="number"
+               id="pnumber"
+               class="form-control"
+               formControlName="phone_num"
+               ngModel
+               name="phone_num">
+      </div>
+      <div class="form-group">
+        <label for="email">Email address:</label>
+        <input type="email"
+               id="email"
+               class="form-control"
+               formControlName="email"
+               ngModel
+               name="Email">
+      </div>
+      <div class="form-group">
+        <label for="fellowDepartment">Fellow Department</label>
+        <input type="text"
+               id="fellowDepartment"
+               class="form-control"
+               formControlName="fellow_dep"
+               ngModel
+               name="fellow_dep">
+      </div>
+      <div class="form-group">
+        <label for="fellowDepartment">Acadamic Department</label>
+        <input type="text"
+               id="acadamicDepartment"
+               class="form-control"
+               formControlName="acadamic_dep"
+               ngModel
+               name="acadamic_dep">
+      </div>
+      <div class="form-group">
+        <label for="graduateDate">Graduation Date</label>
+        <input type="date"
+               id="graduateDate"
+               class="form-control"
+               formControlName="graduate_date"
+               ngModel
+               name="graduate_date">
+      </div>
+      <!--   <div class="form-group">
+           <div class="dropdown">
+             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               Gender
+             </button>
+             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" formControlName="gender" ngModel name="gender">
+               <a class="dropdown-item">Male</a>
+               <a class="dropdown-item">Female</a>
+             </div>
+           </div>
+         </div> -->
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

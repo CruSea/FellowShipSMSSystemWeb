@@ -1,21 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 declare const $: any;
+
 declare interface RouteInfo {
     path: string;
     title: string;
     icon: string;
     class: string;
 }
+
 export const ROUTES: RouteInfo[] = [
-    { path: '/admin/dashboard', title: 'Dashboard', icon: '', class: '' },
-    { path: '/admin/contact-list', title: 'Manage Contact',  icon: '', class: '' },
-    // { path: '/admin/group-contacts', title: 'Group Contact',  icon: '', class: '' },
-    { path: '/admin/contact-message', title: 'Messages',  icon: '', class: '' },
-    { path: '/admin/sms-survey', title: 'SMS Survey',  icon: '', class: '' },
-    { path: '/admin/register', title: 'Register Admin',  icon : '', class: '' },
-    // { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
-    // { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
+    {path: '/admin/dashboard', title: 'Dashboard', icon: '', class: ''},
+    {path: '/admin/contact-list', title: 'Add Contact', icon: '', class: ''},
+    {path: '/admin/group-contacts', title: 'Group Contact', icon: '', class: ''},
+    {path: '/admin/contact-message', title: 'Messages', icon: '', class: ''},
+    {path: '/admin/group-message', title: 'Group Message', icon: '', class: ''},
+    {path: '/admin/scheduled-message', title: 'Scheduled Message', icon: '', class: ''},
+    {path: '/admin/sms-survey', title: 'SMS Survey', icon: '', class: ''},
+    {path: '/admin/register', title: 'Register Admin', icon: '', class: ''},
+    {path: '/admin/super-dashboard', title:'Super Dashboard', icon:'', class:''},
+    {path: '/admin/admins-list', title:'admins-list', icon:'', class:''}
 ];
 
 @Component({
@@ -26,11 +30,13 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
     menuItems: any[];
 
-    constructor() { }
+    constructor() {
+    }
 
     ngOnInit() {
         this.menuItems = ROUTES.filter(menuItem => menuItem);
     }
+
     isMobileMenu() {
         if ($(window).width() > 991) {
             return false;

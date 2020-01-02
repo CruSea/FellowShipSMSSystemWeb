@@ -16,151 +16,49 @@
                 <i class="material-icons">{{menuItem.icon}}</i>
                 <p>{{menuItem.title}}</p>
             </a>
-            <mat-expansion-panel *ngIf="menuItem.title === 'Manage Contact'" style="cursor: pointer;">
-                <mat-expansion-panel-header style="margin-bottom: 0">
-                    <mat-panel-title><i class="material-icons">{{menuItem.icon}}</i>  </mat-panel-title>
-                </mat-expansion-panel-header>
-                <mat-list style="margin-top: 0">
-                    <mat-list-item>
-                        <a class="btn"  [routerLink]="[menuItem.path]">
-                            <i style="font-size: 22px"></i>
-                            Contact List</a>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <a class="btn" routerLink="/admin/group-contacts">
-                            Group Contact
-                        </a>
-                    </mat-list-item>
-                </mat-list>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel *ngIf="menuItem.title === 'Messages'" style="cursor: pointer;">
-                <mat-expansion-panel-header style="margin-bottom: 0">
-                    <mat-panel-title><i class="material-icons">{{menuItem.icon}}</i>  </mat-panel-title>
-                </mat-expansion-panel-header>
-                <mat-list style="margin-top: 0">
-                    <mat-list-item>
-                        <a class="btn"  [routerLink]="[menuItem.path]">
-                            <i style="font-size: 22px"></i>
-                            Contact Messages</a>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <a class="btn" routerLink="/admin/group-message">
-                            Group Messages
-                        </a>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <a class="btn" routerLink="/admin/scheduled-message">
-                            Scheduled Messages
-                        </a>
-                    </mat-list-item>
-                </mat-list>
-            </mat-expansion-panel>
 
         </li>
     </ul>
 </div>
 
+<!-- <mat-expansion-panel *ngIf="menuItem.title === 'Manage Contact'" style="cursor: pointer;">
+               <mat-expansion-panel-header style="margin-bottom: 0">
+                   <mat-panel-title><i class="material-icons">{{menuItem.icon}}</i>  </mat-panel-title>
+               </mat-expansion-panel-header>
+               <mat-list style="margin-top: 0">
+                   <mat-list-item>
+                       <a class="btn"  [routerLink]="[menuItem.path]">
+                           <i style="font-size: 22px"></i>
+                           Contact List</a>
+                   </mat-list-item>
+                   <mat-list-item>
+                       <a class="btn" routerLink="/admin/group-contacts">
+                           Group Contact
+                       </a>
+                   </mat-list-item>
+               </mat-list>
+           </mat-expansion-panel>
 
-<!--<div class="sidebar-wrapper">
-  <div *ngIf="isMobileMenu()">
-  </div>
-    <ul class="nav">
-        <li routerLinkActive="active">
-            <mat-expansion-panel >
-                <mat-expansion-panel-header style="margin-bottom: 0">
-                    <mat-panel-title> <i class="material-icons">{{menuItem.icon}}</i> Contacts </mat-panel-title>
-                </mat-expansion-panel-header>
-                <mat-list style="margin-top: 0">
-                    <mat-list-item>
-                        <a class="Flink" >
-                            <i style="font-size: 22px" class="fa fa-user"></i>
-                            Contacts List</a>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <a class="Flink" >
-                            <i style="font-size: 22px" class="fa fa-users"></i>
-                            Teams</a>
-                    </mat-list-item>
-                </mat-list>
-            </mat-expansion-panel>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header style="margin-bottom: 0">
-                    <mat-panel-title><i class="material-icons">{{menuItem.icon}}</i> Post Graduates</mat-panel-title>
-                </mat-expansion-panel-header>
-                <mat-list style="margin-top: 0">
-                    <mat-list-item>
-                        <a class="Flink"  >
-                            <i style="font-size: 22px" class="fa fa-user"></i>
-                            Graduates List</a>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <a class="Flink">
-                            <i style="font-size: 22px" class="fa fa-users"></i>
-                            Graduates Team</a>
-                    </mat-list-item>
-                </mat-list>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel>
-                <mat-expansion-panel-header style="margin-bottom: 0">
-                    <mat-panel-title><i class="material-icons">{{menuItem.icon}}</i>Events</mat-panel-title>
-                </mat-expansion-panel-header>
-                <mat-list style="margin-top: 0">
-                    <mat-list-item>
-                        <a class="Flink" >
-                            <i style="font-size: 22px" class="material-icons">{{menuItem.icon}}</i>
-                            events</a>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <a class="Flink"  >
-                            <i style="font-size: 22px" class="fa fa-key"></i>
-                            registration key</a>
-                    </mat-list-item>
-                </mat-list>
-            </mat-expansion-panel>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header style="margin-bottom: 0">
-                    <mat-panel-title>
-                        <i class="material-icons">{{menuItem.icon}}</i>
-                        Message
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <mat-list style="margin-top: 0">
-                    <mat-list-item>
-                        <a style="margin-right: 5px" class="Flink" >
-                            <i style="font-size: 20px" class="fa fa-envelope-open"></i>
-                            Sent Messages</a>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <a style="margin-right: 5px" class="Flink" >
-                            <i style="font-size: 22px" class="fa fa-inbox"></i>
-                            Received Messages</a>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <a style="margin-right: 5px" class="Flink" >
-                            <i style="font-size: 22px" class="fa fa-comments"></i>
-                            Group Messages</a>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <a style="margin-right: 5px" class="Flink">
-                            <i style="font-size: 20px" class="fa fa-bell"></i>
-                            Periodic Messages</a>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <a style="margin-right: 5px" class="Flink" >
-                            <i style="font-size: 20px" class="fa fa-hourglass-end"></i>
-                            Scheduled Messages</a>
-                    </mat-list-item>
-                </mat-list>
-            </mat-expansion-panel>
-
-
-
-            <a class="nav-link">
-                <i class="material-icons">{{menuItem.icon}}</i>
-            </a>
-        </li>
-    </ul>
-</div> -->
+           <mat-expansion-panel *ngIf="menuItem.title === 'Messages'" style="cursor: pointer;">
+               <mat-expansion-panel-header style="margin-bottom: 0">
+                   <mat-panel-title><i class="material-icons">{{menuItem.icon}}</i>  </mat-panel-title>
+               </mat-expansion-panel-header>
+               <mat-list style="margin-top: 0">
+                   <mat-list-item>
+                       <a class="btn"  [routerLink]="[menuItem.path]">
+                           <i style="font-size: 22px"></i>
+                           Contact Messages</a>
+                   </mat-list-item>
+                   <mat-list-item>
+                       <a class="btn" routerLink="/admin/group-message">
+                           Group Messages
+                       </a>
+                   </mat-list-item>
+                   <mat-list-item>
+                       <a class="btn" routerLink="/admin/scheduled-message">
+                           Scheduled Messages
+                       </a>
+                   </mat-list-item>
+               </mat-list>
+           </mat-expansion-panel> -->
 

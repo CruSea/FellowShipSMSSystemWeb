@@ -1,93 +1,114 @@
-
 <div class="dashs">
 
-  <!-- <div class="main-content" *ngIf="router.url === '/admin' || router.url === '/admin/dashboard' ||
-    router.url === '/admin/contact-list' ||
-    router.url === '/admin/group-contacts' ||
-    router.url === '/admin/contact-message' ||
-    router.url === '/admin/group-message' ||
-    router.url === '/admin/register' " style="width: 1200px; margin-left:280px">  -->
+    <!-- <div class="main-content" *ngIf="router.url === '/admin' || router.url === '/admin/dashboard' ||
+      router.url === '/admin/contact-list' ||
+      router.url === '/admin/group-contacts' ||
+      router.url === '/admin/contact-message' ||
+      router.url === '/admin/group-message' ||
+      router.url === '/admin/register' " style="width: 1200px; margin-left:280px">  -->
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-stats">
-          <div class="card-header card-header-warning card-header-icon">
-            <div class="card-icon">
-              <i class="material-icons">content_copy</i>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-warning card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">content_copy</i>
+                        </div>
+                        <p class="card-category">Total Bulk Message</p>
+                        <h3 class="card-title">4500
+                            <small>Msg</small>
+                        </h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <a>Get More Space...</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p class="card-category">Total Bulk Message</p>
-            <h3 class="card-title">4500
-              <small>Msg</small>
-            </h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <a>Get More Space...</a>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-success card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">store</i>
+                        </div>
+                        <p class="card-category">Total send Message</p>
+                        <h3 class="card-title">340 Msg</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">date_range</i> Last 24 Hours
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-danger card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">info_outline</i>
+                        </div>
+                        <p class="card-category">Number of Groups</p>
+                        <h3 class="card-title">75</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">local_offer</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon">
+                            <i class="fa fa-twitter"></i>
+                        </div>
+                        <p class="card-category">Total Members</p>
+                        <h3 class="card-title">+245</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">update</i> Just Updated
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-stats">
-          <div class="card-header card-header-success card-header-icon">
-            <div class="card-icon">
-              <i class="material-icons">store</i>
-            </div>
-            <p class="card-category">Total send Message</p>
-            <h3 class="card-title">340 Msg</h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <i class="material-icons">date_range</i> Last 24 Hours
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-stats">
-          <div class="card-header card-header-danger card-header-icon">
-            <div class="card-icon">
-              <i class="material-icons">info_outline</i>
-            </div>
-            <p class="card-category">Number of Groups</p>
-            <h3 class="card-title">75</h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <i class="material-icons">local_offer</i>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-stats">
-          <div class="card-header card-header-info card-header-icon">
-            <div class="card-icon">
-              <i class="fa fa-twitter"></i>
-            </div>
-            <p class="card-category">Total Members</p>
-            <h3 class="card-title">+245</h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <i class="material-icons">update</i> Just Updated
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 
-
-  <div style=" width: 780px; margin-left: 40px;">
-
-    <div class="row">
-      <div class="card shadow mb-4">
-        <canvas id="bar"></canvas>
-      </div>
-    </div>
-  </div>
+    <table id="unid" style="width: 100%">
+      <tr>
+        <th>
+        <div style=" width: 780px; margin-left: 40px;">
+            <div class="row">
+                <div class="card shadow mb-4">
+                    <canvas id="bar"></canvas>
+                </div>
+            </div>
+        </div>
+        </th>
+        <th>
+        <div class="card shadow mb-4" style="float: left; height: 400px; width: 400px;margin-left: 20px; margin-right: 40px">
+            <table style="">
+                <tr>
+                    <th>University Name:</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>University City:</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th># No of campus</th>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        </th>
+      </tr>
+    </table>
 </div>
 
 

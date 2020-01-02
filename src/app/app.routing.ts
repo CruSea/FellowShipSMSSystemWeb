@@ -23,7 +23,6 @@ const routes: Routes = [
             {
                 path: 'admin',
                 loadChildren: './admin-pages/admin-pages.module#AdminPagesModule'
-                // loadChildren: './layouts/admin-pages-layout/admin-page-layout.module#AdminLayoutModule'
             }]
     }, {
         path: '',
