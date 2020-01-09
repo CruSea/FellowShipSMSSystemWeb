@@ -1,32 +1,31 @@
-<div class="card shadow" style="float: left; margin-top: 40px;height: 100px; width: 1200px;margin-left: 20px;">
+<h5>Grouped Contact</h5>
+<hr>
+<div class="card" style="float: left; margin-top: 40px; width: 1200px;margin-left: 20px;">
   <div class="card-header" style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;">
     <h6>Contact Groups</h6>
-    <button mat-button (click)="addContact()" class="btn btn-primary-outline">New Contact Group | Export Contacts | Import Contacts </button>
-    <hr>
-  </div>
-</div>
-
-<div class="card shadow mb-4" style="float: left; margin-top: 70px; width: 1200px;margin-left: 20px;">
-  <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Group Contact DataTables </h6>
+    <p (click)="addContact()" style="text-decoration:none;color:blue"
+       onmouseover="style='text-decoration:underline;color:blue';"
+       onmouseout="style='text-decoration:none;color:blue'">New Contact Group | Export Contacts | Import Contacts </p>
   </div>
   <div class="card-body">
     <div class="table-responsive">
-      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+      <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
         <thead>
         <tr>
-          <th>#</th>
-          <th>Group Name</th>
-          <th>Description</th>
-          <th>Number of Contacts</th>
-          <th>Date</th>
-          <th>Gender</th>
+          <th scope="col">#</th>
+          <th scope="col">Group Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Number of Contacts</th>
+          <th scope="col">Date</th>
+          <th scope="col">Gender</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let Contact of ContactList">
           <td>{{Contact.ID}}</td>
-          <td>{{Contact.group_name }}</td>
+          <td routerLink="/admin/grouped-contact" style="text-decoration:none"
+                                     onmouseover="style='text-decoration:underline;color:blue';"
+                                      onmouseout="style='text-decoration:none'">{{Contact.group_name }}</td>
           <td>{{Contact.description}}</td>
           <td>{{Contact.no_of_contact}}</td>
           <td>{{Contact._date}}</td>

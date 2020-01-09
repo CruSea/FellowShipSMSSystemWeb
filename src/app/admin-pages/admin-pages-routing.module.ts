@@ -8,6 +8,8 @@ import {GroupMessageComponent} from "./messages/group-message/group-message.comp
 import {ScheduledMessageComponent} from "./messages/scheduled-message/scheduled-message.component";
 import {SuperDashboardComponent} from "../super-admin-pages/super-dashboard/super-dashboard.component";
 import {AdminsListComponent} from "../super-admin-pages/admins-list/admins-list.component";
+import {RegisterAdminComponent} from "../super-admin-pages/register-admin/register-admin.component";
+import {GroupedContactListComponent} from "./group-contacts/grouped-contact-list/grouped-contact-list.component";
 
 const routes: Routes = [
     {path: '', component: DashboardComponent},
@@ -18,7 +20,9 @@ const routes: Routes = [
     {path: 'group-message', component: GroupMessageComponent},
     {path: 'scheduled-message',component:ScheduledMessageComponent},
     {path: 'super-dashboard', component:SuperDashboardComponent},
-    {path: 'admins-list', component:AdminsListComponent}
+    {path: 'register', component:RegisterAdminComponent},
+    {path: 'admins-list', component:AdminsListComponent},
+    {path: 'grouped-contact', component:GroupedContactListComponent}
 ];
 
 @NgModule({

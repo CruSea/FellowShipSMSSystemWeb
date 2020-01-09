@@ -1,0 +1,97 @@
+<br>
+Administer Registration
+<hr>
+<div class="column" style="align-content: center; margin-left: 200px; margin-top: 60px">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+      <div class="form-group">
+        <label for="name">Admin Name</label>
+        <input
+                type="text"
+                id="name"
+                class="form-control"
+                ngModel
+                name="name"
+                required
+        />
+      </div>
+      <div class="form-group">
+        <label for="university">University</label>
+        <input
+                type="text"
+                id="university"
+                class="form-control"
+                ngModel
+                name="university"
+                required
+                minlength="25"
+        />
+      </div>
+      <div class="form-group">
+        <label for="campus">Campus</label>
+        <input
+                type="text"
+                id="campus"
+                class="form-control"
+                ngModel
+                name="campus"
+                required
+                minlength="25"
+        />
+      </div>
+      <div class="form-group">
+        <label for="admin_email">email</label>
+        <input
+                type="email"
+                id="admin_email"
+                class="form-control"
+                ngModel
+                name="admin_email"
+                required
+                email
+                minlength="25"
+        />
+      </div>
+      <div class="form-group">
+        <label for="admin-phone">phone number</label>
+        <input
+                type="number"
+                id="admin-phone"
+                class="form-control"
+                ngModel
+                name="admin-phone"
+                required
+                minlength="25"
+        />
+      </div>
+      <div class="form-group">
+        <label for="admin-pasword">password</label>
+        <input
+                type="string"
+                id="admin-pasword"
+                class="form-control"
+                ngModel
+                name="admin-pasword"
+                required
+                minlength="8"
+        />
+      </div>
+      <div class="form-group">
+        <label for="admin-cpasword">Confrim password</label>
+        <input
+                type="string"
+                id="admin-cpasword"
+                class="form-control"
+                ngModel
+                name="admin-cpasword"
+                required
+                minlength="8"
+        />
+      </div>
+
+      <div>
+        <button class="btn btn-primary" type="submit" [disabled]="!authForm.valid">Login</button>
+      </div>
+    </form>
+  </div>
+</div>

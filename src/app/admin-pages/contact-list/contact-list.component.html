@@ -1,28 +1,25 @@
-<div class="card shadow" style="float: left; margin-top: 40px;height: 100px; width: 1200px;margin-left: 20px;">
-  <div class="card-header" style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;">
-    <button mat-button (click)="addContact()" class="btn btn-primary-outline">ADD CONTACT | IMPORT CONTACT | </button>
-    <h6></h6>
 
-    <hr>
+Contact List
+<hr>
+<div class="card" style="float: left; margin-top: 40px; width: 1200px;margin-left: 20px;">
+  <div class="card-header" style="white-space: nowrap; text-overflow: ellipsis;">
+    <p style="font-size: 26px">Contacts</p>
+    <p (click)="addContact()" style="text-decoration:none;color:blue"
+       onmouseover="style='text-decoration:underline;color:blue';"
+       onmouseout="style='text-decoration:none;color:blue'">ADD CONTACT | IMPORT CONTACT | </p>
   </div>
-</div>
 
-<div class="card shadow mb-4" style="float: left; margin-top: 70px; width: 1200px;margin-left: 20px;">
-  <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">ContactList DataTables</h6>
-  </div>
   <div class="card-body">
     <div class="table-responsive">
-      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+      <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
         <thead>
         <tr>
-          <th>Full Name</th>
-          <th>Phone number</th>
-          <th>Email</th>
-          <th>Fellow Department</th>
-          <th>Acadamic Department</th>
-          <th>Graduate year</th>
-
+          <th scope="col">Full Name</th>
+          <th scope="col">Phone number</th>
+          <th scope="col">Email</th>
+          <th scope="col">Fellow Department</th>
+          <th scope="col">Acadamic Department</th>
+          <th scope="col">Graduate year</th>
         </tr>
         </thead>
         <tbody>
@@ -40,3 +37,5 @@
     </div>
   </div>
 </div>
+
+

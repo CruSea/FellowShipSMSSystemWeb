@@ -17,6 +17,11 @@ import { GroupMessageComponent } from './messages/group-message/group-message.co
 import { ScheduledMessageComponent } from './messages/scheduled-message/scheduled-message.component';
 import { SuperDashboardComponent } from '../super-admin-pages/super-dashboard/super-dashboard.component';
 import { AdminsListComponent } from '../super-admin-pages/admins-list/admins-list.component';
+import {RegisterAdminComponent} from "../super-admin-pages/register-admin/register-admin.component";
+import {MatIconModule} from "@angular/material/icon";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import { ScheduledMessageModalComponent } from './messages/scheduled-message/scheduled-message-modal/scheduled-message-modal.component';
+import { GroupedContactListComponent } from './group-contacts/grouped-contact-list/grouped-contact-list.component';
 
 
 @NgModule({
@@ -26,6 +31,8 @@ import { AdminsListComponent } from '../super-admin-pages/admins-list/admins-lis
         FormsModule,
         ReactiveFormsModule,
         MatListModule,
+        MatIconModule,
+        MatFormFieldModule,
         MatExpansionModule,
         AdminPagesRoutingModule
     ],
@@ -40,6 +47,9 @@ import { AdminsListComponent } from '../super-admin-pages/admins-list/admins-lis
         ScheduledMessageComponent,
         SuperDashboardComponent,
         AdminsListComponent,
+        RegisterAdminComponent,
+        ScheduledMessageModalComponent,
+        GroupedContactListComponent
     ],
     exports: [
         FormsModule,

@@ -1,25 +1,22 @@
-<div class="card shadow" style="float: left; margin-top: 40px;height: 100px; width: 1200px;margin-left: 20px;">
+<div class="card" style="float: left; margin-top: 40px;width: 1200px;margin-left: 20px;"
+     xmlns:text-decoration="http://www.w3.org/1999/xhtml">
   <div class="card-header" style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;">
     <h6>Contact Groups</h6>
-    <button mat-button (click)="add_group_message()" class="btn btn-primary-outline">New Group Message </button>
-    <hr>
+    <p (click)="add_group_message()" style="text-decoration:none;color:blue"
+    onmouseover="style='text-decoration:underline;color:blue';"
+    onmouseout="style='text-decoration:none;color:blue'">New Group Message </p>
   </div>
-</div>
 
-<div class="card shadow mb-4" style="float: left; margin-top: 70px; width: 1200px;margin-left: 20px;">
-  <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Group Contact DataTables </h6>
-  </div>
   <div class="card-body">
     <div class="table-responsive">
-      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+      <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
         <thead>
         <tr>
-          <th># Sent Message</th>
-          <th>Group Name</th>
-          <th>Campaign Name</th>
-          <th>Sent Msg Count</th>
-          <th>Date</th>
+          <th scope="col"># Sent Message</th>
+          <th scope="col">Group Name</th>
+          <th scope="col">Campaign Name</th>
+          <th scope="col">Sent Msg Count</th>
+          <th scope="col">Date</th>
         </tr>
         </thead>
         <tbody>

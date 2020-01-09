@@ -21,6 +21,7 @@ import {AddContactMessageComponent} from "./admin-pages/messages/contact-message
 import {GroupMessageService} from "./admin-pages/messages/group-message/add-group-message/GroupMessage.service";
 import {AddGroupMessageComponent} from "./admin-pages/messages/group-message/add-group-message/add-group-message.component";
 import {AddContactService} from "./service/add-contact/add-contact.service";
+import {MatIconModule} from "@angular/material/icon";
 //import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
@@ -36,6 +37,7 @@ import {AddContactService} from "./service/add-contact/add-contact.service";
         AppRoutingModule,
         MatListModule,
         MatDialogModule,
+        MatIconModule,
         MatCardModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,

@@ -2,11 +2,12 @@ import {Component, OnInit, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {ContactsService} from './contacts.service';
 import {FormBuilder, FormControl, Validators} from '@angular/forms';
-//import {ToastrService} from 'ngx-toastr';
+import {ToastrService} from 'ngx-toastr';
 import {AddContactService} from '../../service/add-contact/add-contact.service';
 import {HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 // @ts-ignore
 import moment = require("moment");
+import {StorageService} from "../../service/storage.service";
 
 
 export interface ContactsModalInterface {
@@ -32,10 +33,10 @@ export class AddContactComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder,
               private contactService: AddContactService,
               private _contactService: ContactsService,
+              private storageService: StorageService,
               private dialogRef: MatDialogRef<AddContactComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
   }
-
 
   onSubmit() {
     this._contactService.addcontact(this._contactForm.value);
@@ -65,18 +66,17 @@ export class AddContactComponent implements OnInit {
         .append('Access-Control-Allow-Origin', '*')
         .append('Access-Control-Allow-Methods', 'POST')
         .append('X-Requested-With', 'XMLHttpRequest')
-        .append('Access-Control-Allow-Headers', 'Content-Type');
-       // .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
-       // .append('Authorization', 'Bearer ' + this.storageService.getStorage('accessToken'));
+        .append('Access-Control-Allow-Headers', 'Content-Type')
+        .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`)
+        .append('Authorization', 'Bearer ' + this.storageService.getStorage('accessToken'));
     return this.contactService.create(contactsModalInterface, headers, '/contact')
         .subscribe((res: {message: string}) => {
           this.dialogRef.close();
         //  this.toastr.success('new under graduate member added successfully', 'Contact', {timeOut: 3000});
         }, (httpErrorResponse: HttpErrorResponse) => {
-         // this.toastr.error(httpErrorResponse.error.error, 'Error', {timeOut: 10000});
+       //   this.toastr.error(httpErrorResponse.error.error, 'Error', {timeOut: 10000});
           console.log(httpErrorResponse);
         })
   }
-
 }
 
