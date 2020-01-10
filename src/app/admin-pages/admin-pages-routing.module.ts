@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {DashboardComponent} from './dashboard/dashboard.component';
-import {ContactListComponent} from "./contact-list/contact-list.component";
+import {ContactListComponent} from "./contacts/contact-list/contact-list.component";
 import {GroupContactsComponent} from "./group-contacts/group-contacts.component";
 import {BulkSmsComponent} from "./messages/contact-message/bulk-sms.component";
 import {GroupMessageComponent} from "./messages/group-message/group-message.component";

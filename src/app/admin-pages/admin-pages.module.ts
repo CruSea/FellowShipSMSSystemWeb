@@ -7,7 +7,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ComponentsModule} from "../components/components.module";
 import {MatListModule} from "@angular/material/list";
 import {MatExpansionModule} from "@angular/material/expansion";
-import {ContactListComponent} from "./contact-list/contact-list.component";
+import {ContactListComponent} from "./contacts/contact-list/contact-list.component";
 import {AdminSignupComponent} from './admin-signup/admin-signup.component';
 import {GroupContactsComponent} from './group-contacts/group-contacts.component';
 import {RegistrationMessageComponent} from './registration-message/registration-message.component';
@@ -22,6 +22,9 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import { ScheduledMessageModalComponent } from './messages/scheduled-message/scheduled-message-modal/scheduled-message-modal.component';
 import { GroupedContactListComponent } from './group-contacts/grouped-contact-list/grouped-contact-list.component';
+import { ImportContactComponent } from './contacts/import-contact/import-contact.component';
+import { UpdateContactComponent } from './contacts/update-contact/update-contact.component';
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 @NgModule({
@@ -30,6 +33,7 @@ import { GroupedContactListComponent } from './group-contacts/grouped-contact-li
         ComponentsModule,
         FormsModule,
         ReactiveFormsModule,
+        NgxPaginationModule,
         MatListModule,
         MatIconModule,
         MatFormFieldModule,
@@ -49,7 +53,9 @@ import { GroupedContactListComponent } from './group-contacts/grouped-contact-li
         AdminsListComponent,
         RegisterAdminComponent,
         ScheduledMessageModalComponent,
-        GroupedContactListComponent
+        GroupedContactListComponent,
+        ImportContactComponent,
+        UpdateContactComponent
     ],
     exports: [
         FormsModule,

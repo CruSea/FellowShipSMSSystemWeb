@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ContactsService} from '../../add-contact/contacts.service';
-import {AddContactComponent} from '../../add-contact/add-contact.component';
+import {ContactsService} from '../../contacts/add-contact/contacts.service';
+import {AddContactComponent} from '../../contacts/add-contact/add-contact.component';
 import {ContactMessageService} from './add-contact-message/contact-message.service';
 import {MatDialog} from '@angular/material/dialog';
 import {AddContactMessageComponent} from './add-contact-message/add-contact-message.component';

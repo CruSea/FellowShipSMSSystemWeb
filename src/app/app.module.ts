@@ -12,8 +12,8 @@ import { MatDialogModule, MatCardModule, MatExpansionPanel } from '@angular/mate
 import {MatListModule} from '@angular/material';
 
 import {MatExpansionModule} from '@angular/material/expansion';
-import {AddContactComponent} from "app/admin-pages/add-contact/add-contact.component";
-import {ContactsService} from "./admin-pages/add-contact/contacts.service";
+import {AddContactComponent} from "app/admin-pages/contacts/add-contact/add-contact.component";
+import {ContactsService} from "./admin-pages/contacts/add-contact/contacts.service";
 import {GroupContactsService} from "./admin-pages/group-contacts/add-group/group-contact.service";
 import {AddGroupComponent} from "./admin-pages/group-contacts/add-group/add-group.component";
 import {ContactMessageService} from "./admin-pages/messages/contact-message/add-contact-message/contact-message.service";
@@ -22,6 +22,7 @@ import {GroupMessageService} from "./admin-pages/messages/group-message/add-grou
 import {AddGroupMessageComponent} from "./admin-pages/messages/group-message/add-group-message/add-group-message.component";
 import {AddContactService} from "./service/add-contact/add-contact.service";
 import {MatIconModule} from "@angular/material/icon";
+import {NgxPaginationModule} from "ngx-pagination";
 //import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
@@ -31,6 +32,7 @@ import {MatIconModule} from "@angular/material/icon";
                timeOut : 2000
            }),*/
         FormsModule,
+        NgxPaginationModule,
         HttpClientModule,
         ComponentsModule,
         RouterModule,

@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {ContactsService} from '../../../add-contact/contacts.service';
+import {ContactsService} from '../../../contacts/add-contact/contacts.service';
 import {ContactMessageService} from './contact-message.service';
 
 @Component({

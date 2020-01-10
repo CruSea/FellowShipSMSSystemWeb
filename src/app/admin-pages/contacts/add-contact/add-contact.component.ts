@@ -3,20 +3,20 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {ContactsService} from './contacts.service';
 import {FormBuilder, FormControl, Validators} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
-import {AddContactService} from '../../service/add-contact/add-contact.service';
+import {AddContactService} from '../../../service/add-contact/add-contact.service';
 import {HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 // @ts-ignore
 import moment = require("moment");
-import {StorageService} from "../../service/storage.service";
+import {StorageService} from "../../../service/storage.service";
 
 
 export interface ContactsModalInterface {
   full_name: string;
-  phone_num: string;
+  phone_number: string;
   gender: string;
   email: string;
   fellow_dep: string;
-  graduate_date: string;
+  graduate_year: string;
 }
 
 @Component({
@@ -39,7 +39,7 @@ export class AddContactComponent implements OnInit {
   }
 
   onSubmit() {
-    this._contactService.addcontact(this._contactForm.value);
+   // this._contactService.addcontact(this._contactForm.value);
     this.dialogRef.close();
   }
 
@@ -51,11 +51,11 @@ export class AddContactComponent implements OnInit {
     this._contactForm = this._formBuilder.group({
       ID: [],
       full_name: ['', [Validators.required]],
-      phone_num: ['', [Validators.required]],
+      phone_number: ['', [Validators.required]],
       email: ['', [Validators.required]],
       fellow_dep: ['', [Validators.required]],
       acadamic_dep:['',[Validators.required]],
-      graduate_date: ['', [Validators.required]],
+      graduate_year: ['', [Validators.required]],
       // gender:['',[Validators.required]],
     });
   }
