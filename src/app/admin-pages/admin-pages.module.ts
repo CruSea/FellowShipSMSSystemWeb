@@ -19,12 +19,19 @@ import { SuperDashboardComponent } from '../super-admin-pages/super-dashboard/su
 import { AdminsListComponent } from '../super-admin-pages/admins-list/admins-list.component';
 import {RegisterAdminComponent} from "../super-admin-pages/register-admin/register-admin.component";
 import {MatIconModule} from "@angular/material/icon";
-import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatError, MatFormFieldModule} from "@angular/material/form-field";
 import { ScheduledMessageModalComponent } from './messages/scheduled-message/scheduled-message-modal/scheduled-message-modal.component';
 import { GroupedContactListComponent } from './group-contacts/grouped-contact-list/grouped-contact-list.component';
 import { ImportContactComponent } from './contacts/import-contact/import-contact.component';
-import { UpdateContactComponent } from './contacts/update-contact/update-contact.component';
 import {NgxPaginationModule} from "ngx-pagination";
+import {MatButtonModule} from "@angular/material/button";
+import { ImportGroupContactComponent } from './group-contacts/grouped-contact-list/import-group-contact/import-group-contact.component';
+import {ConfirmationPopoverModule} from "angular-confirmation-popover";
+import {MatSelectModule} from "@angular/material/select";
+import { MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import { UpdateGroupContactComponent } from './group-contacts/grouped-contact-list/update-group-contact/update-group-contact.component';
+
 
 
 @NgModule({
@@ -33,19 +40,24 @@ import {NgxPaginationModule} from "ngx-pagination";
         ComponentsModule,
         FormsModule,
         ReactiveFormsModule,
+        ConfirmationPopoverModule,
         NgxPaginationModule,
         MatListModule,
         MatIconModule,
         MatFormFieldModule,
+        MatButtonModule,
+        // ConfirmationPopoverModule
         MatExpansionModule,
-        AdminPagesRoutingModule
+        AdminPagesRoutingModule,
+        MatNativeDateModule,
+        MatDatepickerModule,
+        MatSelectModule
     ],
     declarations: [DashboardComponent,
         ContactListComponent,
         AdminSignupComponent,
         GroupContactsComponent,
         RegistrationMessageComponent,
-        GroupedContactsComponent,
         BulkSmsComponent,
         GroupMessageComponent,
         ScheduledMessageComponent,
@@ -54,14 +66,12 @@ import {NgxPaginationModule} from "ngx-pagination";
         RegisterAdminComponent,
         ScheduledMessageModalComponent,
         GroupedContactListComponent,
-        ImportContactComponent,
-        UpdateContactComponent
+        ImportGroupContactComponent,
     ],
     exports: [
         FormsModule,
         ReactiveFormsModule
     ],
-
 })
 export class AdminPagesModule {
 }

@@ -4,6 +4,8 @@ import { AddContactComponent } from '../add-contact/add-contact.component';
 import {HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {AddContactService} from "../../../service/add-contact/add-contact.service";
 import {StorageService} from "../../../service/storage.service";
+import {UpdateContactComponent, UpdateContactInterface} from "../update-contact/update-contact.component";
+import {ImportContactComponent} from "../import-contact/import-contact.component";
 
 const MaterialComponents=[
   MatButtonModule
@@ -46,7 +48,8 @@ export class ContactListComponent implements OnInit {
   dataSource: any;
 
   ispopupOpened = false;
-  constructor(private storageService:StorageService,
+  constructor(private matDialog: MatDialog,
+              private storageService:StorageService,
               private _contactService: AddContactService,
               private dialog?: MatDialog,
     ) { this.page = 1; }
@@ -59,10 +62,23 @@ export class ContactListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.collectionOfcon(this.page);
       this.ispopupOpened = false;
     })
   }
 
+  openUpdate(data: UpdateContactInterface): void {
+     this.ispopupOpened = true;
+    const dialogRef = this.dialog.open(UpdateContactComponent, {
+      data: {data},
+      width: '700px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.collectionOfcon(this.page);
+      this.animal = result;
+    });
+  }
 
   ngOnInit() {
     this.collectionOfcon(this.page);
@@ -93,6 +109,34 @@ export class ContactListComponent implements OnInit {
         }, (httpErrorResponse: HttpErrorResponse) => {
           this.loading = false;
         })
+  }
+
+  deleteContact(id: string) {
+    const headers = new HttpHeaders()
+        .append('Access-Control-Allow-Origin', '*')
+        .append('Access-Control-Allow-Methods', 'DELETE')
+        .append('X-Requested-With', 'XMLHttpRequest')
+        .append('Access-Control-Allow-Headers', 'Content-Type')
+        .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
+       // .append('Authorization', 'Bearer ' + this.storageService.getStorage('accessToken'));
+    return this._contactService.delete(`contact/${id}`, headers)
+        .subscribe((res: {message: string}) => {
+        //  this.toastr.success('contact deleted successfully', 'Deleted', {timeOut: 3000});
+          this.collectionOfcon(this.page);
+        }, (httpErrorResponse: HttpErrorResponse) => {
+       //   this.toastr.error('Ooops! something went wrong, contact is not deleted', 'Error', {timeOut: 3000});
+        })
+  }
+
+  openImportContact(): void {
+    const dialogRef = this.matDialog.open(ImportContactComponent, {
+      height: '200px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.collectionOfcon(this.page);
+      this.animal = result;
+    });
   }
 
 }

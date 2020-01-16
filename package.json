@@ -32,6 +32,7 @@
     "@angular/platform-server": "7.0.2",
     "@angular/router": "7.0.2",
     "ajv": "6.4.0",
+    "angular-confirmation-popover": "^4.2.1",
     "arrive": "2.4.1",
     "bootstrap": "4.1.0",
     "bootstrap-material-design": "4.1.1",
@@ -52,6 +53,7 @@
     "popper.js": "1.14.3",
     "rxjs": "6.3.3",
     "rxjs-compat": "6.3.3",
+    "selenium-webdriver": "^4.0.0-alpha.5",
     "web-animations-js": "2.3.1",
     "zone.js": "0.8.26"
   },

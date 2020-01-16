@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GroupedContactsComponent } from './grouped-contacts.component';
+import { ImportGroupContactComponent } from './import-group-contact.component';
 
-describe('GroupedContactsComponent', () => {
-  let component: GroupedContactsComponent;
-  let fixture: ComponentFixture<GroupedContactsComponent>;
+describe('ImportGroupContactComponent', () => {
+  let component: ImportGroupContactComponent;
+  let fixture: ComponentFixture<ImportGroupContactComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GroupedContactsComponent ]
+      declarations: [ ImportGroupContactComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GroupedContactsComponent);
+    fixture = TestBed.createComponent(ImportGroupContactComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

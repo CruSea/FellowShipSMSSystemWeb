@@ -23,6 +23,21 @@ import {AddGroupMessageComponent} from "./admin-pages/messages/group-message/add
 import {AddContactService} from "./service/add-contact/add-contact.service";
 import {MatIconModule} from "@angular/material/icon";
 import {NgxPaginationModule} from "ngx-pagination";
+import {MatButtonModule} from "@angular/material/button";
+import {UpdateContactComponent} from "./admin-pages/contacts/update-contact/update-contact.component";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {ImportContactComponent} from "./admin-pages/contacts/import-contact/import-contact.component";
+import {ConfirmationPopoverModule} from "angular-confirmation-popover";
+import {AddGroupService} from "./service/add-group/add-group.service";
+import {GroupedContactService} from "./service/grouped-contact/grouped-contact.service";
+import {GroupedContactsComponent} from "./admin-pages/group-contacts/grouped-contacts/grouped-contacts.component";
+import {MatSelectModule} from "@angular/material/select";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {DashboardServiceService} from "./service/dashboard-service/dashboard-service.service";
+import {GroupContactCountService} from "./service/Group-Contact-Count/group-contact-count.service";
+import {UpdateGroupContactComponent} from "./admin-pages/group-contacts/grouped-contact-list/update-group-contact/update-group-contact.component";
+//import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 //import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
@@ -35,6 +50,7 @@ import {NgxPaginationModule} from "ngx-pagination";
         NgxPaginationModule,
         HttpClientModule,
         ComponentsModule,
+        MatButtonModule,
         RouterModule,
         AppRoutingModule,
         MatListModule,
@@ -43,7 +59,12 @@ import {NgxPaginationModule} from "ngx-pagination";
         MatCardModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
-        MatExpansionModule
+        ConfirmationPopoverModule.forRoot({confirmButtonType: 'danger'}),
+        MatExpansionModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatDatepickerModule
     ],
     declarations: [
         AppComponent,
@@ -52,10 +73,17 @@ import {NgxPaginationModule} from "ngx-pagination";
         AddGroupComponent,
         AddContactComponent,
         AddContactMessageComponent,
-        AddGroupMessageComponent
+        AddGroupMessageComponent,
+        UpdateContactComponent,
+        UpdateGroupContactComponent,
+        ImportContactComponent,
+        GroupedContactsComponent
     ],
-    entryComponents: [AddContactComponent, AddGroupComponent,AddContactMessageComponent,AddGroupMessageComponent],
-    providers: [ContactsService, GroupContactsService,ContactMessageService,GroupMessageService,AddContactService],
+    entryComponents: [AddContactComponent, AddGroupComponent,AddContactMessageComponent,
+        AddGroupMessageComponent,UpdateContactComponent,ImportContactComponent,GroupedContactsComponent,UpdateGroupContactComponent],
+
+    providers: [ContactsService,GroupContactsService,ContactMessageService,GroupMessageService,
+        AddContactService,AddGroupService,GroupedContactService,DashboardServiceService,GroupContactCountService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

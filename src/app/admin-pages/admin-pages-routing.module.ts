@@ -22,7 +22,8 @@ const routes: Routes = [
     {path: 'super-dashboard', component:SuperDashboardComponent},
     {path: 'register', component:RegisterAdminComponent},
     {path: 'admins-list', component:AdminsListComponent},
-    {path: 'grouped-contact', component:GroupedContactListComponent}
+    {path: 'grouped-contact/:id',
+        component:GroupedContactListComponent}
 ];
 
 @NgModule({
