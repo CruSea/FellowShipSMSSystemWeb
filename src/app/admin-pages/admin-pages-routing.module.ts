@@ -12,7 +12,7 @@ import {RegisterAdminComponent} from "../super-admin-pages/register-admin/regist
 import {GroupedContactListComponent} from "./group-contacts/grouped-contact-list/grouped-contact-list.component";
 
 const routes: Routes = [
-    {path: '', component: DashboardComponent},
+    //{path: '', component: DashboardComponent},
     {path: 'dashboard', component: DashboardComponent},
     {path: 'contact-list', component: ContactListComponent},
     {path: 'group-contacts', component: GroupContactsComponent},

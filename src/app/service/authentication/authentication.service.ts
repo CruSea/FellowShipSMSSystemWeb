@@ -60,11 +60,11 @@ export class  AuthenticationService {
             .append('X-Requested-With', 'XMLHttpRequest')
             .append('Access-Control-Allow-Headers', 'Content-Type');
         return this.loginService.create(loginInterface, headers, '/login')
-            .pipe(tap((loginResponseInterface: LoginResponseInterface) => {
+         /*   .pipe(tap((loginResponseInterface: LoginResponseInterface) => {
                 console.log('..........................');
                 console.log(loginResponseInterface);
-                this.storageService.setAccessToken(loginResponseInterface.token)
-            }));
+              //  this.storageService.setAccessToken(loginResponseInterface.token)
+            })); */
     }
 
    /* public register(registerInterface: RegisterInterface): Observable<any> {

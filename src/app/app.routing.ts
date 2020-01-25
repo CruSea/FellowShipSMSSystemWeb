@@ -9,10 +9,9 @@ import {PublicGuard} from "ngx-auth";
 
 const routes: Routes = [
     {
-        path: '',
+        path: 'login',
         redirectTo: 'auth/login',
-
-        pathMatch: 'full',
+       // pathMatch: 'full',
     },
     {
         path: '',
@@ -37,10 +36,6 @@ const routes: Routes = [
                 loadChildren: './auth-pages/auth-pages.module#AuthPagesModule'
             }]
     },
-    {
-        path: '**',
-        pathMatch: 'full',
-        redirectTo: 'auth/login', }
 ];
 
 @NgModule({

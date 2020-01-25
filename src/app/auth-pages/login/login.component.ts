@@ -45,8 +45,8 @@ export class LoginComponent implements OnInit {
                 console.log('******* Well come ********');
               //  this.toastr.success('Welcome to Fellowship Mangement System', 'Welcom!', {timeOut: 2000});
                 this.router.navigateByUrl("/admin");
-                this.user_token =  this.storageService.getStorage('accessToken');
-                localStorage.setItem('accessToken', this.user_token);
+             //   this.user_token =  this.storageService.getStorage('accessToken');
+               // localStorage.setItem('accessToken', this.user_token);
             }, (httpErrorResponse: HttpErrorResponse) => {
                 this.loading = false;
               //  this.toastr.error(httpErrorResponse.error.message, 'Login Error');
