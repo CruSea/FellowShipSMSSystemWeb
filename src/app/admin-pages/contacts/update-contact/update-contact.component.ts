@@ -6,68 +6,68 @@ import {AddContactService} from "../../../service/add-contact/add-contact.servic
 import {HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 
 export interface UpdateContactInterface {
-  contact_id: string;
-  full_name: string;
-  phone_number: string;
-  email: string;
-  fellow_dep:string;
-  acadamic_dep: string;
-  graduate_year: number;
-  created_at?: string;
-  updated_at?: string
+    contact_id: string;
+    full_name: string;
+    phone_number: string;
+    email: string;
+    acadamic_dep: string;
+    fellow_dep: string;
+    gender:string;
+    graduate_year: number;
+    created_at?: string;
+    updated_at?: string
 }
 
 @Component({
-  selector: 'app-update-contact',
-  templateUrl: './update-contact.component.html',
-  styleUrls: ['./update-contact.component.scss']
+    selector: 'app-update-contact',
+    templateUrl: './update-contact.component.html',
+    styleUrls: ['./update-contact.component.scss']
 })
 export class UpdateContactComponent implements OnInit {
 
-  updateContactForm: any;
-  dataSource: any;
+    updateContactForm: any;
+    dataSource: any;
 
-  constructor(
-      private formBuilder: FormBuilder,
-      private contactService: AddContactService,
-      private storageService: StorageService,
-      public dialogRef: MatDialogRef<UpdateContactComponent>,
-      @Inject(MAT_DIALOG_DATA) public data: UpdateContactInterface) {}
+    constructor(private formBuilder: FormBuilder,
+                private contactService: AddContactService,
+                private storageService: StorageService,
+                public dialogRef: MatDialogRef<UpdateContactComponent>,
+                @Inject(MAT_DIALOG_DATA) public data: UpdateContactInterface) {
+    }
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
+    onNoClickk(): void {
+        this.dialogRef.close();
+    }
 
-  ngOnInit(): void {
+    ngOnInit(): void {
 
-    console.log(this.data);
-    this.updateContactForm = this.formBuilder.group({
-      full_name: [this.data.full_name, [Validators.required]],
-      phone_number: [this.data.phone_number, [Validators.required]],
-      email: [this.data.email, [Validators.required]],
-     // gender: [this.data.gender, [Validators.required]],
-      fellow_dep:[this.data.fellow_dep,[Validators.required]],
-      acadamic_dep: [this.data.acadamic_dep, [Validators.required]],
-      graduate_year: [this.data.graduate_year, [Validators.required]],
-      // fellowship_id: [this.data.fellowship_id, [Validators.required]],
-    });
-  }
+        console.log(this.data);
+        this.updateContactForm = this.formBuilder.group({
+            full_name: [this.data.full_name, [Validators.required]],
+            phone_number: [this.data.phone_number, [Validators.required]],
+            email: [this.data.email, [Validators.required]],
+            acadamic_dep: [this.data.acadamic_dep, [Validators.required]],
+            fellow_dep: [this.data.fellow_dep, [Validators.required]],
+            gender: [this.data.gender, [Validators.required]],
+            graduate_year: [this.data.graduate_year, [Validators.required]],
+        });
+    }
 
 
-  updateContact(contactsModalInterface: UpdateContactInterface) {
-    const headers = new HttpHeaders()
-        .append('Access-Control-Allow-Origin', '*')
-        .append('Access-Control-Allow-Methods', 'POST')
-        .append('X-Requested-With', 'XMLHttpRequest')
-        .append('Access-Control-Allow-Headers', 'Content-Type')
-        .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
-    return this.contactService.patch(`contact/${this.data.contact_id}`, contactsModalInterface, headers)
-        .subscribe((res: {message: string}) => {
-          console.log(res.message);
-          this.dialogRef.close();
-        }, (httpErrorResponse: HttpErrorResponse) => {
-          console.log(httpErrorResponse.status);
-          console.log(httpErrorResponse);
-        })
-  }
+    updateContacts(contactsModalInterface: UpdateContactInterface) {
+        const headers = new HttpHeaders()
+            .append('Access-Control-Allow-Origin', '*')
+            .append('Access-Control-Allow-Methods', 'POST')
+            .append('X-Requested-With', 'XMLHttpRequest')
+            .append('Access-Control-Allow-Headers', 'Content-Type')
+            .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
+        return this.contactService.patch(`contact/${this.data.contact_id}`, contactsModalInterface, headers)
+            .subscribe((res: { message: string }) => {
+                console.log(res.message);
+                this.dialogRef.close();
+            }, (httpErrorResponse: HttpErrorResponse) => {
+                console.log(httpErrorResponse.status);
+                console.log(httpErrorResponse);
+            })
+    }
 }

@@ -1,7 +1,7 @@
 <div class="card-body" style="width: 640px; height: 510px;">
   <div mat-dialog-content>
 
-    <form (submit)="onSubmit()" [formGroup]="_contactForm" (ngSubmit)="contactsModal(_contactForm.value)">
+    <form  [formGroup]="_contactForm" (ngSubmit)="contactsModal(_contactForm.value)">
       <div class="form-group">
         <label for="fullname">Full Name</label>
         <input type="text"
@@ -29,17 +29,9 @@
                ngModel
                name="Email">
       </div>
+
       <div class="form-group">
-        <label for="fellowDepartment">Fellow Department</label>
-        <input type="text"
-               id="fellowDepartment"
-               class="form-control"
-               formControlName="fellow_dep"
-               ngModel
-               name="fellow_dep">
-      </div>
-      <div class="form-group">
-        <label for="fellowDepartment">Acadamic Department</label>
+        <label for="acadamicDepartment">Acadamic Department</label>
         <input type="text"
                id="acadamicDepartment"
                class="form-control"
@@ -47,6 +39,27 @@
                ngModel
                name="acadamic_dep">
       </div>
+
+      <mat-form-field >
+        <mat-label>Group Name</mat-label>
+        <mat-select formControlName="fellow_dep">
+          <div *ngIf="groupNames">
+            <mat-option *ngFor="let groupName of groupNames" [value]="groupName.group_name">
+              {{groupName.group_name }}
+            </mat-option>
+          </div>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option *ngFor="let gender of genders" [value]="gender.type">
+            {{gender.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
       <div class="form-group">
         <label for="graduateDate">Graduation Date</label>
         <input type="date"
@@ -56,19 +69,9 @@
                ngModel
                name="graduate_year">
       </div>
-      <!--   <div class="form-group">
-           <div class="dropdown">
-             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               Gender
-             </button>
-             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" formControlName="gender" ngModel name="gender">
-               <a class="dropdown-item">Male</a>
-               <a class="dropdown-item">Female</a>
-             </div>
-           </div>
-         </div> -->
+
       <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="button" class="btn btn-primary" (click)="onNoClickk()" style="float: ">Cancel</button>
     </form>
   </div>
 </div>

@@ -37,6 +37,10 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {DashboardServiceService} from "./service/dashboard-service/dashboard-service.service";
 import {GroupContactCountService} from "./service/Group-Contact-Count/group-contact-count.service";
 import {UpdateGroupContactComponent} from "./admin-pages/group-contacts/grouped-contact-list/update-group-contact/update-group-contact.component";
+import {AuthGuard} from "./Auth/auth.guard";
+import {AuthenticationService} from "./service/authentication/authentication.service";
+import {PublicGuard} from "ngx-auth";
+import {AuthenticationModule} from "./service/authentication/authentication.module";
 //import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 //import {ToastrModule} from 'ngx-toastr';
 
@@ -49,6 +53,7 @@ import {UpdateGroupContactComponent} from "./admin-pages/group-contacts/grouped-
         FormsModule,
         NgxPaginationModule,
         HttpClientModule,
+        AuthenticationModule,
         ComponentsModule,
         MatButtonModule,
         RouterModule,
@@ -83,7 +88,8 @@ import {UpdateGroupContactComponent} from "./admin-pages/group-contacts/grouped-
         AddGroupMessageComponent,UpdateContactComponent,ImportContactComponent,GroupedContactsComponent,UpdateGroupContactComponent],
 
     providers: [ContactsService,GroupContactsService,ContactMessageService,GroupMessageService,
-        AddContactService,AddGroupService,GroupedContactService,DashboardServiceService,GroupContactCountService],
+        AddContactService,AddGroupService,GroupedContactService,DashboardServiceService,
+        GroupContactCountService,AuthGuard,AuthenticationService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

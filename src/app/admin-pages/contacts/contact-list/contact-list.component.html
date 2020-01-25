@@ -16,14 +16,12 @@ Contact List
             <mat-icon></mat-icon>
             Import Contact
         </button>
-        <button mat-raised-button color="primary" style="height: 40px; left: 80px">
+        <button mat-raised-button color="primary" style="height: 40px; left: 80px" (click)="exportContact()">
             <i style="font-size: 22px" class="fa  fa-get-pocket"></i>
             export Contact
         </button>
 
-        <mat-form-field class="col-md-4"  style="margin-bottom: 10px">
-            <input matInput (keyup)="applyFilter($event.target.value)"  placeholder="Search">
-        </mat-form-field>
+
     </div>
 
     <div class="card-body">
@@ -35,9 +33,9 @@ Contact List
                     <th scope="col">Full Name</th>
                     <th scope="col">Phone number</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Fellow Department</th>
                     <th scope="col">Acadamic Department</th>
-
+                    <th scope="col">Fellow Department</th>
+                    <th scope="col">Gender</th>
                     <th scope="col">Graduate year</th>
                 </tr>
                 </thead>
@@ -50,8 +48,9 @@ Contact List
                     <td>{{contact.full_name }}</td>
                     <td>{{contact.phone_number}}</td>
                     <td>{{contact.email}}</td>
-                    <td>{{contact.fellow_dep}}</td>
                     <td>{{contact.acadamic_dep}}</td>
+                    <td>{{contact.fellow_dep}}</td>
+                    <td>{{contact.gender}}</td>
                     <td>{{contact.graduate_year | date :'fullDate'}}</td>
                     <td>
                         <button mat-button="">

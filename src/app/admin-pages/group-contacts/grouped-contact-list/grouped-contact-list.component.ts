@@ -39,7 +39,6 @@ export class GroupedContactListComponent implements OnInit {
     gender: string;
     graduation_year: string;
 
-    id: string;
     groupedname: string;
     animal: string;
     group_id: string;
@@ -159,7 +158,7 @@ export class GroupedContactListComponent implements OnInit {
            })
      }*/
 
-    /*deleteGroupedContact(id: string) {
+    deleteGroupedContact(id: string) {
       const headers = new HttpHeaders()
           .append('Access-Control-Allow-Origin', '*')
           .append('Access-Control-Allow-Methods', 'DELETE')
@@ -167,16 +166,18 @@ export class GroupedContactListComponent implements OnInit {
           .append('Access-Control-Allow-Headers', 'Content-Type')
           .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
       // .append('Authorization', 'Bearer ' + this.storageService.getStorage('accessToken'));
-      return this.groupedContactsService.delete(`team/members/${this.team_detail.team.name}/${id}`, headers)
+      return this._groupedContact.delete(`groupcontact/${id}`, headers)
           .subscribe((res: {message: string}) => {
-            this.toastr.success('contact deleted successfully', 'Deleted', {timeOut: 3000});
-            this.getGroupsById();
+           // this.toastr.success('group contact deleted successfully', 'Deleted', {timeOut: 3000});
+            this.collectionOfcon(this.page);
           }, (httpErrorResponse: HttpErrorResponse) => {
-            this.toastr.error('Ooops! something went wrong, contact is not deleted', 'Error', {timeOut: 3000});
+          //  this.toastr.error('Ooops! something went wrong, contact is not deleted', 'Error', {timeOut: 3000});
           })
-    }*/
+    }
 
-
+    exportGroupContact():void{
+        window.open('http://localhost:8000/api/exportGroupedContact',"_blank")
+    }
 
     applyFilter(filterValue: string) {
         this.dataSource.filter = filterValue.trim().toLowerCase();

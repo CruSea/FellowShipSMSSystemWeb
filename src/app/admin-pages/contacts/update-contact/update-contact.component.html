@@ -1,5 +1,5 @@
 
-<form [formGroup]="updateContactForm" (ngSubmit)="updateContact(updateContactForm.value)">
+<form [formGroup]="updateContactForm" (ngSubmit)="updateContacts(updateContactForm.value)">
 
   <mat-form-field>
     <input matInput placeholder="full name" type="text" formControlName="full_name">
@@ -27,13 +27,13 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-form-field>
+ <!-- <mat-form-field>
     <input matInput placeholder="Email" type="text" formControlName="fellow_dep">
     <mat-error style="color: red" *ngIf="updateContactForm.get('fellow_dep').invalid && (updateContactForm.get('fellow_dep').dirty ||
       updateContactForm.get('fellow_dep').touched) && !updateContactForm.get('fellow_dep').errors?.minLength">
       Please insert fellow department!
     </mat-error>
-  </mat-form-field>
+  </mat-form-field> -->
 
   <mat-form-field>
     <input matInput placeholder="Academic Department" type="text" formControlName="acadamic_dep">
@@ -53,6 +53,6 @@
 
   <div mat-dialog-actions>
     <button mat-button mat-raised-button color="primary" type="submit"  cdkFocusInitial >Update</button>
-    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button (click)="onNoClickk()">Cancel</button>
   </div>
 </form>

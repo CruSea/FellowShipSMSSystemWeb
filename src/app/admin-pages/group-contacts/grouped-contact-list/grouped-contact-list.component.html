@@ -19,7 +19,7 @@
     <mat-icon></mat-icon>
     Import Contact
   </button>
-  <button mat-raised-button color="primary" style="height: 40px; left: 80px">
+  <button mat-raised-button color="primary" style="height: 40px; left: 80px" (click)="exportGroupContact()">
     <i style="font-size: 22px" class="fa  fa-get-pocket"></i>
     export Contact
   </button>
@@ -34,7 +34,7 @@
         <th scope="col">Email</th>
         <th scope="col">Fellow Department</th>
         <th scope="col">Acadamic Department</th>
-
+        <th scope="col">Gender</th>
         <th scope="col">Graduation year</th>
       </tr>
       </thead>
@@ -49,6 +49,7 @@
         <td>{{grouped_contact.email}}</td>
         <td>{{grouped_contact.fellow_department}}</td>
         <td>{{grouped_contact.acadamic_department}}</td>
+        <td>{{grouped_contact.gender}}</td>
         <td>{{grouped_contact.graduation_year | date :'fullDate'}}</td>
         <td>
           <button mat-button="">
@@ -58,7 +59,8 @@
                   mwlConfirmationPopover
                   [popoverTitle]="'Confirm Deletion'"
                   [popoverMessage]="'Are you sure you want to delete this contact'"
-                  placement="left">
+                  placement="left"
+                  (confirm)="deleteGroupedContact(grouped_contact.Id)">
 
             <mat-icon style="color: red;" mat-raised-button>delete_outline</mat-icon>
           </button>

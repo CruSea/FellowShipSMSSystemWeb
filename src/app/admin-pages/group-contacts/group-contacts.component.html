@@ -45,11 +45,11 @@
                         <a routerLink="/admin/grouped-contact/{{group.group_id}}">
                             {{group.group_name}}</a></td>
                     <td>{{group.description}}</td>
-                    <td>{{group.contacts}}</td>
                     <td></td>
+                    <td>{{group.created_at}}</td>
                     <td>
                         <button mat-button="">
-                              <mat-icon  mat-raised-button (click)="openUpdate(element)">edit</mat-icon> -->
+                              <mat-icon  mat-raised-button (click)="openUpdate(element)">edit</mat-icon>
                         </button>
                         <button mat-button=""
                                 mwlConfirmationPopover

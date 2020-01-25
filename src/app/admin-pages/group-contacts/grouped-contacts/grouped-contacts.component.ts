@@ -94,7 +94,7 @@ export class GroupedContactsComponent implements OnInit {
             phone: ['', [Validators.required]],
             email: ['', [Validators.required]],
             acadamic_department: ['', [Validators.required]],
-            fellow_department: ['', [Validators.required]],
+           // fellow_department: ['', [Validators.required]],
             gender: ['', [Validators.required]],
             //  fellowship_id: [null, [Validators.required]],
             graduation_year: ['', [Validators.required]],
