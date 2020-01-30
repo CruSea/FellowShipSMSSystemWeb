@@ -6,18 +6,17 @@
         <label>New Group Message</label>
         <br>
         <br>
-        <mat-expansion-panel  style="cursor: pointer;" formControlName="group_name">
-          <mat-expansion-panel-header style="margin-bottom: 0">
-            <mat-panel-title>Contact Group</mat-panel-title>
-          </mat-expansion-panel-header>
-          <mat-list style="margin-top: 0">
-            <mat-list-item  class="form-control">
-              <a>
-                Art Team
-              </a>
-            </mat-list-item>
-          </mat-list>
-        </mat-expansion-panel>
+
+        <mat-form-field >
+          <mat-label>Group Name</mat-label>
+          <mat-select formControlName="group_name">
+            <div *ngIf="groupNames">
+              <mat-option *ngFor="let groupName of groupNames" [value]="groupName.group_name">
+                {{groupName.group_name }}
+              </mat-option>
+            </div>
+          </mat-select>
+        </mat-form-field>
       </div>
       <br>
       <br>

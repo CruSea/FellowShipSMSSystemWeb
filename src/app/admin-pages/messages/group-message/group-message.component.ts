@@ -17,10 +17,6 @@ export class GroupMessageComponent implements OnInit {
 
   ngOnInit() {}
 
-  get ContactList() {
-    return this._contactService.getAllContacts();
-  }
-
   add_group_message() {
     this.ispopupOpened = true;
     const dialogRef = this.dialog.open(AddGroupMessageComponent, {

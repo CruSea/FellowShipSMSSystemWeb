@@ -2,6 +2,8 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Router } from '@angular/router';
+import {HttpErrorResponse, HttpHeaders} from "@angular/common/http";
+import {AuthenticationService} from "../../service/authentication/authentication.service";
 
 @Component({
   selector: 'app-navbar',
@@ -15,9 +17,17 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
 
-    constructor(location: Location,  private element: ElementRef, private router: Router) {
+    constructor(location: Location,
+                private element: ElementRef,
+                private router: Router,
+                private authenticationService : AuthenticationService) {
       this.location = location;
           this.sidebarVisible = false;
+    }
+
+    logout(){
+        this.authenticationService.logout();
+        this.router.navigate(['/auth/login']);
     }
 
     ngOnInit(){

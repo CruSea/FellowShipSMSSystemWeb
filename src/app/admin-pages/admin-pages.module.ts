@@ -31,6 +31,8 @@ import {MatSelectModule} from "@angular/material/select";
 import { MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import { UpdateGroupContactComponent } from './group-contacts/grouped-contact-list/update-group-contact/update-group-contact.component';
+import {MatCheckboxModule, MatSlideToggleModule} from "@angular/material";
+import {PasswordResetComponentComponent} from "../auth-pages/password-reset-component/password-reset-component.component";
 
 
 
@@ -44,6 +46,8 @@ import { UpdateGroupContactComponent } from './group-contacts/grouped-contact-li
         NgxPaginationModule,
         MatListModule,
         MatIconModule,
+        MatCheckboxModule,
+        MatSlideToggleModule,
         MatFormFieldModule,
         MatButtonModule,
         // ConfirmationPopoverModule

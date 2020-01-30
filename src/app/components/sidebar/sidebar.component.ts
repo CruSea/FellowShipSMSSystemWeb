@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {DashboardServiceService} from "../../service/dashboard-service/dashboard-service.service";
+import {HttpErrorResponse, HttpHeaders} from "@angular/common/http";
+import {StorageService} from "../../service/storage.service";
 
 declare const $: any;
 
@@ -30,10 +33,15 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
     menuItems: any[];
 
-    constructor() {
+    user:any;
+
+    constructor(private dashboardService: DashboardServiceService,
+                private storageService: StorageService) {
     }
 
+
     ngOnInit() {
+        this.getCurrentUser();
         this.menuItems = ROUTES.filter(menuItem => menuItem);
     }
 
@@ -43,4 +51,20 @@ export class SidebarComponent implements OnInit {
         }
         return true;
     };
+
+     getCurrentUser(){
+         const headers = new HttpHeaders()
+             .append('Access-Control-Allow-Origin', '*')
+             .append('Access-Control-Allow-Methods', 'GET')
+             .append('X-Requested-With', 'XMLHttpRequest')
+             .append('Access-Control-Allow-Headers', 'Content-Type')
+             .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
+         return this.dashboardService.gets(headers, '/current_user')
+             .subscribe((res: any) => {
+                 this.user =res[0]+' '+res[1];
+                 console.log(res);
+             }, (httpErrorResponse: HttpErrorResponse) => {
+
+             })
+     }
 }

@@ -13,8 +13,6 @@ export interface PeriodicElement {
     group_id: number;
     group_name: string;
     description: string
-    // number_of_contacts?: number;
-    // fellowship_id: number;
     created_by: string;
     updated_by?: string;
     action?: string
@@ -43,7 +41,7 @@ export class GroupContactsComponent implements OnInit {
     TotalGroupedContact :number;
     id:number;
 
-    displayedColumns: string[] = ['group_id', 'group_name', 'description', 'created_at', 'action'];
+    displayedColumns: string[] = ['group_id', 'group_name','description','created_by','created_at', 'action'];
     dataSource: any;
 
     ispopupOpened = false;

@@ -19,6 +19,8 @@ export class LoginComponent implements OnInit {
     loading: boolean;
     hide = true;
 
+    showSpinner= false;
+
     constructor(
         private router: Router,
         private httpClient: HttpClient,
@@ -43,10 +45,10 @@ export class LoginComponent implements OnInit {
             .subscribe((loginResponseInterface: LoginResponseInterface) => {
                 this.loading = false;
                 console.log('******* Well come ********');
-              //  this.toastr.success('Welcome to Fellowship Mangement System', 'Welcom!', {timeOut: 2000});
+              //  this.toastr.success('Welcome to Fellowship Mangement System', 'Welcome!', {timeOut: 2000});
                 this.router.navigateByUrl("/admin");
-             //   this.user_token =  this.storageService.getStorage('accessToken');
-               // localStorage.setItem('accessToken', this.user_token);
+               this.user_token =  this.storageService.getStorage('accessToken');
+               localStorage.setItem('accessToken', this.user_token);
             }, (httpErrorResponse: HttpErrorResponse) => {
                 this.loading = false;
               //  this.toastr.error(httpErrorResponse.error.message, 'Login Error');
@@ -55,5 +57,9 @@ export class LoginComponent implements OnInit {
                 this.loginForm.controls['password'].setValue('');
                 // window.location.reload();
             })
+        this.showSpinner = true;
+       setTimeout(() =>{
+           this.showSpinner=false;
+       },20000)
     }
 }

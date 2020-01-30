@@ -10,10 +10,12 @@ import {SuperDashboardComponent} from "../super-admin-pages/super-dashboard/supe
 import {AdminsListComponent} from "../super-admin-pages/admins-list/admins-list.component";
 import {RegisterAdminComponent} from "../super-admin-pages/register-admin/register-admin.component";
 import {GroupedContactListComponent} from "./group-contacts/grouped-contact-list/grouped-contact-list.component";
+import {AuthGuard} from "../Auth/auth.guard";
+import {PasswordResetComponentComponent} from "../auth-pages/password-reset-component/password-reset-component.component";
 
 const routes: Routes = [
-    //{path: '', component: DashboardComponent},
-    {path: 'dashboard', component: DashboardComponent},
+    {path: '', component: DashboardComponent,canActivate: [ AuthGuard ]},
+    {path: 'dashboard', component: DashboardComponent,canActivate: [ AuthGuard ]},
     {path: 'contact-list', component: ContactListComponent},
     {path: 'group-contacts', component: GroupContactsComponent},
     {path: 'contact-message', component: BulkSmsComponent},

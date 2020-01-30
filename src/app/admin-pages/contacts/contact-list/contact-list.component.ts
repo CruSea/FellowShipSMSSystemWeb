@@ -143,8 +143,9 @@ export class ContactListComponent implements OnInit {
         });
     }
 
-     exportContact():void{
-      window.open('http://localhost:8000/api/exportContact',"_blank")
+     static exportContact(){
+
+       return window.open('http://localhost:8000/api/exportContact',"_blank")
     }
 
 }

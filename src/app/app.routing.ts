@@ -14,6 +14,11 @@ const routes: Routes = [
        // pathMatch: 'full',
     },
     {
+        path: 'forgotten-password',
+        redirectTo: 'auth/forgotten-password',
+        // pathMatch: 'full',
+    },
+    {
         path: '',
         redirectTo: 'auth/sign-up',
         pathMatch: 'full',
@@ -21,6 +26,7 @@ const routes: Routes = [
     {
         path: '',
         component: AdminPagesLayoutComponent,
+        canActivate: [ AuthGuard ],
         children: [
             {
                 path: 'admin',
@@ -29,7 +35,6 @@ const routes: Routes = [
     }, {
         path: '',
         component: AuthPagesLayoutComponent,
-       // canActivate: [ PublicGuard ],
         children: [
             {
                 path: 'auth',

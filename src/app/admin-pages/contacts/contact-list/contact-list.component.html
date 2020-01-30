@@ -1,6 +1,6 @@
 Contact List
 <hr>
-<div class="card" style="float: left; margin-top: 40px; width: 1200px;margin-left: 20px;">
+<div class="card" style="float: left; margin-top: 40px; width: auto; margin-left: 20px">
     <div class="card-header" style="white-space: nowrap; text-overflow: ellipsis;">
         <p style="font-size: 26px">Contacts</p>
         <!--  <p (click)="addContact()" style="text-decoration:none;color:blue"
@@ -25,8 +25,8 @@ Contact List
     </div>
 
     <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-striped" id="dataTable" width="100%">
+        <div class="table-responsive-sm">
+            <table class="table table-striped w-auto" width="100%">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -43,7 +43,7 @@ Contact List
                 <tr *ngFor="let contact of dataSource | paginate: { id: 'listing_pagination',
                                                           itemsPerPage: per_page,
                                                           currentPage: page,
-                                                          totalItems: total }; let i = index">
+                                                          totalItems: total }; let i = index" scope="row">
                     <td>{{i + 1}}</td>
                     <td>{{contact.full_name }}</td>
                     <td>{{contact.phone_number}}</td>
@@ -70,12 +70,12 @@ Contact List
                 </tr>
                 </tbody>
             </table>
+            </div>
             <div>
                 <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true"
                                      (pageChange)="collectionOfcon($event)"></pagination-controls>
             </div>
         </div>
-    </div>
 </div>
 
 

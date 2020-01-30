@@ -3,21 +3,12 @@
 <div class="card" style="float: left; margin-top: 40px; width: 1200px;margin-left: 20px;">
     <div class="card-header" style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;">
         <h6>Contact Groups</h6>
-        <!--<p (click)="addContact()" style="text-decoration:none;color:blue"
-           onmouseover="style='text-decoration:underline;color:blue';"
-           onmouseout="style='text-decoration:none;color:blue'">New Contact Group | Export Contacts | Import Contacts </p> -->
 
         <button style="height: 40px; left: 20px" mat-raised-button (click)="addContact()">
             <mat-icon></mat-icon>
             Add Contact Group
         </button>
-        <!--  <button mat-button  style="height: 40px; left: 60px"  mat-raised-button>
-            <i style="font-size: 22px" class="fa  fa-get-pocket"></i>
-            <mat-icon></mat-icon>
-            check</button>
-          <button mat-raised-button style="height: 40px; left: 80px" >
-            <i style="font-size: 22px" class="fa  fa-get-pocket"></i>
-            Export Contact Group</button> -->
+
     </div>
 
     <div class="card-body">
@@ -45,11 +36,11 @@
                         <a routerLink="/admin/grouped-contact/{{group.group_id}}">
                             {{group.group_name}}</a></td>
                     <td>{{group.description}}</td>
-                    <td></td>
+                    <td>{{group.created_by}}</td>
                     <td>{{group.created_at}}</td>
                     <td>
                         <button mat-button="">
-                              <mat-icon  mat-raised-button (click)="openUpdate(element)">edit</mat-icon>
+                            <mat-icon mat-raised-button (click)="openUpdate(element)">edit</mat-icon>
                         </button>
                         <button mat-button=""
                                 mwlConfirmationPopover

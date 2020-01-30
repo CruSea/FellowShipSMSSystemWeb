@@ -1,24 +1,20 @@
 import { Injectable } from '@angular/core';
 import {GroupMessage} from 'app/admin-pages/model/GroupMessage';
+import {HttpClient} from "@angular/common/http";
 
 
 @Injectable()
 export class GroupMessageService {
 
-    _contactList: GroupMessage[] = [];
+    constructor(
+        private  httpClient: HttpClient
+    ) { }
 
-    constructor() { }
-
-    addGroupMessage(contact: GroupMessage) {
-        this._contactList.push(contact);
+    collectionofContacts() {
+        return this.httpClient.get('http://localhost:8000/api/contact')
     }
 
-    removeContact(id: number) {
-        const contact = this._contactList.findIndex(c => c.ID === id);
-        this._contactList.splice(contact, 1);
-    }
-
-    getAllContacts() {
-        return this._contactList;
+    delete(id: string) {
+        return this.httpClient.delete(`http:localhost:8000/api/contact/${id}`)
     }
 }

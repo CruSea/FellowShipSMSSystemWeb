@@ -8,7 +8,10 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {AdminPagesLayoutComponent} from './layouts/admin-pages-layout/admin-pages-layout.component';
 import {AuthPagesLayoutComponent} from './layouts/auth-pages-layout/auth-pages-layout.component';
-import { MatDialogModule, MatCardModule, MatExpansionPanel } from '@angular/material';
+import {
+    MatDialogModule, MatCardModule, MatExpansionPanel, MatError, MatIconRegistry,
+    MatProgressSpinnerModule
+} from '@angular/material';
 import {MatListModule} from '@angular/material';
 
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -41,6 +44,7 @@ import {AuthGuard} from "./Auth/auth.guard";
 import {AuthenticationService} from "./service/authentication/authentication.service";
 import {PublicGuard} from "ngx-auth";
 import {AuthenticationModule} from "./service/authentication/authentication.module";
+import {AuthPagesModule} from "./auth-pages/auth-pages.module";
 //import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 //import {ToastrModule} from 'ngx-toastr';
 
@@ -53,6 +57,7 @@ import {AuthenticationModule} from "./service/authentication/authentication.modu
         FormsModule,
         NgxPaginationModule,
         HttpClientModule,
+        AuthPagesModule,
         AuthenticationModule,
         ComponentsModule,
         MatButtonModule,

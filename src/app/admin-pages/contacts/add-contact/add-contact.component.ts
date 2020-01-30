@@ -86,8 +86,6 @@ export class AddContactComponent implements OnInit {
             .append('X-Requested-With', 'XMLHttpRequest')
             .append('Access-Control-Allow-Headers', 'Content-Type')
             .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
-          // console.log(this.storageService.getStorage('accessToken'));
-          //  .append('Authorization', 'Bearer ' + this.storageService.getStorage('accessToken'));
         return this.contactService.create(contactsModalInterface, headers, '/contact')
             .subscribe((res: { message: string }) => {
                 this.dialogRef.close();

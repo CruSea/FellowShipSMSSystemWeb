@@ -30,9 +30,15 @@ export class  AuthenticationService {
     ngOnInit(): void {
     }
 
-    public isAuthorized(): Observable <boolean> {
-        return this.storageService.getAccessToken()
-            .pipe(map((access_token: string) => !! access_token));
+    public isAuthorized():boolean{
+
+        if(this.storageService.getStorage('accessToken')!=null){
+            return true;
+        }else{
+            return false;
+        }
+
+           // .pipe(map((access_token: string) => !! access_token));
     }
 
     public getAccessToken(): Observable <string> {
@@ -60,11 +66,11 @@ export class  AuthenticationService {
             .append('X-Requested-With', 'XMLHttpRequest')
             .append('Access-Control-Allow-Headers', 'Content-Type');
         return this.loginService.create(loginInterface, headers, '/login')
-         /*   .pipe(tap((loginResponseInterface: LoginResponseInterface) => {
+           .pipe(tap((loginResponseInterface: LoginResponseInterface) => {
                 console.log('..........................');
                 console.log(loginResponseInterface);
-              //  this.storageService.setAccessToken(loginResponseInterface.token)
-            })); */
+                this.storageService.setAccessToken(loginResponseInterface.token)
+            }));
     }
 
    /* public register(registerInterface: RegisterInterface): Observable<any> {
@@ -77,7 +83,7 @@ export class  AuthenticationService {
     }*/
 
     public logout() {
-        this.storageService.clear();
-        return window.location.reload()
+       return this.storageService.clear();
+       // return window.location.reload()
     }
 }
