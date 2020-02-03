@@ -6,6 +6,7 @@ import {HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {StorageService} from "../../../service/storage.service";
 import {AddGroupService} from "../../../service/add-group/add-group.service";
 import {GroupContactsComponent} from "../group-contacts.component";
+import {ToastrService} from "ngx-toastr";
 
 interface GroupContactsInterface {
   group_name: string;
@@ -24,6 +25,7 @@ export class AddGroupComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder,
               private storageService: StorageService,
               private groupService: AddGroupService,
+              private toastr: ToastrService,
               private dialogRef: MatDialogRef<AddGroupComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {}
 
@@ -33,7 +35,6 @@ export class AddGroupComponent implements OnInit {
 
   ngOnInit() {
     this._contactForm = this._formBuilder.group({
-      ID: [],
       group_name: ['', [Validators.required]],
       description: ['', [Validators.required]],
     });
@@ -56,9 +57,9 @@ export class AddGroupComponent implements OnInit {
     return this.groupService.create(groupContactsModalInterface, headers, '/group')
         .subscribe((res: {message: string}) => {
           this.dialogRef.close();
-         // this.toastr.success('new team added successfully', 'Team', {timeOut: 3000});
+          this.toastr.success('Group added successfully', 'Group');
         }, (httpErrorResponse: HttpErrorResponse) => {
-         // this.toastr.error(httpErrorResponse.error.error, 'Error', {timeOut: 10000});
+          this.toastr.error(httpErrorResponse.error.error, 'Error');
         })
   }
 }

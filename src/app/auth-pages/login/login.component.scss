@@ -13,12 +13,12 @@ mat-card {
   width: 100%;
 }
 .background{
-  min-height: 200%;
+  height: 840px;
   width: 100%;
-  //background-color: #0b75c9;
-  background-image: url("/assets/img/bg-image.jpg");
-  background-position: center;
+ // background-color: #0b75c9;
+ // background-image: url("/assets/img/bg-image.jpg");
+  background-position: 100%;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% auto;
 }
 

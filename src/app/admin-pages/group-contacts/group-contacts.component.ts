@@ -8,6 +8,7 @@ import {HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {MatTableDataSource} from "@angular/material/table";
 import {AddContactService} from "../../service/add-contact/add-contact.service";
 import {GroupContactCountService} from "../../service/Group-Contact-Count/group-contact-count.service";
+import {ToastrService} from "ngx-toastr";
 
 export interface PeriodicElement {
     group_id: number;
@@ -50,6 +51,7 @@ export class GroupContactsComponent implements OnInit {
                 private storageService: StorageService,
                 private groupService: AddGroupService,
                 private groupContactCount: GroupContactCountService,
+                private toastr: ToastrService,
                 private dialog?: MatDialog) {this.page = 1;}
 
 
@@ -114,10 +116,10 @@ export class GroupContactsComponent implements OnInit {
         // .append('Authorization', 'Bearer ' + this.storageService.getStorage('accessToken'));
         return this.groupService.delete(`group/${id}`, headers)
             .subscribe((res: {message: string}) => {
-               // this.toastr.success('team deleted successfully', 'Deleted', {timeOut: 3000});
+                this.toastr.success('team deleted successfully', 'Deleted', {timeOut: 3000});
                 this.collectionOfcon(this.page);
             }, (httpErrorResponse: HttpErrorResponse) => {
-              //  this.toastr.error('Ooops! something went wrong, team is not deleted', 'Error', {timeOut: 3000});
+                this.toastr.error('Ooops! something went wrong, team is not deleted', 'Error', {timeOut: 3000});
             })
     }
           // ################# Display Counted Contact ##############################
@@ -136,5 +138,9 @@ export class GroupContactsComponent implements OnInit {
                 this.TotalGroupedContact = res.count;
             }, (httpErrorResponse: HttpErrorResponse) => {
             })
+    }
+
+    openUpdate(groupId:string){
+
     }
 }

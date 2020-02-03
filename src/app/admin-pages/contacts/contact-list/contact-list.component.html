@@ -54,7 +54,7 @@ Contact List
                     <td>{{contact.graduate_year | date :'fullDate'}}</td>
                     <td>
                         <button mat-button="">
-                            <mat-icon mat-raised-button (click)="openUpdate(element)">edit</mat-icon>
+                            <mat-icon mat-raised-button (click)="openUpdate(contact.contact_id)">edit</mat-icon>
                         </button>
                         <button mat-button=""
                                 mwlConfirmationPopover

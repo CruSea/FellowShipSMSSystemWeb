@@ -6,6 +6,8 @@ import {AdminPagesLayoutComponent} from './layouts/admin-pages-layout/admin-page
 import {AuthPagesLayoutComponent} from './layouts/auth-pages-layout/auth-pages-layout.component';
 import {AuthGuard} from "./Auth/auth.guard";
 import {PublicGuard} from "ngx-auth";
+import {SuperAdminModule} from "./super-admin-pages/super-admin.module";
+import {SuperAdminPagesLayoutComponent} from "./layouts/super-admin-pages-layout/super-admin-pages-layout.component";
 
 const routes: Routes = [
     {
@@ -27,12 +29,25 @@ const routes: Routes = [
         path: '',
         component: AdminPagesLayoutComponent,
         canActivate: [ AuthGuard ],
+        data:{
+    allowedRoles: ['ADMIN']},
         children: [
             {
                 path: 'admin',
                 loadChildren: './admin-pages/admin-pages.module#AdminPagesModule'
             }]
-    }, {
+    },
+    {
+        path: '',
+        component: SuperAdminPagesLayoutComponent,
+      //  canActivate: [ AuthGuard ],
+        children: [
+            {
+                path: 'super-admin',
+                loadChildren: './super-admin-pages/super-admin.module#SuperAdminModule'
+            }]
+    },
+    {
         path: '',
         component: AuthPagesLayoutComponent,
         children: [

@@ -10,6 +10,13 @@ import {LoginResponseInterface} from "../service/authentication/authentication.i
 })
 export class AuthGuard implements CanActivate {
 
+    admin = {
+        role: 'ADMIN'
+    }
+    super_admin = {
+        role: 'SUPER-ADMIN'
+    }
+
     constructor(private authService: AuthenticationService,
                 private router: Router) {
 
@@ -17,13 +24,17 @@ export class AuthGuard implements CanActivate {
 
 
     canActivate(next: ActivatedRouteSnapshot,
-                state: RouterStateSnapshot):boolean{
+                state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-       // return this.authService.isAuthorized()
+        // return this.authService.isAuthorized()
+
         if (this.authService.isAuthorized()) {
+            //  if(next.data[0]==this.admin.role) {
             return true;
+
         } else {
             this.router.navigate(['/login']);
+            return false;
         }
     }
 }

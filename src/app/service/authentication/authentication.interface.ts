@@ -6,4 +6,5 @@ export interface TokenInterface {
 export interface LoginResponseInterface {
     token: string;
     message: string;
+    log_in_as:string;
 }

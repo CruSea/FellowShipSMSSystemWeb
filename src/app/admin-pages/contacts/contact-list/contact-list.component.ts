@@ -7,6 +7,7 @@ import {StorageService} from "../../../service/storage.service";
 import {UpdateContactComponent, UpdateContactInterface} from "../update-contact/update-contact.component";
 import {ImportContactComponent} from "../import-contact/import-contact.component";
 import * as url from "url";
+import {ToastrService} from "ngx-toastr";
 
 const MaterialComponents = [
     MatButtonModule
@@ -24,10 +25,6 @@ export interface PeriodicElement {
     action?: string
 }
 
-/*@NgModule({
-  imports:[MaterialComponents],
-  exports:[MaterialComponents]
-})*/
 @Component({
     selector: 'app-contact-list',
     templateUrl: './contact-list.component.html',
@@ -54,6 +51,7 @@ export class ContactListComponent implements OnInit {
     constructor(private matDialog: MatDialog,
                 private storageService: StorageService,
                 private _contactService: AddContactService,
+                private toastr: ToastrService,
                 private dialog?: MatDialog,) {
         this.page = 1;
     }
@@ -67,19 +65,21 @@ export class ContactListComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
             this.collectionOfcon(this.page);
+            this.toastr.success('contact added successfully', 'Add', {timeOut: 3000});
             this.ispopupOpened = false;
         })
     }
 
-    openUpdate(data: UpdateContactInterface): void {
+    openUpdate(Id:string) {
         this.ispopupOpened = true;
         const dialogRef = this.dialog.open(UpdateContactComponent, {
-            data: {data},
+            data: {Id}.valueOf(),
             width: '700px'
         });
 
         dialogRef.afterClosed().subscribe(result => {
             this.collectionOfcon(this.page);
+            this.toastr.success('contact updated successfully', 'Add', {timeOut: 3000});
            // this.animal = result;
         });
     }
@@ -125,15 +125,15 @@ export class ContactListComponent implements OnInit {
         // .append('Authorization', 'Bearer ' + this.storageService.getStorage('accessToken'));
         return this._contactService.delete(`contact/${id}`, headers)
             .subscribe((res: { message: string }) => {
-                //  this.toastr.success('contact deleted successfully', 'Deleted', {timeOut: 3000});
+                  this.toastr.success('contact deleted successfully', 'Deleted', {timeOut: 3000});
                 this.collectionOfcon(this.page);
             }, (httpErrorResponse: HttpErrorResponse) => {
-                //   this.toastr.error('Ooops! something went wrong, contact is not deleted', 'Error', {timeOut: 3000});
+                   this.toastr.error('Ooops! something went wrong, contact is not deleted', 'Error', {timeOut: 3000});
             })
     }
 
     openImportContact(): void {
-        const dialogRef = this.matDialog.open(ImportContactComponent, {
+         const dialogRef = this.matDialog.open(ImportContactComponent, {
             height: '200px'
         });
 
@@ -143,8 +143,8 @@ export class ContactListComponent implements OnInit {
         });
     }
 
-     static exportContact(){
-
+      exportContact(){
+        //  this.toastr.success('contact deleted successfully', 'Deleted', {timeOut: 3000});
        return window.open('http://localhost:8000/api/exportContact',"_blank")
     }
 

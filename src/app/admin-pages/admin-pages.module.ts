@@ -15,9 +15,6 @@ import {GroupedContactsComponent} from './group-contacts/grouped-contacts/groupe
 import { BulkSmsComponent } from './messages/contact-message/bulk-sms.component';
 import { GroupMessageComponent } from './messages/group-message/group-message.component';
 import { ScheduledMessageComponent } from './messages/scheduled-message/scheduled-message.component';
-import { SuperDashboardComponent } from '../super-admin-pages/super-dashboard/super-dashboard.component';
-import { AdminsListComponent } from '../super-admin-pages/admins-list/admins-list.component';
-import {RegisterAdminComponent} from "../super-admin-pages/register-admin/register-admin.component";
 import {MatIconModule} from "@angular/material/icon";
 import {MatError, MatFormFieldModule} from "@angular/material/form-field";
 import { ScheduledMessageModalComponent } from './messages/scheduled-message/scheduled-message-modal/scheduled-message-modal.component';
@@ -33,6 +30,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 import { UpdateGroupContactComponent } from './group-contacts/grouped-contact-list/update-group-contact/update-group-contact.component';
 import {MatCheckboxModule, MatSlideToggleModule} from "@angular/material";
 import {PasswordResetComponentComponent} from "../auth-pages/password-reset-component/password-reset-component.component";
+
 
 
 
@@ -65,9 +63,6 @@ import {PasswordResetComponentComponent} from "../auth-pages/password-reset-comp
         BulkSmsComponent,
         GroupMessageComponent,
         ScheduledMessageComponent,
-        SuperDashboardComponent,
-        AdminsListComponent,
-        RegisterAdminComponent,
         ScheduledMessageModalComponent,
         GroupedContactListComponent,
         ImportGroupContactComponent,

@@ -84,9 +84,9 @@ export class AdminsListComponent implements OnInit{
         return this.registservice.create(null,headers,'/assignRole/'+this.checked+'/'+id)
             .subscribe((res: { message: string }) => {
               console.log('Role assigned successfully!!!!!');
-                //  this.toastr.success('new under graduate member added successfully', 'Contact', {timeOut: 3000});
+         // this.toastr.success('new under graduate member added successfully', 'Contact', {timeOut: 3000});
             }, (httpErrorResponse: HttpErrorResponse) => {
-                //   this.toastr.error(httpErrorResponse.error.error, 'Error', {timeOut: 10000});
+          //this.toastr.error(httpErrorResponse.error.error, 'Error', {timeOut: 10000});
                 console.log(httpErrorResponse);
             })
     }

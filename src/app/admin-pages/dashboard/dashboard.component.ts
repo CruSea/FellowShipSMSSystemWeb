@@ -3,6 +3,7 @@ import {Chart} from 'chart.js'
 import {Router} from '@angular/router';
 import {HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {StorageService} from "../../service/storage.service";
+import $ from 'jquery';
 import {DashboardServiceService} from "../../service/dashboard-service/dashboard-service.service";
 
 @Component({
@@ -20,6 +21,9 @@ export class DashboardComponent implements OnInit {
 
     count_male:number;
     count_female:number;
+
+    university:string;
+    campus:string;
 
     total_bulk_count: number;
     total_group_count: number;
@@ -45,9 +49,11 @@ export class DashboardComponent implements OnInit {
         this.getTotalGroups();
         this.getGenderCount();
         this.pieChart();
+        this.getCurrentUniv();
 
-        this.chart = new Chart('bar', {
-            type: 'bar',
+        var ctx = $("#line-chart");
+        let line_chart = new Chart(ctx, {
+            type: 'line',
             options: {
                 responsive: true,
                 title: {
@@ -56,32 +62,24 @@ export class DashboardComponent implements OnInit {
                 },
             },
             data: {
-                labels: ['Group 1', 'Group 2', 'Group 3', 'd', 'e', 'f', 'g', 'h'],
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Jun', 'Jul', 'Aug'],
                 datasets: [
+
+                     {
+                       type: 'line',
+                       label: 'Dataset 1',
+                       borderColor: 'rgba(135,206,250)',
+                       data: [
+                         43, 56, 65, 28, 56, 65, 35, 43
+                       ],
+                       fill: false,
+                     },
                     {
-                        type: 'bar',
-                        label: 'Female',
-                        data: [15, 156, 365, 30, 156, 265, 356, 543],
-                        backgroundColor: 'rgba(255,0,255,0.4)',
-                        borderColor: 'rgba(255,0,255,0.4)',
-                        fill: false,
-                    },
-                    // {
-                    //   type: 'line',
-                    //   label: 'Dataset 2',
-                    //   backgroundColor: 'rgba(0,0,255,0.4)',
-                    //   borderColor: 'rgba(0,0,255,0.4)',
-                    //   data: [
-                    //     443, 256, 165, 100, 56, 65, 35, 543
-                    //   ],
-                    //   fill: true,
-                    // },
-                    {
-                        type: 'bar',
-                        label: 'Male',
-                        data: [243, 156, 365, 30, 156, 265, 356, 543].reverse(),
-                        backgroundColor: 'rgba(0,0,255,0.4)',
-                        borderColor: 'rgba(0,0,255,0.4)',
+                        type: 'line',
+                        label: 'Dataset 2',
+                        data: [24, 52, 36, 30, 45, 26, 30, 20],
+                        backgroundColor: 'rgba(255,0,0)',
+                        borderColor: 'rgba(255,20,147)',
                         fill: false,
                     }
                 ]
@@ -170,6 +168,23 @@ export class DashboardComponent implements OnInit {
             .subscribe((res: any) => {
                 this.total_Groups = res.count;
             }, (httpErrorResponse: HttpErrorResponse) => {
+            })
+    }
+
+    getCurrentUniv(){
+        const headers = new HttpHeaders()
+            .append('Access-Control-Allow-Origin', '*')
+            .append('Access-Control-Allow-Methods', 'GET')
+            .append('X-Requested-With', 'XMLHttpRequest')
+            .append('Access-Control-Allow-Headers', 'Content-Type')
+            .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
+        return this.dashboardService.gets(headers, '/current_univ')
+            .subscribe((res: any) => {
+                this.university =res[0];
+                this.campus=res[1];
+                console.log(res);
+            }, (httpErrorResponse: HttpErrorResponse) => {
+
             })
     }
 }

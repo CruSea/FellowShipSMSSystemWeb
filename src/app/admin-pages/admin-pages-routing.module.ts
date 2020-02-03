@@ -21,9 +21,9 @@ const routes: Routes = [
     {path: 'contact-message', component: BulkSmsComponent},
     {path: 'group-message', component: GroupMessageComponent},
     {path: 'scheduled-message',component:ScheduledMessageComponent},
-    {path: 'super-dashboard', component:SuperDashboardComponent},
+   /* {path: 'super-dashboard', component:SuperDashboardComponent},
     {path: 'register', component:RegisterAdminComponent},
-    {path: 'admins-list', component:AdminsListComponent},
+    {path: 'admins-list', component:AdminsListComponent},*/
     {path: 'grouped-contact/:id',
         component:GroupedContactListComponent}
 ];

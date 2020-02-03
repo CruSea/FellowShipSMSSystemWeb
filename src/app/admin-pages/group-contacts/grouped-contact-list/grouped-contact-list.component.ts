@@ -10,6 +10,7 @@ import {
     UpdateGroupContactComponent,
     UpdateGroupContactInterface
 } from "./update-group-contact/update-group-contact.component";
+import {ToastrService} from "ngx-toastr";
 
 export interface PeriodicElement {
     id: number;
@@ -58,6 +59,7 @@ export class GroupedContactListComponent implements OnInit {
                 private storageService: StorageService,
                 private activatedRoute: ActivatedRoute,
                 private _groupedContact: GroupedContactService,
+                private toastr: ToastrService,
                 private dialog?: MatDialog) {
         this.group_id = activatedRoute.snapshot.params.id;
         this.page = 1;
@@ -65,12 +67,13 @@ export class GroupedContactListComponent implements OnInit {
 
     addContact() {
         this.ispopupOpened = true;
+      //  this.toastr.success('Contact Added successfully', 'Deleted', {timeOut: 3000});
         const dialogRef = this.dialog.open(GroupedContactsComponent, {
             data: this.group_id
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            // this.collectionOfcon(this.page);
+             this.collectionOfcon(this.page);
             this.ispopupOpened = false;
         })
     }
@@ -89,6 +92,7 @@ export class GroupedContactListComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
             this.collectionOfcon(this.page);
+            this.toastr.success('Contact Updated successfully', 'Deleted', {timeOut: 3000});
             this.animal = result;
         });
     }
@@ -168,10 +172,10 @@ export class GroupedContactListComponent implements OnInit {
       // .append('Authorization', 'Bearer ' + this.storageService.getStorage('accessToken'));
       return this._groupedContact.delete(`groupcontact/${id}`, headers)
           .subscribe((res: {message: string}) => {
-           // this.toastr.success('group contact deleted successfully', 'Deleted', {timeOut: 3000});
+            this.toastr.success('group contact deleted successfully', 'Deleted', {timeOut: 3000});
             this.collectionOfcon(this.page);
           }, (httpErrorResponse: HttpErrorResponse) => {
-          //  this.toastr.error('Ooops! something went wrong, contact is not deleted', 'Error', {timeOut: 3000});
+            this.toastr.error('Ooops! something went wrong, contact is not deleted', 'Error', {timeOut: 3000});
           })
     }
 

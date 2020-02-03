@@ -45,6 +45,9 @@ import {AuthenticationService} from "./service/authentication/authentication.ser
 import {PublicGuard} from "ngx-auth";
 import {AuthenticationModule} from "./service/authentication/authentication.module";
 import {AuthPagesModule} from "./auth-pages/auth-pages.module";
+import { SuperAdminPagesLayoutComponent } from './layouts/super-admin-pages-layout/super-admin-pages-layout.component';
+import {ToastrModule, ToastrService} from "ngx-toastr";
+import * as JQuery from "jquery";
 //import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 //import {ToastrModule} from 'ngx-toastr';
 
@@ -54,10 +57,15 @@ import {AuthPagesModule} from "./auth-pages/auth-pages.module";
         /*   ToastrModule.forRoot({
                timeOut : 2000
            }),*/
+        ToastrModule.forRoot({
+            timeOut:3000,
+            positionClass: 'toast-top-right'
+        }),
         FormsModule,
         NgxPaginationModule,
         HttpClientModule,
         AuthPagesModule,
+        JQuery,
         AuthenticationModule,
         ComponentsModule,
         MatButtonModule,
@@ -79,6 +87,7 @@ import {AuthPagesModule} from "./auth-pages/auth-pages.module";
     declarations: [
         AppComponent,
         AdminPagesLayoutComponent,
+        SuperAdminPagesLayoutComponent,
         AuthPagesLayoutComponent,
         AddGroupComponent,
         AddContactComponent,
@@ -87,7 +96,8 @@ import {AuthPagesModule} from "./auth-pages/auth-pages.module";
         UpdateContactComponent,
         UpdateGroupContactComponent,
         ImportContactComponent,
-        GroupedContactsComponent
+        GroupedContactsComponent,
+        SuperAdminPagesLayoutComponent
     ],
     entryComponents: [AddContactComponent, AddGroupComponent,AddContactMessageComponent,
         AddGroupMessageComponent,UpdateContactComponent,ImportContactComponent,GroupedContactsComponent,UpdateGroupContactComponent],

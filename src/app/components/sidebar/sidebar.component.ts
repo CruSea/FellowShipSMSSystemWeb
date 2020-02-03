@@ -20,9 +20,10 @@ export const ROUTES: RouteInfo[] = [
     {path: '/admin/group-message', title: 'Group Message', icon: '', class: ''},
     {path: '/admin/scheduled-message', title: 'Scheduled Message', icon: '', class: ''},
     {path: '/admin/sms-survey', title: 'SMS Survey', icon: '', class: ''},
-    {path: '/admin/register', title: 'Register Admin', icon: '', class: ''},
-    {path: '/admin/super-dashboard', title:'Super Dashboard', icon:'', class:''},
-    {path: '/admin/admins-list', title:'admins-list', icon:'', class:''}
+
+    {path: '/super-admin/register', title: 'Register Admin', icon: '', class: ''},
+    {path: '/super-admin/super-dashboard', title:'Super Dashboard', icon:'', class:''},
+    {path: '/super-admin/admins-list', title:'admins-list', icon:'', class:''}
 ];
 
 @Component({
