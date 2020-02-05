@@ -1,3 +1,4 @@
+
 import {Component, OnInit, Inject, NgModule} from '@angular/core';
 import {MatDialog, MatButtonModule} from '@angular/material';
 import {AddContactComponent} from '../add-contact/add-contact.component';
@@ -51,7 +52,6 @@ export class ContactListComponent implements OnInit {
     constructor(private matDialog: MatDialog,
                 private storageService: StorageService,
                 private _contactService: AddContactService,
-                private toastr: ToastrService,
                 private dialog?: MatDialog,) {
         this.page = 1;
     }
@@ -65,7 +65,7 @@ export class ContactListComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
             this.collectionOfcon(this.page);
-            this.toastr.success('contact added successfully', 'Add', {timeOut: 3000});
+          //  this.toastr.success('contact added successfully', 'Add', {timeOut: 3000});
             this.ispopupOpened = false;
         })
     }
@@ -79,7 +79,7 @@ export class ContactListComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
             this.collectionOfcon(this.page);
-            this.toastr.success('contact updated successfully', 'Add', {timeOut: 3000});
+          //  this.toastr.success('contact updated successfully', 'Add', {timeOut: 3000});
            // this.animal = result;
         });
     }
@@ -125,10 +125,10 @@ export class ContactListComponent implements OnInit {
         // .append('Authorization', 'Bearer ' + this.storageService.getStorage('accessToken'));
         return this._contactService.delete(`contact/${id}`, headers)
             .subscribe((res: { message: string }) => {
-                  this.toastr.success('contact deleted successfully', 'Deleted', {timeOut: 3000});
+                 // this.toastr.success('contact deleted successfully', 'Deleted', {timeOut: 3000});
                 this.collectionOfcon(this.page);
             }, (httpErrorResponse: HttpErrorResponse) => {
-                   this.toastr.error('Ooops! something went wrong, contact is not deleted', 'Error', {timeOut: 3000});
+                  // this.toastr.error('Ooops! something went wrong, contact is not deleted', 'Error', {timeOut: 3000});
             })
     }
 

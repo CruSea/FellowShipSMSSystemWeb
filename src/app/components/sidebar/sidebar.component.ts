@@ -13,17 +13,18 @@ declare interface RouteInfo {
 }
 
 export const ROUTES: RouteInfo[] = [
-    {path: '/admin/dashboard', title: 'Dashboard', icon: '', class: ''},
-    {path: '/admin/contact-list', title: 'Add Contact', icon: '', class: ''},
-    {path: '/admin/group-contacts', title: 'Group Contact', icon: '', class: ''},
-    {path: '/admin/contact-message', title: 'Messages', icon: '', class: ''},
-    {path: '/admin/group-message', title: 'Group Message', icon: '', class: ''},
-    {path: '/admin/scheduled-message', title: 'Scheduled Message', icon: '', class: ''},
-    {path: '/admin/sms-survey', title: 'SMS Survey', icon: '', class: ''},
+    {path: '/admin/dashboard', title: 'Dashboard', icon: 'dashboard', class: ''},
+    {path: '/admin/contact-list', title: 'Add Contact', icon: 'contacts', class: ''},
+    {path: '/admin/group-contacts', title: 'Group Contact', icon: 'group', class: ''},
+    {path: '/admin/contact-message', title: 'Messages', icon: 'sms', class: ''},
+    {path: '/admin/group-message', title: 'Group Message', icon: 'mail_outline', class: ''},
+    {path: '/admin/scheduled-message', title: 'Scheduled Message', icon: 'mail_outline', class: ''},
+   // {path: '/admin/sms-survey', title: 'SMS Survey', icon: 'message', class: ''},
+    {path: '/admin/sms-port', title: 'Sms Port', icon: 'device_hub', class: ''},
 
     {path: '/super-admin/register', title: 'Register Admin', icon: '', class: ''},
-    {path: '/super-admin/super-dashboard', title:'Super Dashboard', icon:'', class:''},
-    {path: '/super-admin/admins-list', title:'admins-list', icon:'', class:''}
+    {path: '/super-admin/super-dashboard', title:'Super Dashboard', icon:'dashboard', class:''},
+    {path: '/super-admin/admins-list', title:'admins-list', icon:'content_paste', class:''}
 ];
 
 @Component({
@@ -35,6 +36,7 @@ export class SidebarComponent implements OnInit {
     menuItems: any[];
 
     user:any;
+
 
     constructor(private dashboardService: DashboardServiceService,
                 private storageService: StorageService) {

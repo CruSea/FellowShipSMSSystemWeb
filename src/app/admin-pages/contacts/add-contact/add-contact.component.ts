@@ -79,7 +79,7 @@ export class AddContactComponent implements OnInit {
     }
 
     contactsModal(contactsModalInterface: ContactsModalInterface) {
-        contactsModalInterface['graduate_year'] = moment(this.date.value.toString()).year().toString();
+     //   contactsModalInterface['graduate_year'] = moment(this.date.value.toString()).year().toString();
         const headers = new HttpHeaders()
             .append('Access-Control-Allow-Origin', '*')
             .append('Access-Control-Allow-Methods', 'POST')

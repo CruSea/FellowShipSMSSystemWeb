@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {RegisterAdminComponent} from './register-admin/register-admin.component';
 import {AdminLoginComponent} from './admin-login/admin-login.component';
 import {
-    MatButtonModule,
+    MatButtonModule, MatCardModule,
     MatCheckboxModule, MatDatepickerModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatListModule,
     MatNativeDateModule,
     MatSelectModule, MatSlideToggleModule
@@ -15,11 +15,15 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ConfirmationPopoverModule} from "angular-confirmation-popover";
 import {NgxPaginationModule} from "ngx-pagination";
 import {SuperAdminRoutingModule} from "./super-admin-routing.module";
+import {HttpClientModule} from "@angular/common/http";
+import {AgmCoreModule} from "@agm/core";
 
 @NgModule({
     imports: [
         CommonModule,
         ComponentsModule,
+        HttpClientModule,
+      //  AgmCoreModule.forRoot(),
         FormsModule,
         ReactiveFormsModule,
         ConfirmationPopoverModule,
@@ -30,6 +34,7 @@ import {SuperAdminRoutingModule} from "./super-admin-routing.module";
         MatSlideToggleModule,
         MatFormFieldModule,
         MatButtonModule,
+        MatCardModule,
         // ConfirmationPopoverModule
         SuperAdminRoutingModule,
         MatExpansionModule,

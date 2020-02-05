@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
         private authenticationService: AuthenticationService,
         private formBuilder: FormBuilder,
         private storageService: StorageService,
-        private toastr: ToastrService
 
     ) { }
 
@@ -47,13 +46,13 @@ export class LoginComponent implements OnInit {
             .subscribe((loginResponseInterface: LoginResponseInterface) => {
                 this.loading = false;
                 console.log('******* Well come ********');
-        this.toastr.success('Welcome to Fellowship SMS System', 'Welcome!');
+       // this.toastr.success('Welcome to Fellowship SMS System', 'Welcome!');
                 this.router.navigateByUrl("/admin");
                this.user_token =  this.storageService.getStorage('accessToken');
                localStorage.setItem('accessToken', this.user_token);
             }, (httpErrorResponse: HttpErrorResponse) => {
                 this.loading = false;
-                this.toastr.error(httpErrorResponse.error.message, 'Login Error');
+              //  this.toastr.error(httpErrorResponse.error.message, 'Login Error');
                 console.log('******* Login Error ********');
                 this.loginForm.controls['email'].setValue('');
                 this.loginForm.controls['password'].setValue('');

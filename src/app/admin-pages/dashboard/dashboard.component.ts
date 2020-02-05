@@ -3,7 +3,6 @@ import {Chart} from 'chart.js'
 import {Router} from '@angular/router';
 import {HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {StorageService} from "../../service/storage.service";
-import $ from 'jquery';
 import {DashboardServiceService} from "../../service/dashboard-service/dashboard-service.service";
 
 @Component({
@@ -51,7 +50,7 @@ export class DashboardComponent implements OnInit {
         this.pieChart();
         this.getCurrentUniv();
 
-        var ctx = $("#line-chart");
+        let ctx = $("#line-chart");
         let line_chart = new Chart(ctx, {
             type: 'line',
             options: {
@@ -64,7 +63,6 @@ export class DashboardComponent implements OnInit {
             data: {
                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Jun', 'Jul', 'Aug'],
                 datasets: [
-
                      {
                        type: 'line',
                        label: 'Dataset 1',

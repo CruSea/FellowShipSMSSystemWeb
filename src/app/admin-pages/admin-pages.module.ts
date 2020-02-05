@@ -28,8 +28,10 @@ import {MatSelectModule} from "@angular/material/select";
 import { MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import { UpdateGroupContactComponent } from './group-contacts/grouped-contact-list/update-group-contact/update-group-contact.component';
-import {MatCheckboxModule, MatSlideToggleModule} from "@angular/material";
+import {MatCardModule, MatCheckboxModule, MatSlideToggleModule} from "@angular/material";
 import {PasswordResetComponentComponent} from "../auth-pages/password-reset-component/password-reset-component.component";
+import { SmsPortsComponent } from './sms-ports/sms-ports.component';
+import { AddSmsPortComponent } from './sms-ports/add-sms-port/add-sms-port.component';
 
 
 
@@ -50,6 +52,7 @@ import {PasswordResetComponentComponent} from "../auth-pages/password-reset-comp
         MatButtonModule,
         // ConfirmationPopoverModule
         MatExpansionModule,
+        MatCardModule,
         AdminPagesRoutingModule,
         MatNativeDateModule,
         MatDatepickerModule,
@@ -66,6 +69,8 @@ import {PasswordResetComponentComponent} from "../auth-pages/password-reset-comp
         ScheduledMessageModalComponent,
         GroupedContactListComponent,
         ImportGroupContactComponent,
+        SmsPortsComponent,
+        AddSmsPortComponent,
     ],
     exports: [
         FormsModule,

@@ -48,6 +48,8 @@ import {AuthPagesModule} from "./auth-pages/auth-pages.module";
 import { SuperAdminPagesLayoutComponent } from './layouts/super-admin-pages-layout/super-admin-pages-layout.component';
 import {ToastrModule, ToastrService} from "ngx-toastr";
 import * as JQuery from "jquery";
+import {MapsService} from "./service/maps/maps.service";
+import {SuperAdminModule} from "./super-admin-pages/super-admin.module";
 //import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 //import {ToastrModule} from 'ngx-toastr';
 
@@ -57,15 +59,15 @@ import * as JQuery from "jquery";
         /*   ToastrModule.forRoot({
                timeOut : 2000
            }),*/
-        ToastrModule.forRoot({
+       /* ToastrModule.forRoot({
             timeOut:3000,
             positionClass: 'toast-top-right'
-        }),
+        }),*/
         FormsModule,
         NgxPaginationModule,
         HttpClientModule,
         AuthPagesModule,
-        JQuery,
+        SuperAdminModule,
         AuthenticationModule,
         ComponentsModule,
         MatButtonModule,
@@ -104,7 +106,7 @@ import * as JQuery from "jquery";
 
     providers: [ContactsService,GroupContactsService,ContactMessageService,GroupMessageService,
         AddContactService,AddGroupService,GroupedContactService,DashboardServiceService,
-        GroupContactCountService,AuthGuard,AuthenticationService],
+        GroupContactCountService,AuthGuard,AuthenticationService,MapsService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

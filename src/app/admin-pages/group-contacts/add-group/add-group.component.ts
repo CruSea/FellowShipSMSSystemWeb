@@ -25,7 +25,6 @@ export class AddGroupComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder,
               private storageService: StorageService,
               private groupService: AddGroupService,
-              private toastr: ToastrService,
               private dialogRef: MatDialogRef<AddGroupComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {}
 
@@ -57,9 +56,9 @@ export class AddGroupComponent implements OnInit {
     return this.groupService.create(groupContactsModalInterface, headers, '/group')
         .subscribe((res: {message: string}) => {
           this.dialogRef.close();
-          this.toastr.success('Group added successfully', 'Group');
+         // this.toastr.success('Group added successfully', 'Group');
         }, (httpErrorResponse: HttpErrorResponse) => {
-          this.toastr.error(httpErrorResponse.error.error, 'Error');
+        //  this.toastr.error(httpErrorResponse.error.error, 'Error');
         })
   }
 }
