@@ -10,6 +10,7 @@ import {
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { SendEmailVerificationComponent } from './send-email-verification/send-email-verification.component';
 import { PasswordResetComponentComponent } from './password-reset-component/password-reset-component.component';
+import {ConfrimEqualValidatorDirective} from "./shared/confrim-equal-validator.directive";
 
 @NgModule({
   imports: [
@@ -28,7 +29,7 @@ import { PasswordResetComponentComponent } from './password-reset-component/pass
       MatProgressSpinnerModule
 
   ],
-  declarations: [LoginComponent, SendEmailVerificationComponent, PasswordResetComponentComponent],
+  declarations: [LoginComponent,ConfrimEqualValidatorDirective, SendEmailVerificationComponent, PasswordResetComponentComponent],
     exports: [
         FormsModule,
         ReactiveFormsModule

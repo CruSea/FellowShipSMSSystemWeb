@@ -2,11 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {AddContactService} from "../../service/add-contact/add-contact.service";
 import {StorageService} from "../../service/storage.service";
-import {FormBuilder, Validators} from "@angular/forms";
+import {FormBuilder, NgForm, Validators} from "@angular/forms";
 
-export interface EmailModalInterface {
-    email: string;
-}
 @Component({
   selector: 'app-send-email-verification',
   templateUrl: './send-email-verification.component.html',
@@ -15,31 +12,40 @@ export interface EmailModalInterface {
 
 export class SendEmailVerificationComponent implements OnInit {
 
-    public resetForm:any;
+    public email:any;
 
   constructor(private _formBuilder: FormBuilder,
               private storageService: StorageService,
               private contactService: AddContactService,) { }
 
   ngOnInit() {
-     /* this.resetForm = this._formBuilder.group({
-          email: ['', [Validators.required]],
-      });*/
+
   }
 
-  sendMail(email: string){
-      console.log(email);
-      const headers = new HttpHeaders()
+    tcode: string;
+    submit(event: any) {
+       // this.serverName = event.target.value;
+        console.log(this.tcode);
+        this.sendMail(this.tcode);
+    }
+
+
+
+  sendMail(email:string){
+     // console.log(email);
+     const headers = new HttpHeaders()
           .append('Access-Control-Allow-Origin', '*')
           .append('Access-Control-Allow-Methods', 'GET')
           .append('X-Requested-With', 'XMLHttpRequest')
           .append('Access-Control-Allow-Headers', 'Content-Type')
           .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
-      return this.contactService.gets(headers, '/sendResetLink/'+email)
+      return this.contactService.gets(headers, '/sendResetLink/'+this.tcode)
           .subscribe((res: any) => {
                  console.log(res);
           }, (httpErrorResponse: HttpErrorResponse) => {
 
           })
   }
+
+
 }

@@ -32,6 +32,8 @@ import {MatCardModule, MatCheckboxModule, MatSlideToggleModule} from "@angular/m
 import {PasswordResetComponentComponent} from "../auth-pages/password-reset-component/password-reset-component.component";
 import { SmsPortsComponent } from './sms-ports/sms-ports.component';
 import { AddSmsPortComponent } from './sms-ports/add-sms-port/add-sms-port.component';
+import { SettingComponent } from './setting/setting.component';
+import {ConfrimEqualValidatorDirective} from "../auth-pages/shared/confrim-equal-validator.directive";
 
 
 
@@ -71,6 +73,8 @@ import { AddSmsPortComponent } from './sms-ports/add-sms-port/add-sms-port.compo
         ImportGroupContactComponent,
         SmsPortsComponent,
         AddSmsPortComponent,
+        SettingComponent,
+
     ],
     exports: [
         FormsModule,

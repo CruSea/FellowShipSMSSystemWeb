@@ -30,6 +30,10 @@ export class NavbarComponent implements OnInit {
         this.router.navigate(['/auth/login']);
     }
 
+    goSetting(){
+        this.router.navigate(['/admin/settings']);
+    }
+
     ngOnInit(){
       this.listTitles = ROUTES.filter(listTitle => listTitle);
       const navbar: HTMLElement = this.element.nativeElement;

@@ -13,6 +13,7 @@ import {GroupedContactListComponent} from "./group-contacts/grouped-contact-list
 import {AuthGuard} from "../Auth/auth.guard";
 import {PasswordResetComponentComponent} from "../auth-pages/password-reset-component/password-reset-component.component";
 import {SmsPortsComponent} from "./sms-ports/sms-ports.component";
+import {SettingComponent} from "./setting/setting.component";
 
 const routes: Routes = [
     {path: '', component: DashboardComponent,canActivate: [ AuthGuard ]},
@@ -23,6 +24,7 @@ const routes: Routes = [
     {path: 'group-message', component: GroupMessageComponent},
     {path: 'scheduled-message',component:ScheduledMessageComponent},
     {path: 'sms-port',component:SmsPortsComponent},
+    {path: 'settings',component:SettingComponent},
    /* {path: 'super-dashboard', component:SuperDashboardComponent},
     {path: 'register', component:RegisterAdminComponent},
     {path: 'admins-list', component:AdminsListComponent},*/

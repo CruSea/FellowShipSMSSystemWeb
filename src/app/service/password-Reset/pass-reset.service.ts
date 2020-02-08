@@ -6,7 +6,7 @@ import {ServicesService} from "../services.service";
 @Injectable({
   providedIn: 'root'
 })
-export class SettingService extends ServicesService implements ServicesInterface {
+export class PassResetService extends ServicesService implements ServicesInterface {
     constructor(httpClient: HttpClient) {
         super(httpClient, 'api')
     }

@@ -107,9 +107,9 @@ export class ContactListComponent implements OnInit {
         return this._contactService.gets(headers, '/contact/1?page=' + this.page)
             .subscribe((res: any) => {
                 this.loading = false;
-                this.dataSource = res.contacts.data;
-                this.total = res.contacts.total;
-                this.per_page = res.contacts.per_page;
+                this.dataSource = res.contact;
+               /* this.total = res.contacts.total;
+                this.per_page = res.contacts.per_page;*/
             }, (httpErrorResponse: HttpErrorResponse) => {
                 this.loading = false;
             })

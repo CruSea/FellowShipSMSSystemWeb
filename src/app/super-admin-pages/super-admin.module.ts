@@ -23,7 +23,7 @@ import {AgmCoreModule} from "@agm/core";
         CommonModule,
         ComponentsModule,
         HttpClientModule,
-      //  AgmCoreModule.forRoot(),
+       // AgmCoreModule.forRoot(),
         FormsModule,
         ReactiveFormsModule,
         ConfirmationPopoverModule,

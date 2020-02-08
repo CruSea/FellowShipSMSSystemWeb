@@ -50,6 +50,11 @@ import {ToastrModule, ToastrService} from "ngx-toastr";
 import * as JQuery from "jquery";
 import {MapsService} from "./service/maps/maps.service";
 import {SuperAdminModule} from "./super-admin-pages/super-admin.module";
+import {SettingService} from "./service/setting/setting.service";
+import {SmsPortService} from "./service/sms-port/sms-port.service";
+import {AddSettingComponent} from "./admin-pages/setting/add-setting/add-setting.component";
+import {ConfrimEqualValidatorDirective} from "./auth-pages/shared/confrim-equal-validator.directive";
+import {AgmCoreModule} from "@agm/core";
 //import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 //import {ToastrModule} from 'ngx-toastr';
 
@@ -84,7 +89,10 @@ import {SuperAdminModule} from "./super-admin-pages/super-admin.module";
         MatFormFieldModule,
         MatInputModule,
         MatSelectModule,
-        MatDatepickerModule
+        MatDatepickerModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'bhb'
+        })
     ],
     declarations: [
         AppComponent,
@@ -99,14 +107,17 @@ import {SuperAdminModule} from "./super-admin-pages/super-admin.module";
         UpdateGroupContactComponent,
         ImportContactComponent,
         GroupedContactsComponent,
-        SuperAdminPagesLayoutComponent
+        SuperAdminPagesLayoutComponent,
+        AddSettingComponent,
+
     ],
     entryComponents: [AddContactComponent, AddGroupComponent,AddContactMessageComponent,
-        AddGroupMessageComponent,UpdateContactComponent,ImportContactComponent,GroupedContactsComponent,UpdateGroupContactComponent],
+        AddGroupMessageComponent,UpdateContactComponent,ImportContactComponent,GroupedContactsComponent,UpdateGroupContactComponent,
+    AddSettingComponent],
 
     providers: [ContactsService,GroupContactsService,ContactMessageService,GroupMessageService,
         AddContactService,AddGroupService,GroupedContactService,DashboardServiceService,
-        GroupContactCountService,AuthGuard,AuthenticationService,MapsService],
+        GroupContactCountService,AuthGuard,AuthenticationService,MapsService,SettingService,SmsPortService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

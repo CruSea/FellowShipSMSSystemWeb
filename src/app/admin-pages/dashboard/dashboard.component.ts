@@ -18,13 +18,13 @@ export class DashboardComponent implements OnInit {
     under_graduate_count: number;
     total_Groups: number;
 
-    count_male:number;
-    count_female:number;
+    count_male: number;
+    count_female: number;
 
-    university:string;
-    campus:string;
+    university: string;
+    campus: string;
 
-    total_bulk_count: number;
+    total_sent_message_count: number;
     total_group_count: number;
     total_contact_count: number;
     today_successful_msg: number;
@@ -35,8 +35,8 @@ export class DashboardComponent implements OnInit {
 
     title = 'char';
     chart = [];
-    myPieChart =[];
-    piechartData = [this.count_male,this.count_female];
+    myPieChart = [];
+    piechartData = [this.count_male, this.count_female];
 
     constructor(private dashboardService: DashboardServiceService,
                 private storageService: StorageService,) {
@@ -49,8 +49,39 @@ export class DashboardComponent implements OnInit {
         this.getGenderCount();
         this.pieChart();
         this.getCurrentUniv();
+        this.getSentMessages();
 
         let ctx = $("#line-chart");
+
+       /*  let chart = new Chart(ctx, {
+             type: 'line',
+             axisX:{
+                 valueFormatString: "MMM"
+             },
+                 data: {
+                    dataPoints: [
+                     { x: new Date(2000,0), y: 0.65 },
+                     { x: new Date(2000,1), y: -0.8 },
+                     { x: new Date(2000,2), y: -0.9 },
+                     { x: new Date(2000,3), y: -0.25 },
+                     { x: new Date(2000,4), y: -0.01 },
+                     { x: new Date(2000,5), y: -0.27 },
+                 ]
+             },
+
+           //  },
+             options: {
+                 scales: {
+                     xAxes: [{
+                         type: 'time',
+                         time: {
+                             unit: 'month'
+                         }
+                     }]
+                 }
+             }
+         });*/
+
         let line_chart = new Chart(ctx, {
             type: 'line',
             options: {
@@ -58,23 +89,31 @@ export class DashboardComponent implements OnInit {
                 title: {
                     display: true,
                     text: 'Combo Bar and line Chart'
-                },
+                }, /*scales: {
+                    xAxes: [{
+                        type: 'time',
+                        time: {
+                            unit: 'month'
+                        }
+                    }]
+                }*/
             },
             data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Jun', 'Jul', 'Aug'],
+                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Jun', 'Jul', 'Aug'],
                 datasets: [
-                     {
-                       type: 'line',
-                       label: 'Dataset 1',
-                       borderColor: 'rgba(135,206,250)',
-                       data: [
-                         43, 56, 65, 28, 56, 65, 35, 43
-                       ],
-                       fill: false,
-                     },
                     {
                         type: 'line',
-                        label: 'Dataset 2',
+                        label: 'Sent Messages',
+                        borderColor: 'rgba(135,206,250)',
+                      //  x: new Date(),
+                        data: [
+                            43, 56, 65, 28, 56, 65, 35, 43
+                        ],
+                        fill: false,
+                    },
+                    {
+                        type: 'line',
+                        label: 'Recieved Messages',
                         data: [24, 52, 36, 30, 45, 26, 30, 20],
                         backgroundColor: 'rgba(255,0,0)',
                         borderColor: 'rgba(255,20,147)',
@@ -83,12 +122,9 @@ export class DashboardComponent implements OnInit {
                 ]
             }
         });
-
-
-
     }
 
-    pieChart(){
+    pieChart() {
         this.myPieChart = new Chart('pie', {
             type: 'pie',
 
@@ -97,11 +133,11 @@ export class DashboardComponent implements OnInit {
                 title: {
                     display: true,
                     text: 'Total Male And Female Chart'
-                },legend:{
-                    position:'top',
-                },animation:{
-                    animateScale:true,
-                    animateRotate:true
+                }, legend: {
+                    position: 'top',
+                }, animation: {
+                    animateScale: true,
+                    animateRotate: true
                 }
             },
             data: {
@@ -109,11 +145,11 @@ export class DashboardComponent implements OnInit {
                     {
 
                         data: this.piechartData,
-                        backgroundColor:['#21D8E7' ,'#E749AB']
+                        backgroundColor: ['#21D8E7', '#E749AB']
                     }],
 
                 // These labels appear in the legend and in the tooltips when hovering different arcs
-                labels: ['Male :'+ this.count_male,'Female :'+this.count_female,],
+                labels: ['Male :' + this.count_male, 'Female :' + this.count_female,],
             }
         });
     }
@@ -134,7 +170,7 @@ export class DashboardComponent implements OnInit {
             })
     }
 
-    getGenderCount(){
+    getGenderCount() {
         const headers = new HttpHeaders()
             .append('Access-Control-Allow-Origin', '*')
             .append('Access-Control-Allow-Methods', 'GET')
@@ -144,10 +180,10 @@ export class DashboardComponent implements OnInit {
         // .append('Authorization', 'Bearer ' + this.storageService.getStorage('accessToken'));
         return this.dashboardService.gets(headers, '/gendercount')
             .subscribe((res: any) => {
-            console.log(res);
+                console.log(res);
                 this.count_male = res.male;
                 this.count_female = res.female;
-                this.piechartData = [this.count_male,this.count_female];
+                this.piechartData = [this.count_male, this.count_female];
                 this.pieChart();
 
             }, (httpErrorResponse: HttpErrorResponse) => {
@@ -169,7 +205,7 @@ export class DashboardComponent implements OnInit {
             })
     }
 
-    getCurrentUniv(){
+    getCurrentUniv() {
         const headers = new HttpHeaders()
             .append('Access-Control-Allow-Origin', '*')
             .append('Access-Control-Allow-Methods', 'GET')
@@ -178,8 +214,24 @@ export class DashboardComponent implements OnInit {
             .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
         return this.dashboardService.gets(headers, '/current_univ')
             .subscribe((res: any) => {
-                this.university =res[0];
-                this.campus=res[1];
+                this.university = res[0];
+                this.campus = res[1];
+                console.log(res);
+            }, (httpErrorResponse: HttpErrorResponse) => {
+
+            })
+    }
+
+    getSentMessages() {
+        const headers = new HttpHeaders()
+            .append('Access-Control-Allow-Origin', '*')
+            .append('Access-Control-Allow-Methods', 'GET')
+            .append('X-Requested-With', 'XMLHttpRequest')
+            .append('Access-Control-Allow-Headers', 'Content-Type')
+            .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
+        return this.dashboardService.gets(headers, '/count_sentMessage')
+            .subscribe((res: any) => {
+                this.total_sent_message_count = res.messages;
                 console.log(res);
             }, (httpErrorResponse: HttpErrorResponse) => {
 

@@ -1,16 +1,20 @@
 <mat-card>
-  <mat-card-content>
-    <form>
-      <div class="form-group">
-      <input type="email"
-             class="form-control"
-             id="exampleInputEmail1"
-             aria-describedby="emailHelp"
-             [value]="email"
-             placeholder="Enter email">
+    <mat-card-content>
+        <form>
+            <div class="form-group">
+                <input type="email"
+                       class="form-control"
+                       id="exampleInputEmail1"
+                       aria-describedby="emailHelp"
+                       placeholder="Enter email"
+                       name="email"
+                       [(ngModel)]="email"
+                       email
+                       required
+                       (input)="tcode=$event.target.value">
 
-      </div>
-      <button mat-raised-button color="primary" type="submit">Send Password Reset Link</button>
-    </form>
-  </mat-card-content>
+            </div>
+            <button mat-raised-button color="primary" (click)="submit()">Send Password Reset Link</button>
+        </form>
+    </mat-card-content>
 </mat-card>
