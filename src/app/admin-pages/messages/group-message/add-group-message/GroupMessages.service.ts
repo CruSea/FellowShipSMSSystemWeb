@@ -4,7 +4,7 @@ import {HttpClient} from "@angular/common/http";
 
 
 @Injectable()
-export class GroupMessageService {
+export class GroupMessagesService {
 
     constructor(
         private  httpClient: HttpClient

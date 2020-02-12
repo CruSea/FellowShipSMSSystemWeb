@@ -12,7 +12,7 @@ import {AdminSignupComponent} from './admin-signup/admin-signup.component';
 import {GroupContactsComponent} from './group-contacts/group-contacts.component';
 import {RegistrationMessageComponent} from './registration-message/registration-message.component';
 import {GroupedContactsComponent} from './group-contacts/grouped-contacts/grouped-contacts.component';
-import { BulkSmsComponent } from './messages/contact-message/bulk-sms.component';
+import {ContactSmsComponent} from './messages/contact-message/contact-sms.component';
 import { GroupMessageComponent } from './messages/group-message/group-message.component';
 import { ScheduledMessageComponent } from './messages/scheduled-message/scheduled-message.component';
 import {MatIconModule} from "@angular/material/icon";
@@ -34,6 +34,8 @@ import { SmsPortsComponent } from './sms-ports/sms-ports.component';
 import { AddSmsPortComponent } from './sms-ports/add-sms-port/add-sms-port.component';
 import { SettingComponent } from './setting/setting.component';
 import {ConfrimEqualValidatorDirective} from "../auth-pages/shared/confrim-equal-validator.directive";
+import { BulkMessageListComponent } from './messages/bulk-message-list/bulk-message-list.component';
+import { AddBulkMessageComponent } from './messages/bulk-message-list/add-bulk-message/add-bulk-message.component';
 
 
 
@@ -65,7 +67,6 @@ import {ConfrimEqualValidatorDirective} from "../auth-pages/shared/confrim-equal
         AdminSignupComponent,
         GroupContactsComponent,
         RegistrationMessageComponent,
-        BulkSmsComponent,
         GroupMessageComponent,
         ScheduledMessageComponent,
         ScheduledMessageModalComponent,
@@ -74,6 +75,8 @@ import {ConfrimEqualValidatorDirective} from "../auth-pages/shared/confrim-equal
         SmsPortsComponent,
         AddSmsPortComponent,
         SettingComponent,
+        ContactSmsComponent,
+        BulkMessageListComponent,
 
     ],
     exports: [

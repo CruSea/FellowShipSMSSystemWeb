@@ -11,7 +11,7 @@
                             <i class="material-icons">import_export</i>
                         </div>
                         <p class="card-category">Total Bulk Message</p>
-                        <h3 class="card-title">4500
+                        <h3 class="card-title">45
                             <small>Msg</small>
                         </h3>
                     </div>
@@ -30,7 +30,8 @@
                         </div>
                         <p class="card-category">Total send Message</p>
                         <h3 class="card-title">{{total_sent_message_count}}
-                             <small>Msg</small></h3>
+                            <small>Msg</small>
+                        </h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -75,27 +76,51 @@
     </div>
 
     <table id="unid" style="width: 100%">
-      <tr>
-        <th>
-        <div style=" width: 780px; margin-left: 40px;">
-            <div class="row">
-                <div class="card shadow mb-4">
-                    <canvas id="line-chart"></canvas>
-                </div>
-            </div>
+        <tr>
+            <th>
+                <div style=" width: 780px; margin-left: 40px;">
+                    <div class="row">
+                        <div class="card shadow mb-4">
+                            <canvas id="line-chart"></canvas>
+                        </div>
+                    </div>
 
-        </div>
-        </th>
-        <th>
-        <div class="card shadow mb-4" style="float: left; height: 400px; width: 400px;margin-left: 20px; margin-right: 40px">
-            <canvas id="pie" style="height: 350px; width: 350px" class="chart chart-pie" chart-data="data" chart-labels="labels" chart-options="options"></canvas>
-        </div>
-        </th>
-      </tr>
+                </div>
+            </th>
+            <th>
+                <div class="card shadow mb-4"
+                     style="float: left; height: 400px; width: 400px;margin-left: 20px; margin-right: 40px">
+                    <canvas id="pie" style="height: 350px; width: 350px" class="chart chart-pie" chart-data="data"
+                            chart-labels="labels" chart-options="options"></canvas>
+                </div>
+            </th>
+        </tr>
     </table>
 
-    <div class="card shadow mb-4" style="margin: 30px;width: 40%;height: 15%">
-        <canvas>hjjhfjhfj</canvas>
+    <div class="card shadow mb-4" style="margin: 30px;width: 600px;height: 400px">
+
+        <mat-form-field>
+            <mat-label>Group Name</mat-label>
+            <mat-select>
+                <div *ngIf="groupNames">
+                    <mat-option *ngFor="let groupName of groupNames" [value]="groupName.group_name">
+                        {{groupName.group_name }}
+                    </mat-option>
+                </div>
+            </mat-select>
+        </mat-form-field>
+
+        <div class="row" style="padding-left: 10px;margin-bottom: auto">
+         <!--   <div class="col-sm">
+                <i class="material-icons">wc</i> Male {{groupName}}
+            </div>
+            <div class="col-sm">
+                <i class="material-icons">wc</i> Female
+            </div> -->
+
+        <canvas id="bar-chart-horizontal"></canvas>
+
+</div>
     </div>
 </div>
 

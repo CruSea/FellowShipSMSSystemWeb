@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BulkSmsComponent } from './bulk-sms.component';
+import { BulkSmsComponent } from './contact-sms.component';
 
 describe('ContactMessageComponent', () => {
   let component: BulkSmsComponent;

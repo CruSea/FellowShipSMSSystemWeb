@@ -1,0 +1,56 @@
+<body style="margin-left: 80px;">
+
+<div class="card" style="float: left; margin-top: 40px; width: 1200px;margin-left: 20px;">
+  <div class="card-header" style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;">
+    <h6>Bulk Messages</h6>
+    <p (click)="add_bulk_message()" style="text-decoration:none;color:blue"
+       onmouseover="style='text-decoration:underline;color:blue';"
+       onmouseout="style='text-decoration:none;color:blue'">Add Bulk Message</p>
+    <hr>
+  </div>
+
+  <div class="container">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-striped" id="dataTable" width="100%">
+          <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col"># Message</th>
+            <th scope="col">Sent</th>
+            <th scope="col">Sent by</th>
+            <th scope="col">Status</th>
+            <th scope="col">Date Time</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let message of dataSource | paginate: { id: 'listing_pagination',
+            itemsPerPage: per_page,
+            currentPage: page,
+            totalItems: total }; let i = index" scope="row">
+
+            <td>{{message.id}}</td>
+            <td>{{message.message}}</td>
+            <td>{{message.sent_to}}</td>
+            <td>{{message.sent_by}}</td>
+            <td>{{message.is_sent}}</td>
+            <td>{{message.created_at | date:'short'}}</td>
+            <td>
+              <button mat-button=""
+                      mwlConfirmationPopover
+                      [popoverTitle]="'Confirm Deletion'"
+                      [popoverMessage]="'Are you sure you want to delete this contact'"
+                      placement="left"
+                      (confirm)="deleteMessage(message.id)">
+
+                <mat-icon style="color: red;" mat-raised-button>delete_outline</mat-icon>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

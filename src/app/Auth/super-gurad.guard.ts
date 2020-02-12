@@ -1,17 +1,14 @@
-import {Injectable} from '@angular/core';
-import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
-import {Observable} from 'rxjs';
+import { Injectable } from '@angular/core';
+import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
+import { Observable } from 'rxjs';
 import {AuthenticationService} from "../service/authentication/authentication.service";
-import {LoginResponseInterface} from "../service/authentication/authentication.interface";
 import {MatDialog} from "@angular/material";
 import {PopupErrorComponent} from "../popup-error/popup-error.component";
 
-
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
-
+export class SuperGuradGuard implements CanActivate {
     constructor(private matDialog: MatDialog,
                 private authService: AuthenticationService,
                 private dialog?: MatDialog,) {
@@ -22,9 +19,8 @@ export class AuthGuard implements CanActivate {
     canActivate(next: ActivatedRouteSnapshot,
                 state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-        if (this.authService.isAuthorized()) {
+        if (this.authService.isSupAdmin()) {
             return true;
-
         } else {
             this.error_message();
             return false;

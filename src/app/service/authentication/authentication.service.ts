@@ -32,13 +32,30 @@ export class  AuthenticationService {
 
     public isAuthorized():boolean{
 
-        if(this.storageService.getStorage('accessToken')!=null){
+
+        const role_id: number = parseInt(this.storageService.getStorage('user_role_id'), 10);
+
+        if(this.storageService.getStorage('accessToken')!=null && role_id==1){
             return true;
         }else{
             return false;
         }
 
            // .pipe(map((access_token: string) => !! access_token));
+    }
+
+    public isSupAdmin():boolean{
+
+
+        const role_id: number = parseInt(this.storageService.getStorage('user_role_id'), 10);
+
+        if(this.storageService.getStorage('accessToken')!=null && role_id==2){
+            return true;
+        }else{
+            return false;
+        }
+
+        // .pipe(map((access_token: string) => !! access_token));
     }
 
     public getAccessToken(): Observable <string> {

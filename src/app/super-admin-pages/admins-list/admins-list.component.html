@@ -4,7 +4,15 @@
 <hr>
 <div style="margin-left: 70px">
 <div style="margin-top: 50px; width: 600px;">
-  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+  <input type="email"
+         class="form-control"
+         id="exampleInputEmail1"
+         aria-describedby="emailHelp"
+         placeholder="Enter email"
+         [(ngModel)]="email"
+         email
+         required
+         (input)="tcode=$event.target.value">
   <br>
   <button class="btn btn-primary" (click)="SendMail()" type="submit">Send</button>
 </div>

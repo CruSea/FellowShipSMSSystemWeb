@@ -35,6 +35,7 @@ export class AdminsListComponent implements OnInit{
     dataSource: any;
 
     ispopupOpened = false;
+    public email:any;
 
     constructor(private storageService: StorageService,
                 private registservice: RegisterService) {
@@ -110,15 +111,30 @@ export class AdminsListComponent implements OnInit{
     }
 
 
+    tcode: string;
+    submit(event: any) {
+        // this.serverName = event.target.value;
+        console.log(this.tcode);
+        this.SendMail(this.tcode);
+    }
 
 
-    SendMail()// Button click action
-  {
-    //get api to call email funciton in laravel
-   /* this.http.get('http://localhost/FellowShipSMSSystemAPI/public/api/sample-restful-apis').subscribe( data => {
-      console.log(data);//Output Come back
-    });*/
-  }
+
+    SendMail(email:string){
+        // console.log(email);
+        const headers = new HttpHeaders()
+            .append('Access-Control-Allow-Origin', '*')
+            .append('Access-Control-Allow-Methods', 'GET')
+            .append('X-Requested-With', 'XMLHttpRequest')
+            .append('Access-Control-Allow-Headers', 'Content-Type')
+            .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
+        return this.registservice.gets(headers, '/sendmail/'+this.tcode)
+            .subscribe((res: any) => {
+                console.log(res);
+            }, (httpErrorResponse: HttpErrorResponse) => {
+
+            })
+    }
 
 
 }

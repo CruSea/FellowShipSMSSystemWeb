@@ -10,7 +10,8 @@ export interface RegisterModalInterface {
     first_name: string;
     last_name: string;
     email:string;
-    university: string;
+    university_name: string;
+    university_city: string;
     campus: string;
     phone_number: string;
     password: string;
@@ -39,7 +40,8 @@ export class RegisterAdminComponent implements OnInit {
             first_name: ['', [Validators.required]],
             last_name: ['', [Validators.required]],
             email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
-            university: ['', [Validators.required]],
+            university_name: ['', [Validators.required]],
+            university_city: ['', [Validators.required]],
             campus: ['', [Validators.required]],
             phone_number: ['', [Validators.required]],
             password: ['', [Validators.required, Validators.minLength(4)]]

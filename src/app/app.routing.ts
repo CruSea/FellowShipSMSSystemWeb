@@ -8,6 +8,7 @@ import {AuthGuard} from "./Auth/auth.guard";
 import {PublicGuard} from "ngx-auth";
 import {SuperAdminModule} from "./super-admin-pages/super-admin.module";
 import {SuperAdminPagesLayoutComponent} from "./layouts/super-admin-pages-layout/super-admin-pages-layout.component";
+import {SuperGuradGuard} from "./Auth/super-gurad.guard";
 
 const routes: Routes = [
     {
@@ -40,7 +41,7 @@ const routes: Routes = [
     {
         path: '',
         component: SuperAdminPagesLayoutComponent,
-      //  canActivate: [ AuthGuard ],
+        canActivate: [ SuperGuradGuard ],
         children: [
             {
                 path: 'super-admin',

@@ -10,10 +10,10 @@ import {StorageService} from "../../../service/storage.service";
 
 @Component({
     selector: 'app-bulk-sms',
-    templateUrl: './bulk-sms.component.html',
-    styleUrls: ['./bulk-sms.component.scss']
+    templateUrl: './contact-sms.component.html',
+    styleUrls: ['./contact-sms.component.scss']
 })
-export class BulkSmsComponent implements OnInit {
+export class ContactSmsComponent implements OnInit {
 
     animal: string;
     firstname: string;
@@ -35,10 +35,6 @@ export class BulkSmsComponent implements OnInit {
                 private dialog?: MatDialog,
                 private _contactService?: ContactMessageService) {
     }
-
-    /* get ContactList() {
-       return this._contactService.getAllContacts();
-     }*/
 
     add_contact_message() {
         this.ispopupOpened = true;

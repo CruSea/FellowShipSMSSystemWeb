@@ -21,7 +21,7 @@ import {GroupContactsService} from "./admin-pages/group-contacts/add-group/group
 import {AddGroupComponent} from "./admin-pages/group-contacts/add-group/add-group.component";
 import {ContactMessageService} from "./admin-pages/messages/contact-message/add-contact-message/contact-message.service";
 import {AddContactMessageComponent} from "./admin-pages/messages/contact-message/add-contact-message/add-contact-message.component";
-import {GroupMessageService} from "./admin-pages/messages/group-message/add-group-message/GroupMessage.service";
+import {GroupMessagesService} from "./admin-pages/messages/group-message/add-group-message/GroupMessages.service";
 import {AddGroupMessageComponent} from "./admin-pages/messages/group-message/add-group-message/add-group-message.component";
 import {AddContactService} from "./service/add-contact/add-contact.service";
 import {MatIconModule} from "@angular/material/icon";
@@ -55,6 +55,9 @@ import {SmsPortService} from "./service/sms-port/sms-port.service";
 import {AddSettingComponent} from "./admin-pages/setting/add-setting/add-setting.component";
 import {ConfrimEqualValidatorDirective} from "./auth-pages/shared/confrim-equal-validator.directive";
 import {AgmCoreModule} from "@agm/core";
+import {GroupMessageService} from "./service/group-message/group-message.service";
+import {AddBulkMessageComponent} from "./admin-pages/messages/bulk-message-list/add-bulk-message/add-bulk-message.component";
+import { PopupErrorComponent } from './popup-error/popup-error.component';
 //import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 //import {ToastrModule} from 'ngx-toastr';
 
@@ -90,9 +93,6 @@ import {AgmCoreModule} from "@agm/core";
         MatInputModule,
         MatSelectModule,
         MatDatepickerModule,
-        AgmCoreModule.forRoot({
-            apiKey: 'bhb'
-        })
     ],
     declarations: [
         AppComponent,
@@ -109,11 +109,13 @@ import {AgmCoreModule} from "@agm/core";
         GroupedContactsComponent,
         SuperAdminPagesLayoutComponent,
         AddSettingComponent,
+        AddBulkMessageComponent,
+        PopupErrorComponent
 
     ],
     entryComponents: [AddContactComponent, AddGroupComponent,AddContactMessageComponent,
         AddGroupMessageComponent,UpdateContactComponent,ImportContactComponent,GroupedContactsComponent,UpdateGroupContactComponent,
-    AddSettingComponent],
+    AddSettingComponent,AddBulkMessageComponent,PopupErrorComponent],
 
     providers: [ContactsService,GroupContactsService,ContactMessageService,GroupMessageService,
         AddContactService,AddGroupService,GroupedContactService,DashboardServiceService,

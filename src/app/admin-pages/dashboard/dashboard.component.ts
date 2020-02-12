@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {StorageService} from "../../service/storage.service";
 import {DashboardServiceService} from "../../service/dashboard-service/dashboard-service.service";
+import {AddContactService} from "../../service/add-contact/add-contact.service";
 
 @Component({
     selector: 'app-dashboard',
@@ -12,7 +13,21 @@ import {DashboardServiceService} from "../../service/dashboard-service/dashboard
 })
 export class DashboardComponent implements OnInit {
 
+    public groupNames : string;
     datas: any[];
+
+    jan:number;
+    feb:number;
+    mar:number;
+    apr:number;
+    jun:number;
+    jul:number;
+    aug:number;
+    sep:number;
+    nov:number;
+    dec:number;
+
+
     loading: boolean;
     count: number;
     under_graduate_count: number;
@@ -29,6 +44,7 @@ export class DashboardComponent implements OnInit {
     total_contact_count: number;
     today_successful_msg: number;
     total: number;
+    dataa=[55, 56, 65, 28, 56, 65, 35, 43];
 
     per_page: number;
     page: number;
@@ -38,7 +54,8 @@ export class DashboardComponent implements OnInit {
     myPieChart = [];
     piechartData = [this.count_male, this.count_female];
 
-    constructor(private dashboardService: DashboardServiceService,
+    constructor(private contactService:AddContactService,
+                private dashboardService: DashboardServiceService,
                 private storageService: StorageService,) {
         this.page = 1
     }
@@ -50,38 +67,34 @@ export class DashboardComponent implements OnInit {
         this.pieChart();
         this.getCurrentUniv();
         this.getSentMessages();
+        this.getGroupName();
+        this.getDataByDate();
+        this.lineChart();
 
+        new Chart(document.getElementById("bar-chart-horizontal"), {
+            type: 'horizontalBar',
+            data: {
+                labels: ["Male", "Female", "Total ", "Total sent Msg", "Total Receive Msg"],
+                datasets: [
+                    {
+                        label: "Population (millions)",
+                        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                        data: [340,323,340,320,310,400]
+                    }
+                ]
+            },
+            options: {
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: 'Group Information Bar '
+                }
+            }
+        });
+    }
+
+    lineChart(){
         let ctx = $("#line-chart");
-
-       /*  let chart = new Chart(ctx, {
-             type: 'line',
-             axisX:{
-                 valueFormatString: "MMM"
-             },
-                 data: {
-                    dataPoints: [
-                     { x: new Date(2000,0), y: 0.65 },
-                     { x: new Date(2000,1), y: -0.8 },
-                     { x: new Date(2000,2), y: -0.9 },
-                     { x: new Date(2000,3), y: -0.25 },
-                     { x: new Date(2000,4), y: -0.01 },
-                     { x: new Date(2000,5), y: -0.27 },
-                 ]
-             },
-
-           //  },
-             options: {
-                 scales: {
-                     xAxes: [{
-                         type: 'time',
-                         time: {
-                             unit: 'month'
-                         }
-                     }]
-                 }
-             }
-         });*/
-
         let line_chart = new Chart(ctx, {
             type: 'line',
             options: {
@@ -99,22 +112,19 @@ export class DashboardComponent implements OnInit {
                 }*/
             },
             data: {
-                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Jun', 'Jul', 'Aug'],
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Jun', 'Jul', 'Aug','Sep','Oct','Nov','Dec'],
                 datasets: [
                     {
                         type: 'line',
                         label: 'Sent Messages',
                         borderColor: 'rgba(135,206,250)',
-                      //  x: new Date(),
-                        data: [
-                            43, 56, 65, 28, 56, 65, 35, 43
-                        ],
+                        data:this.dataa,
                         fill: false,
                     },
                     {
                         type: 'line',
                         label: 'Recieved Messages',
-                        data: [24, 52, 36, 30, 45, 26, 30, 20],
+                        data: [24, 52, 36, 30, 45, 26, 30, 20,14,17,14,19],
                         backgroundColor: 'rgba(255,0,0)',
                         borderColor: 'rgba(255,20,147)',
                         fill: false,
@@ -152,6 +162,48 @@ export class DashboardComponent implements OnInit {
                 labels: ['Male :' + this.count_male, 'Female :' + this.count_female,],
             }
         });
+    }
+
+
+
+    getGroupName() {
+        const headers = new HttpHeaders()
+            .append('Access-Control-Allow-Origin', '*')
+            .append('Access-Control-Allow-Methods', 'GET')
+            .append('X-Requested-With', 'XMLHttpRequest')
+            .append('Access-Control-Allow-Headers', 'Content-Type')
+            .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
+        // .append('Authorization', 'Bearer ' + this.storageService.getStorage('accessToken'));
+        return this.contactService.gets(headers, '/groups')
+            .subscribe((res: any) => {
+                this.groupNames = res.Groups;
+                console.log(res);
+            }, (httpErrorResponse: HttpErrorResponse) => {
+            })
+    }
+
+
+    getDataByDate() {
+        const headers = new HttpHeaders()
+            .append('Access-Control-Allow-Origin', '*')
+            .append('Access-Control-Allow-Methods', 'GET')
+            .append('X-Requested-With', 'XMLHttpRequest')
+            .append('Access-Control-Allow-Headers', 'Content-Type')
+            .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
+        return this.contactService.gets(headers, '/get_msg')
+            .subscribe((res: any) => {
+                this.jan = res[0];
+                this.feb = res[1];
+                this.mar = res[2];
+                this.apr= res[3];
+                this.jun= res[4];
+                this.jul= res[3];
+                this.aug= res[3];
+                this.dataa=[this.jan, this.feb, this.mar, this.apr, 8, 15, 0, 18];
+                this.lineChart();
+                console.log(this.jan);
+            }, (httpErrorResponse: HttpErrorResponse) => {
+            })
     }
 
     getUnderGradutesList() {

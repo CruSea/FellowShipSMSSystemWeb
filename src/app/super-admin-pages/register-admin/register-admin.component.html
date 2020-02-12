@@ -36,12 +36,23 @@ Administer Registration
         />
       </div>
       <div class="form-group">
-        <label for="university">University</label>
+        <label for="university">University name</label>
         <input
                 type="text"
                 id="university"
                 class="form-control"
-                formControlName="university"
+                formControlName="university_name"
+                required
+                minlength="8"
+        />
+      </div>
+      <div class="form-group">
+        <label for="universityname">University city</label>
+        <input
+                type="text"
+                id="universityname"
+                class="form-control"
+                formControlName="university_city"
                 required
                 minlength="8"
         />
