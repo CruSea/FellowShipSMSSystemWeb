@@ -43,6 +43,7 @@ export class DashboardComponent implements OnInit {
     total_group_count: number;
     total_contact_count: number;
     today_successful_msg: number;
+    total_msg_cost:number;
     total: number;
     dataa=[55, 56, 65, 28, 56, 65, 35, 43];
 
@@ -69,6 +70,7 @@ export class DashboardComponent implements OnInit {
         this.getSentMessages();
         this.getGroupName();
         this.getDataByDate();
+        this.getTotalMessageCost();
         this.lineChart();
 
         new Chart(document.getElementById("bar-chart-horizontal"), {
@@ -284,6 +286,22 @@ export class DashboardComponent implements OnInit {
         return this.dashboardService.gets(headers, '/count_sentMessage')
             .subscribe((res: any) => {
                 this.total_sent_message_count = res.messages;
+                console.log(res);
+            }, (httpErrorResponse: HttpErrorResponse) => {
+
+            })
+    }
+
+    getTotalMessageCost(){
+        const headers = new HttpHeaders()
+            .append('Access-Control-Allow-Origin', '*')
+            .append('Access-Control-Allow-Methods', 'GET')
+            .append('X-Requested-With', 'XMLHttpRequest')
+            .append('Access-Control-Allow-Headers', 'Content-Type')
+            .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
+        return this.dashboardService.gets(headers, '/messageCost')
+            .subscribe((res: any) => {
+                this.total_msg_cost = res.cost;
                 console.log(res);
             }, (httpErrorResponse: HttpErrorResponse) => {
 

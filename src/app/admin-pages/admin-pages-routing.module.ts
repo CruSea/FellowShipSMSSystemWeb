@@ -15,6 +15,8 @@ import {PasswordResetComponentComponent} from "../auth-pages/password-reset-comp
 import {SmsPortsComponent} from "./sms-ports/sms-ports.component";
 import {SettingComponent} from "./setting/setting.component";
 import {BulkMessageListComponent} from "./messages/bulk-message-list/bulk-message-list.component";
+import {SmsVoteComponentComponent} from "./sms-vote-component/sms-vote-component.component";
+import {ContactProfileComponent} from "./contact-profile/contact-profile.component";
 
 const routes: Routes = [
     {path: '', component: DashboardComponent,canActivate: [ AuthGuard ]},
@@ -24,11 +26,12 @@ const routes: Routes = [
     {path: 'contact-message', component: ContactSmsComponent},
     {path: 'group-message', component: GroupMessageComponent},
     {path: 'bulk-message', component:BulkMessageListComponent},
-    {path: 'scheduled-message',component:ScheduledMessageComponent},
+    {path: 'sms-vote', component:SmsVoteComponentComponent},
+    //{path: 'scheduled-message',component:ScheduledMessageComponent},
     {path: 'sms-port',component:SmsPortsComponent},
     {path: 'settings',component:SettingComponent},
-    /*{path: 'register', component:RegisterAdminComponent},
-    {path: 'admins-list', component:AdminsListComponent},*/
+    {path: 'contact-profile/:id',
+        component:ContactProfileComponent},
     {path: 'grouped-contact/:id',
         component:GroupedContactListComponent}
 ];

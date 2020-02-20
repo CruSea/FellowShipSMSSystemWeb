@@ -1,0 +1,94 @@
+<div class="col-md-10" style="margin-left: 90px">
+  <div class="card">
+    <div class="card-header card-header-danger">
+      <h4 class="card-title">SMS Voting Campaign</h4>
+      <p class="card-category">SMS Voting System</p>
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="row">
+          <div class="col-md-3">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Vote Title">
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="SMS Port Name">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <textarea matInput placeholder="Vote keyword" cols="2" type="text"></textarea>
+            </mat-form-field>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Start Date" type="datetime-local">
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="End Date" type="datetime-local">
+            </mat-form-field>
+          </div>
+        </div>
+        <button mat-raised-button type="submit" class="btn btn-danger pull-center" style="margin-left: 400px">Save Vote</button>
+        <div class="clearfix"></div>
+      </form>
+    </div>
+  </div>
+</div>
+<mat-card width="100%">
+  <div class="card-body">
+   <!-- <div class="table-responsive-sm">-->
+      <table class="table table-striped" width="100%">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Vote Title</th>
+          <th scope="col">Vote Message</th>
+          <th scope="col">keyword A</th>
+          <th scope="col">keyword B</th>
+          <th scope="col">keyword C</th>
+          <th scope="col">Start Date</th>
+          <th scope="col">End Date</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{i + 1}}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+
+          <td>
+            <button mat-button=""
+                    mwlConfirmationPopover
+                    [popoverTitle]="'Confirm Deletion'"
+                    [popoverMessage]="'Are you sure you want to delete this contact'"
+                    placement="left"
+                   >
+
+              <mat-icon style="color: red;" mat-raised-button>delete_outline</mat-icon>
+            </button>
+          </td>
+          <!--   <td>{{Contact.gender}}</td> -->
+        </tr>
+        </tbody>
+      </table>
+    <div>
+      <pagination-controls ></pagination-controls>
+    </div>
+  </div>
+</mat-card>

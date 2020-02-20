@@ -2,10 +2,8 @@ Contact List
 <hr>
 <div class="card" style="float: left; margin-top: 40px; width: auto; margin-left: 20px">
     <div class="card-header" style="white-space: nowrap; text-overflow: ellipsis;">
-        <p style="font-size: 26px">Contacts</p>
-        <!--  <p (click)="addContact()" style="text-decoration:none;color:blue"
-             onmouseover="style='text-decoration:underline;color:blue';"
-             onmouseout="style='text-decoration:none;color:blue'">ADD CONTACT | IMPORT CONTACT | </p> -->
+
+        <p  style="font-size: 26px">Contacts</p>
         <button style="height: 40px; left: 20px" mat-raised-button color="primary" (click)="addContact()">
             <mat-icon></mat-icon>
             Add Contact
@@ -25,10 +23,11 @@ Contact List
 
     <div class="card-body">
         <div class="table-responsive-sm">
+           <div id="contents" #contents>
             <table class="table table-striped w-auto" width="100%">
                 <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    <th >#</th>
                     <th scope="col">Full Name</th>
                     <th scope="col">Phone number</th>
                     <th scope="col">Email</th>
@@ -44,7 +43,10 @@ Contact List
                                                           currentPage: page,
                                                           totalItems: total }; let i = index" scope="row">
                     <td>{{i + 1}}</td>
-                    <td>{{contact.full_name }}</td>
+                    <td   onmouseover="style='text-decoration:underline;color:blue';"
+                          onmouseout="style='text-decoration:none'">
+                        <a routerLink="/admin/contact-profile/{{contact.contact_id}}">
+                            {{contact.full_name }}</a></td>
                     <td>{{contact.phone_number}}</td>
                     <td>{{contact.email}}</td>
                     <td>{{contact.acadamic_dep}}</td>
@@ -69,6 +71,7 @@ Contact List
                 </tr>
                 </tbody>
             </table>
+           </div>
             </div>
             <div>
                 <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true"

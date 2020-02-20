@@ -96,32 +96,39 @@
             </th>
         </tr>
     </table>
+<table>
+    <tr>
+        <th>
+            <div class="card shadow mb-4" style="margin: 20px;width: 600px;height: 400px">
 
-    <div class="card shadow mb-4" style="margin: 30px;width: 600px;height: 400px">
+                <mat-form-field>
+                    <mat-label>Group Name</mat-label>
+                    <mat-select>
+                        <div *ngIf="groupNames">
+                            <mat-option *ngFor="let groupName of groupNames" [value]="groupName.group_name">
+                                {{groupName.group_name }}
+                            </mat-option>
+                        </div>
+                    </mat-select>
+                </mat-form-field>
 
-        <mat-form-field>
-            <mat-label>Group Name</mat-label>
-            <mat-select>
-                <div *ngIf="groupNames">
-                    <mat-option *ngFor="let groupName of groupNames" [value]="groupName.group_name">
-                        {{groupName.group_name }}
-                    </mat-option>
+                <div class="row" style="padding-left: 10px;margin-bottom: auto">
+                    <canvas id="bar-chart-horizontal"></canvas>
                 </div>
-            </mat-select>
-        </mat-form-field>
-
-        <div class="row" style="padding-left: 10px;margin-bottom: auto">
-         <!--   <div class="col-sm">
-                <i class="material-icons">wc</i> Male {{groupName}}
             </div>
-            <div class="col-sm">
-                <i class="material-icons">wc</i> Female
-            </div> -->
-
-        <canvas id="bar-chart-horizontal"></canvas>
-
-</div>
-    </div>
+        </th>
+        <th>
+            <div class="card" style="margin: 30px;width: 600px;height: 400px">
+               <img src="../assets/img/price_icon.jpg" width="200px" height="250px" style="margin-left: 200px;
+                  margin-top: 40px">
+               <p style="margin-left: 250px;font-size: 20px">Total price = {{total_msg_cost }} Birr </p>
+                <p style="margin-left: 230px;color: red">Note : Per SMS Cost is 0.25 Cent</p>
+                <p>Sending SMS is the cheaper method to connect with your Client using our service
+                    you can send as much as message as you can we use <strong>pay as you go</strong> pricing method </p>
+            </div>
+        </th>
+    </tr>
+</table>
 </div>
 
 

@@ -28,7 +28,7 @@ import {MatSelectModule} from "@angular/material/select";
 import { MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import { UpdateGroupContactComponent } from './group-contacts/grouped-contact-list/update-group-contact/update-group-contact.component';
-import {MatCardModule, MatCheckboxModule, MatSlideToggleModule} from "@angular/material";
+import {MatCardModule, MatCheckboxModule, MatInputModule, MatSlideToggleModule} from "@angular/material";
 import {PasswordResetComponentComponent} from "../auth-pages/password-reset-component/password-reset-component.component";
 import { SmsPortsComponent } from './sms-ports/sms-ports.component';
 import { AddSmsPortComponent } from './sms-ports/add-sms-port/add-sms-port.component';
@@ -36,6 +36,8 @@ import { SettingComponent } from './setting/setting.component';
 import {ConfrimEqualValidatorDirective} from "../auth-pages/shared/confrim-equal-validator.directive";
 import { BulkMessageListComponent } from './messages/bulk-message-list/bulk-message-list.component';
 import { AddBulkMessageComponent } from './messages/bulk-message-list/add-bulk-message/add-bulk-message.component';
+import { SmsVoteComponentComponent } from './sms-vote-component/sms-vote-component.component';
+import { ContactProfileComponent } from './contact-profile/contact-profile.component';
 
 
 
@@ -54,6 +56,7 @@ import { AddBulkMessageComponent } from './messages/bulk-message-list/add-bulk-m
         MatSlideToggleModule,
         MatFormFieldModule,
         MatButtonModule,
+        MatInputModule,
         // ConfirmationPopoverModule
         MatExpansionModule,
         MatCardModule,
@@ -77,6 +80,8 @@ import { AddBulkMessageComponent } from './messages/bulk-message-list/add-bulk-m
         SettingComponent,
         ContactSmsComponent,
         BulkMessageListComponent,
+        SmsVoteComponentComponent,
+        ContactProfileComponent,
 
     ],
     exports: [

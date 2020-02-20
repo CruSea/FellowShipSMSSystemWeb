@@ -27,7 +27,7 @@ export class ImportContactComponent {
 
   onUpload() {
     const fd = new FormData();
-    fd.append('xl', this.selectedFile, this.selectedFile.name);
+    fd.append('xlsx', this.selectedFile, this.selectedFile.name);
     const headers = new HttpHeaders()
         .append('Access-Control-Allow-Origin', '*')
         .append('Access-Control-Allow-Methods', 'POST')

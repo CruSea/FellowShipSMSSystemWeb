@@ -9,6 +9,7 @@ import {DashboardServiceService} from "../../service/dashboard-service/dashboard
     templateUrl: './super-dashboard.component.html',
     styleUrls: ['./super-dashboard.component.scss']
 })
+
 export class SuperDashboardComponent implements OnInit{
     count: number;
     total_bulk_count: number;
@@ -16,6 +17,7 @@ export class SuperDashboardComponent implements OnInit{
     total_group_message_count: number;
     today_successful_msg: number;
     total_Campus_contact: number;
+    total_message_cost:number;
     total: number;
 
     title = 'char';
@@ -32,6 +34,7 @@ export class SuperDashboardComponent implements OnInit{
         this.getTotalMessage();
         this.getTotalGroup();
         this.getTotalGroupMessage();
+        this.getTotalMessageCost();
         this.chartlist();
     }
 
@@ -70,13 +73,21 @@ export class SuperDashboardComponent implements OnInit{
                 labels: ['Campus A', 'b', 'c', 'd', 'e', 'f', 'g', 'h'],
                 datasets: [
                     {
-                        type: 'line',
+                        type: 'bar',
                         label: 'Total Contact List ',
                         data: this.chartdata,
                         backgroundColor: 'rgba(0,0,255,0.4)',
                         borderColor: 'rgba(0,0,255,0.4)',
                         fill: true,
                     },
+                    {
+                        type: 'bar',
+                        label: 'Recieved Messages',
+                        data: [24, 52, 36, 30, 45, 26, 30, 20,14,17,14,19],
+                        backgroundColor: 'rgba(255, 182, 193)',
+                        borderColor: 'rgba(255,20,147)',
+                        fill: false,
+                    }
                 ]
             }
         });
@@ -131,6 +142,23 @@ export class SuperDashboardComponent implements OnInit{
         return this.dashboardService.gets(headers, '/all_group_message')
             .subscribe((res: any) => {
                 this.total_group_message_count = res;
+                /* this.chartdata =  [this.total_Campus_contact[0], 16, 5, 10,12, 10, 16,11,19];
+                 this.chartlist();*/
+            }, (httpErrorResponse: HttpErrorResponse) => {
+            });
+    }
+
+    getTotalMessageCost() {
+
+        const headers = new HttpHeaders()
+            .append('Access-Control-Allow-Origin', '*')
+            .append('Access-Control-Allow-Methods', 'GET')
+            .append('X-Requested-With', 'XMLHttpRequest')
+            .append('Access-Control-Allow-Headers', 'Content-Type')
+            .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
+        return this.dashboardService.gets(headers, '/totalMessageCost')
+            .subscribe((res: any) => {
+                this.total_message_cost = res.cost;
                 /* this.chartdata =  [this.total_Campus_contact[0], 16, 5, 10,12, 10, 16,11,19];
                  this.chartlist();*/
             }, (httpErrorResponse: HttpErrorResponse) => {
