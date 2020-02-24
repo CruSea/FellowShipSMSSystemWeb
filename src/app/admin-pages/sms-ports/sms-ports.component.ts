@@ -3,6 +3,7 @@ import {SmsPortService} from "../../service/sms-port/sms-port.service";
 import {StorageService} from "../../service/storage.service";
 import {MatDialog} from "@angular/material";
 import {HttpErrorResponse, HttpHeaders} from "@angular/common/http";
+import {AddSmsPortComponent} from "./add-sms-port/add-sms-port.component";
 
 @Component({
   selector: 'app-sms-ports',
@@ -28,6 +29,18 @@ export class SmsPortsComponent implements OnInit {
                 private smsportservice: SmsPortService,
                 private dialog?: MatDialog,) {
         this.page = 1;
+    }
+
+    add_port() {
+        this.ispopupOpened = true;
+        const dialogRef = this.dialog.open(AddSmsPortComponent, {
+            data: {}
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            this.collectionOfcon(this.page);
+            this.ispopupOpened = false;
+        })
     }
     ngOnInit() {
         this.collectionOfcon(this.page);
@@ -60,6 +73,4 @@ export class SmsPortsComponent implements OnInit {
                 this.loading = false;
             })
     }
-
-
 }

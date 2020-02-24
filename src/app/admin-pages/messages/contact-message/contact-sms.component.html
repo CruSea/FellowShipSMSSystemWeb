@@ -3,9 +3,8 @@
 <div class="card" style="float: left; margin-top: 40px; width: 1200px;margin-left: 20px;">
     <div class="card-header" style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;">
         <h6>Contact Messages</h6>
-        <p (click)="add_contact_message()" style="text-decoration:none;color:blue"
-           onmouseover="style='text-decoration:underline;color:blue';"
-           onmouseout="style='text-decoration:none;color:blue'">Add Contact Message</p>
+        <button mat-raised-button style="margin-top: 20px" color="primary" (click)="add_contact_message()">
+            Add Contact Message</button>
         <hr>
     </div>
 

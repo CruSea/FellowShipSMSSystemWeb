@@ -31,7 +31,6 @@ import { UpdateGroupContactComponent } from './group-contacts/grouped-contact-li
 import {MatCardModule, MatCheckboxModule, MatInputModule, MatSlideToggleModule} from "@angular/material";
 import {PasswordResetComponentComponent} from "../auth-pages/password-reset-component/password-reset-component.component";
 import { SmsPortsComponent } from './sms-ports/sms-ports.component';
-import { AddSmsPortComponent } from './sms-ports/add-sms-port/add-sms-port.component';
 import { SettingComponent } from './setting/setting.component';
 import {ConfrimEqualValidatorDirective} from "../auth-pages/shared/confrim-equal-validator.directive";
 import { BulkMessageListComponent } from './messages/bulk-message-list/bulk-message-list.component';
@@ -76,7 +75,6 @@ import { ContactProfileComponent } from './contact-profile/contact-profile.compo
         GroupedContactListComponent,
         ImportGroupContactComponent,
         SmsPortsComponent,
-        AddSmsPortComponent,
         SettingComponent,
         ContactSmsComponent,
         BulkMessageListComponent,

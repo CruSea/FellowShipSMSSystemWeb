@@ -48,11 +48,6 @@ export class AddContactMessageComponent implements OnInit {
         this.getSmsPorts()
     }
 
-    /*onSubmit() {
-        this._contactService.add_contact_message(this._contactForm.value);
-        this.dialogRef.close();
-    }*/
-
     messageModal(messageModalInterface: MessageModalInterface) {
         console.log(messageModalInterface);
         const headers = new HttpHeaders()

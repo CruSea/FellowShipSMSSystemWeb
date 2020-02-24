@@ -5,36 +5,43 @@
       <p class="card-category">SMS Voting System</p>
     </div>
     <div class="card-body">
-      <form>
+      <form [formGroup]="_voteForm" (ngSubmit)="votemessageModal(_voteForm.value)">
         <div class="row">
           <div class="col-md-3">
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Vote Title">
+              <input matInput  placeholder="Vote Title">
             </mat-form-field>
           </div>
           <div class="col-md-4">
-            <mat-form-field class="example-full-width">
-                <input matInput placeholder="SMS Port Name">
+            <mat-form-field >
+              <mat-label>Port Name</mat-label>
+              <mat-select formControlName="port_name">
+                <div *ngIf="smsport">
+                  <mat-option *ngFor="let portName of smsport" [value]="portName.port_name">
+                    {{portName.port_name }}
+                  </mat-option>
+                </div>
+              </mat-select>
             </mat-form-field>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
             <mat-form-field class="example-full-width" appearance="outline">
-              <textarea matInput placeholder="Vote keyword" cols="2" type="text"></textarea>
+              <textarea matInput formControlName="message" placeholder="Vote keyword" cols="2" type="text"></textarea>
             </mat-form-field>
           </div>
 
         </div>
         <div class="row">
           <div class="col-md-4">
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Start Date" type="datetime-local">
+            <mat-form-field class="example-full-width" >
+              <input matInput  placeholder="Start Date" formControlName="start_date" type="date">
             </mat-form-field>
           </div>
           <div class="col-md-4">
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="End Date" type="datetime-local">
+              <input matInput  placeholder="End Date" formControlName="end_date" type="date">
             </mat-form-field>
           </div>
         </div>
@@ -44,6 +51,7 @@
     </div>
   </div>
 </div>
+
 <mat-card width="100%">
   <div class="card-body">
    <!-- <div class="table-responsive-sm">-->
@@ -63,14 +71,14 @@
         </thead>
         <tbody>
         <tr>
-          <td>{{i + 1}}</td>
+          <td>1</td>
           <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>{{message}}</td>
+          <td>{{keyA}}</td>
+          <td>{{keyB}}</td>
+          <td>{{keyC}}</td>
+          <td>{{start_date}}</td>
+          <td>{{end_date}}</td>
 
           <td>
             <button mat-button=""

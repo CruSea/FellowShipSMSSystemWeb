@@ -58,6 +58,7 @@ import {AgmCoreModule} from "@agm/core";
 import {GroupMessageService} from "./service/group-message/group-message.service";
 import {AddBulkMessageComponent} from "./admin-pages/messages/bulk-message-list/add-bulk-message/add-bulk-message.component";
 import { PopupErrorComponent } from './popup-error/popup-error.component';
+import {AddSmsPortComponent} from "./admin-pages/sms-ports/add-sms-port/add-sms-port.component";
 //import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 //import {ToastrModule} from 'ngx-toastr';
 
@@ -110,12 +111,12 @@ import { PopupErrorComponent } from './popup-error/popup-error.component';
         SuperAdminPagesLayoutComponent,
         AddSettingComponent,
         AddBulkMessageComponent,
-        PopupErrorComponent
-
+        PopupErrorComponent,
+        AddSmsPortComponent
     ],
     entryComponents: [AddContactComponent, AddGroupComponent,AddContactMessageComponent,
         AddGroupMessageComponent,UpdateContactComponent,ImportContactComponent,GroupedContactsComponent,UpdateGroupContactComponent,
-    AddSettingComponent,AddBulkMessageComponent,PopupErrorComponent],
+    AddSettingComponent,AddBulkMessageComponent,PopupErrorComponent,AddSmsPortComponent],
 
     providers: [ContactsService,GroupContactsService,ContactMessageService,GroupMessageService,
         AddContactService,AddGroupService,GroupedContactService,DashboardServiceService,
