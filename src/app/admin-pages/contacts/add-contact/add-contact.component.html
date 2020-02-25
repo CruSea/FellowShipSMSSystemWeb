@@ -1,0 +1,80 @@
+<div class="card-body" style="width: 640px; height: 510px;">
+  <div mat-dialog-content>
+
+    <form  [formGroup]="_contactForm" (ngSubmit)="contactsModal(_contactForm.value)">
+      <div class="form-group">
+        <label for="fullname">Full Name</label>
+        <input type="text"
+               id="fullname"
+               class="form-control"
+               formControlName="full_name"
+               name="full_name">
+      </div>
+      <div class="form-group">
+        <label for="pnumber">Phone Number</label>
+        <input type="number"
+               id="pnumber"
+               class="form-control"
+               formControlName="phone_number"
+               name="phone_number">
+      </div>
+      <div class="form-group">
+        <label for="email">Email address:</label>
+        <input type="email"
+               id="email"
+               class="form-control"
+               formControlName="email"
+               name="Email">
+      </div>
+
+      <div class="form-group">
+        <label for="acadamicDepartment">Acadamic Department</label>
+        <input type="text"
+               id="acadamicDepartment"
+               class="form-control"
+               formControlName="acadamic_dep"
+               name="acadamic_dep">
+      </div>
+      <div class="form-group">
+        <label for="id_number">ID Number</label>
+        <input type="text"
+               id="id_number"
+               class="form-control"
+               formControlName="id_number"
+               name="id_number">
+      </div>
+
+      <mat-form-field >
+        <mat-label>Group Name</mat-label>
+        <mat-select formControlName="fellow_dep">
+          <div *ngIf="groupNames">
+            <mat-option *ngFor="let groupName of groupNames" [value]="groupName.group_name">
+              {{groupName.group_name }}
+            </mat-option>
+          </div>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option *ngFor="let gender of genders" [value]="gender.type">
+            {{gender.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="form-group">
+        <label for="graduateDate">Graduation Date</label>
+        <input type="date"
+               id="graduateDate"
+               class="form-control"
+               formControlName="graduate_year"
+               name="graduate_year">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="button" class="btn btn-primary" (click)="onNoClickk()" style="float: ">Cancel</button>
+    </form>
+  </div>
+</div>

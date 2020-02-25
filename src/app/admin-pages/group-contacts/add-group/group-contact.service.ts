@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GroupContact } from 'app/admin-pages/model/GroupContact';
+import {HttpClient} from "@angular/common/http";
 
 
 @Injectable()
@@ -7,18 +8,15 @@ export class GroupContactsService {
 
     _contactList: GroupContact[] = [];
 
-    constructor() { }
+    constructor(
+        private  httpClient: HttpClient
+    ) { }
 
-    addContact(contact: GroupContact) {
-        this._contactList.push(contact);
+    collectionofContacts() {
+        return this.httpClient.get('http://localhost:8000/api/group')
     }
 
-    removeContact(id: number) {
-        const contact = this._contactList.findIndex(c => c.ID === id);
-        this._contactList.splice(contact, 1);
-    }
-
-    getAllContacts() {
-        return this._contactList;
+    delete(id: string) {
+        return this.httpClient.delete(`http:localhost:8000/api/group/${id}`)
     }
 }

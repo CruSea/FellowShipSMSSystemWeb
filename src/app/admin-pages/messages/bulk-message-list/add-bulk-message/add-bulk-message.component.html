@@ -1,0 +1,35 @@
+
+<div class="card-body" style="width: 540px; height: 440px;padding-top: 10px">
+  <div mat-dialog-content>
+    <form [formGroup]="messageModalForm" (ngSubmit)="messageModal(messageModalForm.value)" *ngIf="smsPorts">
+
+      <mat-form-field>
+        <mat-label>Port Name</mat-label>
+        <mat-select formControlName="port_name">
+          <div *ngIf="smsPorts">
+            <mat-option *ngFor="let smsPort of smsPorts" [value]="smsPort.port_name">
+              {{smsPort.port_name }}
+            </mat-option>
+          </div>
+        </mat-select>
+      </mat-form-field>
+      <div class="form-group">
+        <label for="comment">Add Your message here</label>
+        <textarea class="form-control"
+                  id="comment"
+                  rows="6"
+                  style="height: 250px;"
+                  formControlName="message"
+                  name="contact_message" >
+
+        </textarea>
+      </div>
+      <div mat-dialog-actions>
+        <button mat-button mat-raised-button color="primary" type="submit"  cdkFocusInitial >Send Bulk Message</button>
+        <button mat-button (click)="onNoClick()">Cancel</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+

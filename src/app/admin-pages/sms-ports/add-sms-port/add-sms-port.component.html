@@ -1,0 +1,41 @@
+<div class="card-body" style="width: 540px; height: 440px;padding-top: 10px">
+    <div mat-dialog-content>
+        <form [formGroup]="portModalForm" (ngSubmit)="portModal(portModalForm.value)">
+
+            <mat-form-field>
+                <input matInput placeholder="SMS Port Name" type="text" formControlName="port_name">
+                <mat-error style="color: red" *ngIf="portModalForm.get('port_name').invalid && (portModalForm.get('port_name').dirty ||
+      portModalForm.get('port_name').touched) && !portModalForm.get('port_name').errors?.minlength">
+                    Please insert port name!
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="SMS Port Type" type="text" formControlName="port_type">
+                <mat-error style="color: red" *ngIf="portModalForm.get('port_type').invalid && (portModalForm.get('port_type').dirty ||
+      portModalForm.get('port_type').touched) && !portModalForm.get('port_type').errors?.minlength">
+                    Please insert port type!
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Negarit Port ID" type="number" formControlName="port_id">
+                <mat-error style="color: red" *ngIf="portModalForm.get('port_id').invalid && (portModalForm.get('port_id').dirty ||
+      portModalForm.get('port_id').touched) && !portModalForm.get('port_id').errors?.minlength">
+                    Please insert port id!
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Negarit Campaign ID" type="number" formControlName="campaign_id">
+                <mat-error style="color: red" *ngIf="portModalForm.get('campaign_id').invalid && (portModalForm.get('campaign_id').dirty ||
+      portModalForm.get('campaign_id').touched) && !portModalForm.get('campaign_id').errors?.minlength">
+                    Please insert campaign id!
+                </mat-error>
+            </mat-form-field>
+            <div mat-dialog-actions>
+                <button mat-button mat-raised-button color="primary" type="submit" cdkFocusInitial>Add Port</button>
+                <button mat-button (click)="onNoClick()">Cancel</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+

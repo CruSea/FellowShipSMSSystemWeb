@@ -1,0 +1,58 @@
+
+<form [formGroup]="updateContactForm" (ngSubmit)="updateContact(updateContactForm.value)">
+
+  <mat-form-field>
+    <input matInput placeholder="full name" type="text" formControlName="full_name">
+    <mat-error style="color: red" *ngIf="updateContactForm.get('fullname').invalid && (updateContactForm.get('fullname').dirty ||
+      updateContactForm.get('fullname').touched) && updateContactForm.get('fullname').errors?.required">
+      Please Insert full name
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="phone" type="text" formControlName="phone_number">
+    <mat-error style="color: red" *ngIf="updateContactForm.get('phone').invalid && (updateContactForm.get('phone').dirty ||
+      updateContactForm.get('phone').touched) && !updateContactForm.get('phone').errors?.minLength">
+      Please phone number
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <label>
+      <input matInput placeholder="Email" type="text" formControlName="email">
+    </label>
+    <mat-error style="color: red" *ngIf="updateContactForm.get('email').invalid && (updateContactForm.get('email').dirty ||
+      updateContactForm.get('email').touched) && !updateContactForm.get('email').errors?.minLength">
+      Please insert email!
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Academic Department" type="text" formControlName="acadamic_department">
+    <mat-error style="color: red" *ngIf="updateContactForm.get('acadamic_department').invalid && (updateContactForm.get('acadamic_department').dirty ||
+      updateContactForm.get('acadamic_department').touched) && !updateContactForm.get('acadamic_department').errors?.minLength">
+      Please insert acadamic department!
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Fellow Department" type="text" formControlName="fellow_department">
+    <mat-error style="color: red" *ngIf="updateContactForm.get('fellow_department').invalid && (updateContactForm.get('fellow_department').dirty ||
+      updateContactForm.get('fellow_department').touched) && !updateContactForm.get('fellow_department').errors?.minLength">
+      Please insert fellow department!
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Graduation Year" type="text" formControlName="graduation_year">
+    <mat-error style="color: red" *ngIf="updateContactForm.get('graduation_year').invalid && (updateContactForm.get('graduation_year').dirty ||
+      updateContactForm.get('graduation_year').touched) && !updateContactForm.get('graduation_year').errors?.minLength">
+      Please insert graduation year!
+    </mat-error>
+  </mat-form-field>
+
+  <div mat-dialog-actions>
+    <button mat-button mat-raised-button color="primary" type="submit"  cdkFocusInitial >Update</button>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+  </div>
+</form>

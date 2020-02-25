@@ -1,6 +1,6 @@
-<div class="card-body" style="width: 540px; height: 510px;">
+<div class="card-body" style="width: 540px; height: 450px;">
   <div mat-dialog-content>
-    <form  (submit)="onSubmit()" [formGroup]="_contactForm">
+    <form [formGroup]="_contactForm" (ngSubmit)="groupContactsModal(_contactForm.value)">
       <div class="form-group">
         <label for="groupName">Group Name</label>
         <input type="text"
@@ -8,33 +8,15 @@
                class="form-control"
                formControlName="group_name"
                required>
-        <!-- [(ngModel)="groupName" -->
-        <!--    <div class="alert alert-danger">Group Name Required</div> -->
       </div>
       <div class="form-group">
         <label>Description</label>
         <textarea type="text"
                   class="form-control"
-                  rows="2"
+                  rows="5"
                   formControlName="description"
                   ngModel
                   name="description"></textarea>
-      </div>
-      <div class="form-group">
-        <label>Number of Contact</label>
-        <input type="email"
-               class="form-control"
-               formControlName="no_of_contact"
-               ngModel
-               name="no_of_contact">
-      </div>
-      <div class="form-group">
-        <label>Created Date</label>
-        <input type="date"
-               class="form-control"
-               formControlName="_date"
-               ngModel
-               name="_date">
       </div>
       <br>
       <br>

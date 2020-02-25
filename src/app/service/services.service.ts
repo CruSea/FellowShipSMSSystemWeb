@@ -1,6 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import { OnInit, Injectable } from '@angular/core';
 import { ServicesInterface } from './services.interface';
+import {ErrorObservable} from "rxjs-compat/observable/ErrorObservable";
 
 @Injectable({
   providedIn: 'root'

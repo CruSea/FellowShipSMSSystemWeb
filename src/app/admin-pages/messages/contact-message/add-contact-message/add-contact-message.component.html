@@ -1,29 +1,34 @@
 
-<div class="card-body" style="width: 540px; height: 500px;">
+<div class="card-body" style="width: 540px; height: 440px;padding-top: 10px">
   <div mat-dialog-content>
-    <form  (submit)="onSubmit()" [formGroup]="_contactForm">
-      <div class="form-group">
-        <label for="campaign">Enter Campaign</label>
-        <input type="text"
-               id="campaign"
-               class="form-control"
-               formControlName="campaign">
+  <form [formGroup]="messageModalForm" (ngSubmit)="messageModal(messageModalForm.value)" *ngIf="smsPorts">
+
+  <mat-form-field>
+    <mat-label>Port Name</mat-label>
+    <mat-select formControlName="port_name">
+      <div *ngIf="smsPorts">
+      <mat-option *ngFor="let smsPort of smsPorts" [value]="smsPort.port_name">
+        {{smsPort.port_name }}
+      </mat-option>
       </div>
-      <br>
-      <br>
-      <div class="form-group">
-        <label for="contact_message">Add Your message here</label>
-        <textarea class="form-control"
-                  rows="6"
-                  id="contact_message"
-                  style="height: 250px;"
-                  formControlName="contact_message"
-                  ngModel
-                  name="contact_message" >
-        </textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Send Message</button>
-    </form>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Phone number" type="number" formControlName="sent_to">
+    <mat-error style="color: red" *ngIf="messageModalForm.get('sent_to').invalid && (messageModalForm.get('sent_to').dirty ||
+      messageModalForm.get('sent_to').touched) && !messageModalForm.get('sent_to').errors?.minlength">
+      Please insert phone number!
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <textarea matInput placeholder="write a message " cols="4" type="text" formControlName="message"></textarea>
+  </mat-form-field>
+  <div mat-dialog-actions>
+    <button mat-button mat-raised-button color="primary" type="submit"  cdkFocusInitial >Send Message</button>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+  </div>
+</form>
+
   </div>
 </div>
 

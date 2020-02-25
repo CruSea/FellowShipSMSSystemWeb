@@ -5,3 +5,11 @@ th, td {
 #unid{
   font-size: 5px;
 }
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}

@@ -1,0 +1,17 @@
+<div class="card-body" style="width: 540px; height: auto;">
+  <div mat-dialog-content>
+    <form [formGroup]="settingModalForm" (ngSubmit)="settingModal(settingModalForm.value)">
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Enter API Key Here" type="text" formControlName="value">
+       <mat-error style="color: red" *ngIf="settingModalForm.get('value').invalid && (settingModalForm.get('value').dirty ||
+      settingModalForm.get('value').touched) && !settingModalForm.get('value').errors?.minlength">
+          Please insert API here!
+        </mat-error>
+      </mat-form-field>
+      <button mat-button mat-raised-button color="primary" type="submit" cdkFocusInitial style="margin-left: 35%">
+        <mat-icon>settings</mat-icon>
+        Create Setting
+      </button>
+    </form>
+  </div>
+</div>

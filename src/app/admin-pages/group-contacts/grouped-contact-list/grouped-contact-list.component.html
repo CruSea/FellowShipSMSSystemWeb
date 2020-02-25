@@ -1,0 +1,77 @@
+<h3>Grouped Contact</h3>
+<hr>
+<div class="card" style="float: left; margin-top: 40px; height: 180px; width: 1200px;margin-left: 20px;">
+    <div class="card-header" style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;">
+        <p style="font-size: medium"> Contact Groups</p>
+        <p>Here is Grouped Contact List</p>
+        <!-- <p>{{group_id}}</p> -->
+        <p class="card-category">list of members in a team</p>
+        <p style="color:blue;">Back To Groups</p>
+    </div>
+</div>
+
+<button style="height: 40px; left: 20px" mat-raised-button color="primary" (click)="addContact()">
+    <mat-icon></mat-icon>
+    Add New Contact
+</button>
+<button mat-button color="primary" style="height: 40px; left: 60px" mat-raised-button>
+    <i style="font-size: 22px" class="fa  fa-get-pocket"></i>
+    <mat-icon></mat-icon>
+    Import Contact
+</button>
+<div class="card" style="margin-left: 10px; margin-right: 10px">
+    <div class="table-responsive">
+        <table class="table table-striped" id="dataTable" width="100%">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Phone number</th>
+                <th scope="col">Email</th>
+                <th scope="col">Fellow Department</th>
+                <th scope="col">Acadamic Department</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Graduation year</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let grouped_contact of dataSource | paginate: { id: 'listing_pagination',
+                                                          itemsPerPage: per_page,
+                                                          currentPage: page,
+                                                          totalItems: total }; let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{grouped_contact.fullname }}</td>
+                <td>{{grouped_contact.phone}}</td>
+                <td>{{grouped_contact.email}}</td>
+                <td>{{grouped_contact.fellow_department}}</td>
+                <td>{{grouped_contact.acadamic_department}}</td>
+                <td>{{grouped_contact.gender}}</td>
+                <td>{{grouped_contact.graduation_year | date :'fullDate'}}</td>
+                <td>
+                    <button mat-button="">
+                        <mat-icon mat-raised-button (click)="openUpdates(element)">edit</mat-icon>
+                    </button>
+                    <button mat-button=""
+                            mwlConfirmationPopover
+                            [popoverTitle]="'Confirm Deletion'"
+                            [popoverMessage]="'Are you sure you want to delete this contact'"
+                            placement="left"
+                            (confirm)="deleteGroupedContact(grouped_contact.Id)">
+
+                        <mat-icon style="color: red;" mat-raised-button>delete_outline</mat-icon>
+                    </button>
+                </td>
+                <!--   <td>{{Contact.gender}}</td> -->
+            </tr>
+            </tbody>
+        </table>
+        <div>
+            <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true"
+                                 (pageChange)="getGroupsContactByGroupName(team_detail.team.name,$event)"></pagination-controls>
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -1,24 +1,39 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {DashboardComponent} from './dashboard/dashboard.component';
-import {ContactListComponent} from "./contact-list/contact-list.component";
+import {ContactListComponent} from "./contacts/contact-list/contact-list.component";
 import {GroupContactsComponent} from "./group-contacts/group-contacts.component";
-import {BulkSmsComponent} from "./messages/contact-message/bulk-sms.component";
+import {ContactSmsComponent} from "./messages/contact-message/contact-sms.component";
 import {GroupMessageComponent} from "./messages/group-message/group-message.component";
 import {ScheduledMessageComponent} from "./messages/scheduled-message/scheduled-message.component";
 import {SuperDashboardComponent} from "../super-admin-pages/super-dashboard/super-dashboard.component";
 import {AdminsListComponent} from "../super-admin-pages/admins-list/admins-list.component";
+import {RegisterAdminComponent} from "../super-admin-pages/register-admin/register-admin.component";
+import {GroupedContactListComponent} from "./group-contacts/grouped-contact-list/grouped-contact-list.component";
+import {AuthGuard} from "../Auth/auth.guard";
+import {PasswordResetComponentComponent} from "../auth-pages/password-reset-component/password-reset-component.component";
+import {SmsPortsComponent} from "./sms-ports/sms-ports.component";
+import {SettingComponent} from "./setting/setting.component";
+import {BulkMessageListComponent} from "./messages/bulk-message-list/bulk-message-list.component";
+import {SmsVoteComponentComponent} from "./sms-vote-component/sms-vote-component.component";
+import {ContactProfileComponent} from "./contact-profile/contact-profile.component";
 
 const routes: Routes = [
-    {path: '', component: DashboardComponent},
-    {path: 'dashboard', component: DashboardComponent},
+    {path: '', component: DashboardComponent,canActivate: [ AuthGuard ]},
+    {path: 'dashboard', component: DashboardComponent,canActivate: [ AuthGuard ]},
     {path: 'contact-list', component: ContactListComponent},
     {path: 'group-contacts', component: GroupContactsComponent},
-    {path: 'contact-message', component: BulkSmsComponent},
+    {path: 'contact-message', component: ContactSmsComponent},
     {path: 'group-message', component: GroupMessageComponent},
-    {path: 'scheduled-message',component:ScheduledMessageComponent},
-    {path: 'super-dashboard', component:SuperDashboardComponent},
-    {path: 'admins-list', component:AdminsListComponent}
+    {path: 'bulk-message', component:BulkMessageListComponent},
+    {path: 'sms-vote', component:SmsVoteComponentComponent},
+    //{path: 'scheduled-message',component:ScheduledMessageComponent},
+    {path: 'sms-port',component:SmsPortsComponent},
+    {path: 'settings',component:SettingComponent},
+    {path: 'contact-profile/:id',
+        component:ContactProfileComponent},
+    {path: 'grouped-contact/:id',
+        component:GroupedContactListComponent}
 ];
 
 @NgModule({

@@ -1,34 +1,40 @@
-<div class="row" style="align-content: center; margin-left: 500px; margin-top: 200px">
-  <div class="col-xs-12 col-md-6 col-md-offset-3">
-    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input
-                type="email"
-                id="email"
-                class="form-control"
-                ngModel
-                name="email"
-                required
-                email
-        />
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input
-                type="password"
-                id="password"
-                class="form-control"
-                ngModel
-                name="password"
-                required
-                minlength="8"
-        />
-      </div>
-      <div>
-        <button class="btn btn-primary" type="submit" [disabled]="!authForm.valid">Login</button>
-      </div>
-    </form>
-  </div>
+<div class="imgs">
+    <div class="background">
+        <div class="col-md-3">
+            <div class="card card-profile">
+                <div class="card-avatar">
+                    <img class="img" src="../assets/img/icon_sms.png"/>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-category text-gray">Fellowship SMS System</h6>
+                    <h4 class="card-title">Log In</h4>
+
+                    <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+                        <mat-form-field>
+                            <input matInput placeholder="Email" type="email" formControlName="email" required>
+                            <mat-error style="color: red" *ngIf="loginForm.get('email').invalid && (loginForm.get('email').dirty ||
+                        loginForm.get('email')) && loginForm.get('email').errors?.required">
+                                Please insert email!
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="full-width-input">
+                            <input matInput type="password" placeholder="Password" formControlName="password" required>
+                            <mat-error style="color: red" *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty ||
+                        loginForm.get('password').touched) && loginForm.get('password').errors?.minlength">
+                                Please insert password!
+                            </mat-error>
+                        </mat-form-field>
+                        <a style="margin-left: 35%; margin-top: 20px;font-size: medium; color: #0c83e2"
+                           routerLink="/forgotten-password">Forgot password?</a>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 20px">Sign In</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <mat-spinner *ngIf="showSpinner" style=" position: fixed; left: 46%;width: 20px;height: 20px"></mat-spinner>
+    </div>
 </div>
+
+
 

@@ -1,11 +1,6 @@
+<h4 style="margin-left: 50px">{{university}} <sub>{{campus}} campus</sub> Dashboard </h4>
+<hr>
 <div class="dashs">
-
-    <!-- <div class="main-content" *ngIf="router.url === '/admin' || router.url === '/admin/dashboard' ||
-      router.url === '/admin/contact-list' ||
-      router.url === '/admin/group-contacts' ||
-      router.url === '/admin/contact-message' ||
-      router.url === '/admin/group-message' ||
-      router.url === '/admin/register' " style="width: 1200px; margin-left:280px">  -->
 
     <div class="container-fluid">
         <div class="row">
@@ -13,10 +8,10 @@
                 <div class="card card-stats">
                     <div class="card-header card-header-warning card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">content_copy</i>
+                            <i class="material-icons">import_export</i>
                         </div>
                         <p class="card-category">Total Bulk Message</p>
-                        <h3 class="card-title">4500
+                        <h3 class="card-title">45
                             <small>Msg</small>
                         </h3>
                     </div>
@@ -31,10 +26,12 @@
                 <div class="card card-stats">
                     <div class="card-header card-header-success card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">store</i>
+                            <i class="material-icons">mail_outline</i>
                         </div>
                         <p class="card-category">Total send Message</p>
-                        <h3 class="card-title">340 Msg</h3>
+                        <h3 class="card-title">{{total_sent_message_count}}
+                            <small>Msg</small>
+                        </h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -47,10 +44,10 @@
                 <div class="card card-stats">
                     <div class="card-header card-header-danger card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">info_outline</i>
+                            <i class="material-icons">people</i>
                         </div>
                         <p class="card-category">Number of Groups</p>
-                        <h3 class="card-title">75</h3>
+                        <h3 class="card-title">{{ total_Groups }}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -63,10 +60,10 @@
                 <div class="card card-stats">
                     <div class="card-header card-header-info card-header-icon">
                         <div class="card-icon">
-                            <i class="fa fa-twitter"></i>
+                            <i class="material-icons">person_outline</i>
                         </div>
                         <p class="card-category">Total Members</p>
-                        <h3 class="card-title">+245</h3>
+                        <h3 class="card-title">{{under_graduate_count}}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -79,36 +76,59 @@
     </div>
 
     <table id="unid" style="width: 100%">
-      <tr>
+        <tr>
+            <th>
+                <div style=" width: 780px; margin-left: 40px;">
+                    <div class="row">
+                        <div class="card shadow mb-4">
+                            <canvas id="line-chart"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+            </th>
+            <th>
+                <div class="card shadow mb-4"
+                     style="float: left; height: 400px; width: 400px;margin-left: 20px; margin-right: 40px">
+                    <canvas id="pie" style="height: 350px; width: 350px" class="chart chart-pie" chart-data="data"
+                            chart-labels="labels" chart-options="options"></canvas>
+                </div>
+            </th>
+        </tr>
+    </table>
+<table>
+    <tr>
         <th>
-        <div style=" width: 780px; margin-left: 40px;">
-            <div class="row">
-                <div class="card shadow mb-4">
-                    <canvas id="bar"></canvas>
+            <div class="card shadow mb-4" style="margin: 20px;width: 600px;height: 400px">
+
+                <mat-form-field>
+                    <mat-label>Group Name</mat-label>
+                    <mat-select>
+                        <div *ngIf="groupNames">
+                            <mat-option *ngFor="let groupName of groupNames" [value]="groupName.group_name">
+                                {{groupName.group_name }}
+                            </mat-option>
+                        </div>
+                    </mat-select>
+                </mat-form-field>
+
+                <div class="row" style="padding-left: 10px;margin-bottom: auto">
+                    <canvas id="bar-chart-horizontal"></canvas>
                 </div>
             </div>
-        </div>
         </th>
         <th>
-        <div class="card shadow mb-4" style="float: left; height: 400px; width: 400px;margin-left: 20px; margin-right: 40px">
-            <table style="">
-                <tr>
-                    <th>University Name:</th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th>University City:</th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th># No of campus</th>
-                    <td></td>
-                </tr>
-            </table>
-        </div>
+            <div class="card" style="margin: 30px;width: 600px;height: 400px">
+               <img src="../assets/img/price_icon.png" width="200px" height="250px" style="margin-left: 200px;
+                  margin-top: 40px">
+               <p style="margin-left: 250px;font-size: 20px">Total price = {{total_msg_cost }} Birr </p>
+                <p style="margin-left: 230px;color: red">Note : Per SMS Cost is 0.25 Cent</p>
+                <p>Sending SMS is the cheaper method to connect with your Client using our service
+                    you can send as much as message as you can we use <strong>pay as you go</strong> pricing method </p>
+            </div>
         </th>
-      </tr>
-    </table>
+    </tr>
+</table>
 </div>
 
 

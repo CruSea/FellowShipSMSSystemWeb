@@ -1,0 +1,50 @@
+<mat-card style="float: left;  margin-top: 40px; width: 1200px; margin-left: 80px">
+  <mat-card-content>
+    System Settings
+  </mat-card-content>
+  <div class="card-header card-header-primary">
+    <h4 class="card-title ">Add API </h4>
+  </div>
+  <button mat-button color="primary" style="height: 40px;margin-top: 9px" mat-raised-button (click)="add_setting()">
+    <i style="font-size: 22px" class="fa  fa-get-pocket"></i>
+    <mat-icon>settings</mat-icon>
+    Add Setting
+  </button>
+  <div class="table-responsive-sm">
+    <table class="table" width="100%">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Value</th>
+        <th scope="col">Created_at</th>
+        <th scope="col">Updated_at</th>
+        <th scope="col">Created by</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let setting of dataSource | paginate: { id: 'listing_pagination',
+                                                          itemsPerPage: per_page,
+                                                          currentPage: page,
+                                                          totalItems: total }; let i = index" scope="row">
+        <td>{{i+1}}</td>
+        <td>{{setting.name}}</td>
+        <td>{{setting.value}}</td>
+        <td>{{setting.created_at}}</td>
+        <td>{{setting.updated_at}}</td>
+        <td></td>
+        <td>
+          <button mat-button=""
+                  mwlConfirmationPopover
+                  [popoverTitle]="'Confirm Deletion'"
+                  [popoverMessage]="'Are you sure you want to delete this contact'"
+                  placement="left"
+                  (confirm)="deleteSetting(setting.id)">
+            <mat-icon style="color: red;" mat-raised-button>delete_outline</mat-icon>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</mat-card>

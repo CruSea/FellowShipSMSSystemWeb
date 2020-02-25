@@ -1,25 +1,33 @@
 
 <div class="card-body" style="width: 570px; height: 600px;">
   <div mat-dialog-content>
-    <form  (submit)="onSubmit()" [formGroup]="_contactForm">
+    <form [formGroup]="_contactForm" (ngSubmit)="groupmessageModal(_contactForm.value)">
       <div class="form-group">
         <label>New Group Message</label>
         <br>
         <br>
-        <mat-expansion-panel  style="cursor: pointer;" formControlName="group_name">
-          <mat-expansion-panel-header style="margin-bottom: 0">
-            <mat-panel-title>Contact Group</mat-panel-title>
-          </mat-expansion-panel-header>
-          <mat-list style="margin-top: 0">
-            <mat-list-item  class="form-control">
-              <a>
-                Art Team
-              </a>
-            </mat-list-item>
-          </mat-list>
-        </mat-expansion-panel>
+        <mat-form-field >
+          <mat-label>Port Name</mat-label>
+          <mat-select formControlName="port_name">
+            <div *ngIf="smsport">
+              <mat-option *ngFor="let portName of smsport" [value]="portName.port_name">
+                {{portName.port_name }}
+              </mat-option>
+            </div>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field >
+          <mat-label>Group Name</mat-label>
+          <mat-select formControlName="group">
+            <div *ngIf="groupNames">
+              <mat-option *ngFor="let groupName of groupNames" [value]="groupName.group_name">
+                {{groupName.group_name }}
+              </mat-option>
+            </div>
+          </mat-select>
+        </mat-form-field>
       </div>
-      <br>
       <br>
       <div class="form-group">
         <label for="comment">Add Your message here</label>
@@ -27,9 +35,7 @@
                   id="comment"
                   rows="6"
                   style="height: 250px;"
-                  class="form-control"
-                  formControlName="group_message"
-                  ngModel
+                  formControlName="message"
                   name="contact_message" >
 
         </textarea>
