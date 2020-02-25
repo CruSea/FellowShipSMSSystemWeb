@@ -8,16 +8,6 @@ export class GroupContactsService {
 
     _contactList: GroupContact[] = [];
 
-
-  /*  addContact(contact: GroupContact) {
-        this._contactList.push(contact);
-    }
-
-    removeContact(id: number) {
-        const contact = this._contactList.findIndex(c => c.ID === id);
-        this._contactList.splice(contact, 1);
-    } */
-
     constructor(
         private  httpClient: HttpClient
     ) { }
@@ -29,8 +19,4 @@ export class GroupContactsService {
     delete(id: string) {
         return this.httpClient.delete(`http:localhost:8000/api/group/${id}`)
     }
-
-  /*  getAllContacts() {
-        return this._contactList;
-    } */
 }

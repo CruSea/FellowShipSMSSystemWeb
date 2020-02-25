@@ -6,16 +6,18 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 import {HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 
 declare let $: any;
+
 interface PortModalInterface {
     port_name: string;
     port_type: string;
     port_id: number;
     campaign_id: number;
 }
+
 @Component({
-  selector: 'app-add-sms-port',
-  templateUrl: './add-sms-port.component.html',
-  styleUrls: ['./add-sms-port.component.scss']
+    selector: 'app-add-sms-port',
+    templateUrl: './add-sms-port.component.html',
+    styleUrls: ['./add-sms-port.component.scss']
 })
 export class AddSmsPortComponent implements OnInit {
     portModalForm: any;
@@ -36,7 +38,7 @@ export class AddSmsPortComponent implements OnInit {
     ngOnInit() {
         this.portModalForm = this._formBuilder.group({
             port_name: ['', [Validators.required]],
-            port_type:['',[Validators.required]],
+            port_type: ['', [Validators.required]],
             port_id: ['', [Validators.required]],
             campaign_id: ['', [Validators.required]],
         });
@@ -54,7 +56,7 @@ export class AddSmsPortComponent implements OnInit {
             .subscribe((res: { message: string }) => {
                 console.log(res.message);
                 this.dialogRef.close();
-                this.showNotification01('top','right');
+                this.showNotification01('top', 'right');
             }, (httpErrorResponse: HttpErrorResponse) => {
                 console.log(httpErrorResponse.status);
                 console.log(httpErrorResponse);
@@ -62,8 +64,8 @@ export class AddSmsPortComponent implements OnInit {
             })
     }
 
-    showNotification01(from, align){
-        const type = ['','info','success','warning','danger'];
+    showNotification01(from, align) {
+        const type = ['', 'info', 'success', 'warning', 'danger'];
 
         const color = Math.floor((Math.random() * 4) + 1);
 
@@ -71,7 +73,7 @@ export class AddSmsPortComponent implements OnInit {
             icon: "success",
             message: "Port <b>  Added Successfully !!.</b>"
 
-        },{
+        }, {
             type: type[color],
             timer: 4000,
             placement: {

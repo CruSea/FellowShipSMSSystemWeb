@@ -1,14 +1,10 @@
 import {Component, OnInit, Inject, NgModule} from '@angular/core';
 import {MatDialog, MatButtonModule} from '@angular/material';
 import {AddGroupComponent} from './add-group/add-group.component';
-import {GroupContactsService} from './add-group/group-contact.service';
 import {AddGroupService} from "../../service/add-group/add-group.service";
 import {StorageService} from "../../service/storage.service";
 import {HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {MatTableDataSource} from "@angular/material/table";
-import {AddContactService} from "../../service/add-contact/add-contact.service";
 import {GroupContactCountService} from "../../service/Group-Contact-Count/group-contact-count.service";
-import {ToastrService} from "ngx-toastr";
 
 export interface PeriodicElement {
     group_id: number;
@@ -18,6 +14,7 @@ export interface PeriodicElement {
     updated_by?: string;
     action?: string
 }
+
 declare let $: any;
 const MaterialComponents = [
     MatButtonModule
@@ -38,11 +35,11 @@ export class GroupContactsComponent implements OnInit {
     total: number;
     page: number;
 
-    mySubscription:any;
-    TotalGroupedContact :number;
-    id:number;
+    mySubscription: any;
+    TotalGroupedContact: number;
+    id: number;
 
-    displayedColumns: string[] = ['group_id', 'group_name','description','created_by','created_at', 'action'];
+    displayedColumns: string[] = ['group_id', 'group_name', 'description', 'created_by', 'created_at', 'action'];
     dataSource: any;
 
     ispopupOpened = false;
@@ -51,7 +48,9 @@ export class GroupContactsComponent implements OnInit {
                 private storageService: StorageService,
                 private groupService: AddGroupService,
                 private groupContactCount: GroupContactCountService,
-                private dialog?: MatDialog) {this.page = 1;}
+                private dialog?: MatDialog) {
+        this.page = 1;
+    }
 
 
     /*get ContactList() {
@@ -59,11 +58,10 @@ export class GroupContactsComponent implements OnInit {
     } */
 
 
-
     addContact() {
         this.ispopupOpened = true;
         const dialogRef = this.dialog.open(AddGroupComponent, {
-          //  data: {}
+            //  data: {}
         });
 
         dialogRef.afterClosed().subscribe(result => {
@@ -72,6 +70,7 @@ export class GroupContactsComponent implements OnInit {
         })
 
     }
+
     ngOnInit() {
         this.collectionOfcon(this.page);
         //this.getGroupedContactTotal(this.group_id);
@@ -84,7 +83,7 @@ export class GroupContactsComponent implements OnInit {
 
     collectionOfcon(e) {
         this.loading = true;
-        if(e) {
+        if (e) {
             this.page = e;
         }
         const headers = new HttpHeaders()
@@ -94,7 +93,7 @@ export class GroupContactsComponent implements OnInit {
             .append('Access-Control-Allow-Headers', 'Content-Type')
             .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
         // .append('Authorization', 'Bearer ' + this.storageService.getStorage('accessToken'));
-        return this.groupService.gets(headers, '/group/1?page='+this.page)
+        return this.groupService.gets(headers, '/group/1?page=' + this.page)
             .subscribe((res: any) => {
                 this.loading = false;
                 this.dataSource = res.Groups.data;
@@ -114,17 +113,18 @@ export class GroupContactsComponent implements OnInit {
             .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
         // .append('Authorization', 'Bearer ' + this.storageService.getStorage('accessToken'));
         return this.groupService.delete(`group/${id}`, headers)
-            .subscribe((res: {message: string}) => {
-                this.showNotification001('top','right');
+            .subscribe((res: { message: string }) => {
+                this.showNotification001('top', 'right');
                 this.collectionOfcon(this.page);
             }, (httpErrorResponse: HttpErrorResponse) => {
-               // this.toastr.error('Ooops! something went wrong, team is not deleted', 'Error', {timeOut: 3000});
+                // this.toastr.error('Ooops! something went wrong, team is not deleted', 'Error', {timeOut: 3000});
             })
     }
-          // ################# Display Counted Contact ##############################
+
+    // ################# Display Counted Contact ##############################
 
 
-    getGroupedContactTotal($id){
+    getGroupedContactTotal($id) {
         const headers = new HttpHeaders()
             .append('Access-Control-Allow-Origin', '*')
             .append('Access-Control-Allow-Methods', 'GET')
@@ -139,12 +139,12 @@ export class GroupContactsComponent implements OnInit {
             })
     }
 
-    openUpdate(groupId:string){
+    openUpdate(groupId: string) {
 
     }
 
-    showNotification001(from, align){
-        const type = ['','info','success','warning','danger'];
+    showNotification001(from, align) {
+        const type = ['', 'info', 'success', 'warning', 'danger'];
 
         const color = Math.floor((Math.random() * 4) + 1);
 
@@ -152,7 +152,7 @@ export class GroupContactsComponent implements OnInit {
             icon: "danger",
             message: " Group Contact<b>  deleted Successfully !!.</b>"
 
-        },{
+        }, {
             type: type[color],
             timer: 4000,
             placement: {

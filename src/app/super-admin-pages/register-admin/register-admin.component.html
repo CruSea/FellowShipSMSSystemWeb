@@ -2,109 +2,109 @@
 Administer Registration
 <hr>
 <div class="column" style="align-content: center; margin-left: 200px; margin-top: 60px">
-  <div class="col-xs-12 col-md-6 col-md-offset-3">
-    <form [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)">
-      <div class="form-group">
-        <label for="first-name">First Name</label>
-        <input
-                type="text"
-                id="first-name"
-                class="form-control"
-                formControlName="first_name"
-                required
-        />
-      </div>
-      <div class="form-group">
-        <label for="name">Last Name</label>
-        <input
-                type="text"
-                id="name"
-                class="form-control"
-                formControlName="last_name"
-                required
-        />
-      </div>
-      <div class="form-group">
-        <label for="admin_email">email</label>
-        <input
-                type="email"
-                id="admin_email"
-                class="form-control"
-                formControlName="email"
-                required
-                email
-        />
-      </div>
-      <div class="form-group">
-        <label for="university">University name</label>
-        <input
-                type="text"
-                id="university"
-                class="form-control"
-                formControlName="university_name"
-                required
-                minlength="8"
-        />
-      </div>
-      <div class="form-group">
-        <label for="universityname">University city</label>
-        <input
-                type="text"
-                id="universityname"
-                class="form-control"
-                formControlName="university_city"
-                required
-                minlength="8"
-        />
-      </div>
-      <div class="form-group">
-        <label for="campus">Campus</label>
-        <input
-                type="text"
-                id="campus"
-                class="form-control"
-                formControlName="campus"
-                required
-                minlength="15"
-        />
-      </div>
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <form [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)">
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input
+                        type="text"
+                        id="first-name"
+                        class="form-control"
+                        formControlName="first_name"
+                        required
+                />
+            </div>
+            <div class="form-group">
+                <label for="name">Last Name</label>
+                <input
+                        type="text"
+                        id="name"
+                        class="form-control"
+                        formControlName="last_name"
+                        required
+                />
+            </div>
+            <div class="form-group">
+                <label for="admin_email">email</label>
+                <input
+                        type="email"
+                        id="admin_email"
+                        class="form-control"
+                        formControlName="email"
+                        required
+                        email
+                />
+            </div>
+            <div class="form-group">
+                <label for="university">University name</label>
+                <input
+                        type="text"
+                        id="university"
+                        class="form-control"
+                        formControlName="university_name"
+                        required
+                        minlength="8"
+                />
+            </div>
+            <div class="form-group">
+                <label for="universityname">University city</label>
+                <input
+                        type="text"
+                        id="universityname"
+                        class="form-control"
+                        formControlName="university_city"
+                        required
+                        minlength="8"
+                />
+            </div>
+            <div class="form-group">
+                <label for="campus">Campus</label>
+                <input
+                        type="text"
+                        id="campus"
+                        class="form-control"
+                        formControlName="campus"
+                        required
+                        minlength="15"
+                />
+            </div>
 
-      <div class="form-group">
-        <label for="admin-phone">phone number</label>
-        <input
-                type="number"
-                id="admin-phone"
-                class="form-control"
-                formControlName="phone_number"
-                required
-                minlength="25"
-        />
-      </div>
-      <div class="form-group">
-        <label for="admin-pasword">password</label>
-        <input
-                type="password"
-                id="admin-pasword"
-                class="form-control"
-                formControlName="password"
-                required
-                minlength="4"
-        />
-      </div>
-      <div class="form-group">
-        <label for="admin-cpasword">Confrim password</label>
-        <input
-                type="password"
-                id="admin-cpasword"
-                class="form-control"
-                required
-                minlength="4"
-        />
-      </div>
+            <div class="form-group">
+                <label for="admin-phone">phone number</label>
+                <input
+                        type="number"
+                        id="admin-phone"
+                        class="form-control"
+                        formControlName="phone_number"
+                        required
+                        minlength="25"
+                />
+            </div>
+            <div class="form-group">
+                <label for="admin-pasword">password</label>
+                <input
+                        type="password"
+                        id="admin-pasword"
+                        class="form-control"
+                        formControlName="password"
+                        required
+                        minlength="4"
+                />
+            </div>
+            <div class="form-group">
+                <label for="admin-cpasword">Confrim password</label>
+                <input
+                        type="password"
+                        id="admin-cpasword"
+                        class="form-control"
+                        required
+                        minlength="4"
+                />
+            </div>
 
-      <div>
-        <button class="btn btn-primary" type="submit">Login</button>
-      </div>
-    </form>
-  </div>
+            <div>
+                <button class="btn btn-primary" type="submit">Login</button>
+            </div>
+        </form>
+    </div>
 </div>

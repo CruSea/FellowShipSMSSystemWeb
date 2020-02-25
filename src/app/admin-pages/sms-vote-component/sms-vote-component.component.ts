@@ -23,11 +23,11 @@ export class SmsVoteComponentComponent implements OnInit {
     _voteForm: any;
     page: number;
     message: any;
-    keyA:number;
-    keyB:number;
-    keyC:number;
-    start_date:string;
-    end_date:string;
+    keyA: number;
+    keyB: number;
+    keyC: number;
+    start_date: string;
+    end_date: string;
     per_page: number;
     total: number;
 
@@ -82,21 +82,21 @@ export class SmsVoteComponentComponent implements OnInit {
     }
 
 
-   getvotes(){
+    getvotes() {
         const headers = new HttpHeaders()
             .append('Access-Control-Allow-Origin', '*')
             .append('Access-Control-Allow-Methods', 'GET')
             .append('X-Requested-With', 'XMLHttpRequest')
             .append('Access-Control-Allow-Headers', 'Content-Type')
             .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
-        return this.sentMessagesService.gets(headers, '/getVote' )
+        return this.sentMessagesService.gets(headers, '/getVote')
             .subscribe((res: any) => {
                 this.message = res[0];
-                this.keyA =res[1];
-                this.keyB =res[2];
-                this.keyC =res[3];
-                this.start_date =res[4];
-                this.end_date =res[5];
+                this.keyA = res[1];
+                this.keyB = res[2];
+                this.keyC = res[3];
+                this.start_date = res[4];
+                this.end_date = res[5];
 
             }, (httpErrorResponse: HttpErrorResponse) => {
 

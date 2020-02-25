@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {StorageService} from "../../service/storage.service";
 import {RegisterService} from "../../service/register/register.service";
 import index from "@angular/cdk/typings/schematics/ng-generate/drag-drop";
+
 declare let $: any;
+
 @Component({
-  selector: 'app-admins-list',
-  templateUrl: './admins-list.component.html',
-  styleUrls: ['./admins-list.component.scss']
+    selector: 'app-admins-list',
+    templateUrl: './admins-list.component.html',
+    styleUrls: ['./admins-list.component.scss']
 })
-export class AdminsListComponent implements OnInit{
+export class AdminsListComponent implements OnInit {
 
 
     animal: string;
@@ -23,19 +25,19 @@ export class AdminsListComponent implements OnInit{
     page: number;
 
     checked = false;
-    idd :string;
+    idd: string;
 
-    changed(id:string){
-      //  this.assignRole(this.checked,id);
-        console.log(this.checked,id)
+    changed(id: string) {
+        //  this.assignRole(this.checked,id);
+        console.log(this.checked, id)
         this.idd = id;
     }
 
-    displayedColumns: string[] = ['id', 'first_name', 'last_name', 'email','university','campus','phone_number'];
+    displayedColumns: string[] = ['id', 'first_name', 'last_name', 'email', 'university', 'campus', 'phone_number'];
     dataSource: any;
 
     ispopupOpened = false;
-    public email:any;
+    public email: any;
 
     constructor(private storageService: StorageService,
                 private registservice: RegisterService) {
@@ -67,13 +69,13 @@ export class AdminsListComponent implements OnInit{
                 this.loading = false;
                 console.log(res);
                 this.dataSource = res.contacts;
-               // this.per_page = res.contacts.per_page;
+                // this.per_page = res.contacts.per_page;
             }, (httpErrorResponse: HttpErrorResponse) => {
                 this.loading = false;
             })
     }
 
-    assignRole(id:string){
+    assignRole(id: string) {
         const headers = new HttpHeaders()
             .append('Access-Control-Allow-Origin', '*')
             .append('Access-Control-Allow-Methods', 'POST')
@@ -82,17 +84,17 @@ export class AdminsListComponent implements OnInit{
             .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
         // console.log(this.storageService.getStorage('accessToken'));
         //  .append('Authorization', 'Bearer ' + this.storageService.getStorage('accessToken'));
-        return this.registservice.create(null,headers,'/assignRole/'+this.checked+'/'+id)
+        return this.registservice.create(null, headers, '/assignRole/' + this.checked + '/' + id)
             .subscribe((res: { message: string }) => {
-              console.log('Role assigned successfully!!!!!');
-                this.showNotificationn('top','right')
+                console.log('Role assigned successfully!!!!!');
+                this.showNotificationn('top', 'right')
             }, (httpErrorResponse: HttpErrorResponse) => {
-          //this.toastr.error(httpErrorResponse.error.error, 'Error', {timeOut: 10000});
+                //this.toastr.error(httpErrorResponse.error.error, 'Error', {timeOut: 10000});
                 console.log(httpErrorResponse);
             })
     }
 
-  deleteContact(id: string) {
+    deleteContact(id: string) {
         const headers = new HttpHeaders()
             .append('Access-Control-Allow-Origin', '*')
             .append('Access-Control-Allow-Methods', 'DELETE')
@@ -102,8 +104,8 @@ export class AdminsListComponent implements OnInit{
         // .append('Authorization', 'Bearer ' + this.storageService.getStorage('accessToken'));
         return this.registservice.delete(`deleteAdmin/${id}`, headers)
             .subscribe((res: { message: string }) => {
-                   console.log('Admin Deleted Successfully!!!!!!!!');
-                this.showNotification2('top','right')
+                console.log('Admin Deleted Successfully!!!!!!!!');
+                this.showNotification2('top', 'right')
                 this.collectionOfcon(this.page);
             }, (httpErrorResponse: HttpErrorResponse) => {
                 //   this.toastr.error('Ooops! something went wrong, contact is not deleted', 'Error', {timeOut: 3000});
@@ -112,6 +114,7 @@ export class AdminsListComponent implements OnInit{
 
 
     tcode: string;
+
     submit(event: any) {
         // this.serverName = event.target.value;
         console.log(this.tcode);
@@ -119,8 +122,7 @@ export class AdminsListComponent implements OnInit{
     }
 
 
-
-    SendMail(email:string){
+    SendMail(email: string) {
         // console.log(email);
         const headers = new HttpHeaders()
             .append('Access-Control-Allow-Origin', '*')
@@ -128,16 +130,17 @@ export class AdminsListComponent implements OnInit{
             .append('X-Requested-With', 'XMLHttpRequest')
             .append('Access-Control-Allow-Headers', 'Content-Type')
             .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
-        return this.registservice.gets(headers, '/sendmail/'+this.tcode)
+        return this.registservice.gets(headers, '/sendmail/' + this.tcode)
             .subscribe((res: any) => {
                 console.log(res);
-                this.showNotification('top','right');
+                this.showNotification('top', 'right');
             }, (httpErrorResponse: HttpErrorResponse) => {
 
             })
     }
-    showNotification(from, align){
-        const type = ['','info','success','warning','danger'];
+
+    showNotification(from, align) {
+        const type = ['', 'info', 'success', 'warning', 'danger'];
 
         const color = Math.floor((Math.random() * 4) + 1);
 
@@ -145,7 +148,7 @@ export class AdminsListComponent implements OnInit{
             icon: "notifications",
             message: "Email<b>  Sent Successfully !!.</b>"
 
-        },{
+        }, {
             type: type[color],
             timer: 4000,
             placement: {
@@ -164,8 +167,9 @@ export class AdminsListComponent implements OnInit{
             '</div>'
         });
     }
-    showNotificationn(from, align){
-        const type = ['','info','success','warning','danger'];
+
+    showNotificationn(from, align) {
+        const type = ['', 'info', 'success', 'warning', 'danger'];
 
         const color = Math.floor((Math.random() * 4) + 1);
 
@@ -173,7 +177,7 @@ export class AdminsListComponent implements OnInit{
             icon: "notifications",
             message: "Role<b>  Assigned Successfully !!.</b>"
 
-        },{
+        }, {
             type: type[color],
             timer: 4000,
             placement: {
@@ -193,8 +197,8 @@ export class AdminsListComponent implements OnInit{
         });
     }
 
-    showNotification2(from, align){
-        const type = ['','info','success','warning','danger'];
+    showNotification2(from, align) {
+        const type = ['', 'info', 'success', 'warning', 'danger'];
 
         const color = Math.floor((Math.random() * 4) + 1);
 
@@ -202,7 +206,7 @@ export class AdminsListComponent implements OnInit{
             icon: "notifications",
             message: "Contact<b>  deleted Successfully !!.</b>"
 
-        },{
+        }, {
             type: type[color],
             timer: 4000,
             placement: {

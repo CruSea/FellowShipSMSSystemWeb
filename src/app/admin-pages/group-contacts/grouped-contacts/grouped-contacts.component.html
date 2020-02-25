@@ -1,6 +1,6 @@
- <div class="card-body" style="width: 640px; height: 510px;">
+<div class="card-body" style="width: 640px; height: 510px;">
     <div mat-dialog-content>
-       <p> {{group_id}} </p>
+        <p> {{group_id}} </p>
         <form (submit)="onSubmit()" [formGroup]="_contactForm" (ngSubmit)="contactsModal(_contactForm.value)">
             <div class="form-group">
                 <label for="fullname">Full Name</label>

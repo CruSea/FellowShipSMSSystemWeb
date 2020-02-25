@@ -13,6 +13,7 @@ import {
 import {ToastrService} from "ngx-toastr";
 
 declare let $: any;
+
 export interface PeriodicElement {
     id: number;
     fullname: string;
@@ -37,7 +38,7 @@ export class GroupedContactListComponent implements OnInit {
     phone: string;
     email: string;
     acadamic_department: string;
-    fellow_department :string;
+    fellow_department: string;
     gender: string;
     graduation_year: string;
 
@@ -52,7 +53,7 @@ export class GroupedContactListComponent implements OnInit {
     page: number;
 
     ispopupOpened = false;
-    displayedColumns: string[] = ['fullname', 'phone', 'email', 'acadamic_department', 'fellow_department','gender','graduation_year', 'action'];
+    displayedColumns: string[] = ['fullname', 'phone', 'email', 'acadamic_department', 'fellow_department', 'gender', 'graduation_year', 'action'];
     dataSource: any;
 
     // private groupedContactsService: GroupedContactService,
@@ -67,13 +68,13 @@ export class GroupedContactListComponent implements OnInit {
 
     addContact() {
         this.ispopupOpened = true;
-      //  this.toastr.success('Contact Added successfully', 'Deleted', {timeOut: 3000});
+        //  this.toastr.success('Contact Added successfully', 'Deleted', {timeOut: 3000});
         const dialogRef = this.dialog.open(GroupedContactsComponent, {
             data: this.group_id
         });
 
         dialogRef.afterClosed().subscribe(result => {
-             this.collectionOfcon(this.page);
+            this.collectionOfcon(this.page);
             this.ispopupOpened = false;
         })
     }
@@ -92,7 +93,7 @@ export class GroupedContactListComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
             this.collectionOfcon(this.page);
-           // this.toastr.success('Contact Updated successfully', 'Deleted', {timeOut: 3000});
+            // this.toastr.success('Contact Updated successfully', 'Deleted', {timeOut: 3000});
             this.animal = result;
         });
     }
@@ -101,7 +102,7 @@ export class GroupedContactListComponent implements OnInit {
 
     collectionOfcon(e) {
         this.loading = true;
-        if(e) {
+        if (e) {
             this.page = e;
         }
         const headers = new HttpHeaders()
@@ -110,7 +111,7 @@ export class GroupedContactListComponent implements OnInit {
             .append('X-Requested-With', 'XMLHttpRequest')
             .append('Access-Control-Allow-Headers', 'Content-Type')
             .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
-        return this._groupedContact.gets(headers, '/groupcontact/'+this.group_id+'?page='+this.page)
+        return this._groupedContact.gets(headers, '/groupcontact/' + this.group_id + '?page=' + this.page)
             .subscribe((res: any) => {
                 this.loading = false;
                 this.dataSource = res.Group_Contacts.data;
@@ -163,32 +164,32 @@ export class GroupedContactListComponent implements OnInit {
      }*/
 
     deleteGroupedContact(id: string) {
-      const headers = new HttpHeaders()
-          .append('Access-Control-Allow-Origin', '*')
-          .append('Access-Control-Allow-Methods', 'DELETE')
-          .append('X-Requested-With', 'XMLHttpRequest')
-          .append('Access-Control-Allow-Headers', 'Content-Type')
-          .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
-      // .append('Authorization', 'Bearer ' + this.storageService.getStorage('accessToken'));
-      return this._groupedContact.delete(`groupcontact/${id}`, headers)
-          .subscribe((res: {message: string}) => {
-              this.showNotification02('top','right');
-            this.collectionOfcon(this.page);
-          }, (httpErrorResponse: HttpErrorResponse) => {
-           // this.toastr.error('Ooops! something went wrong, contact is not deleted', 'Error', {timeOut: 3000});
-          })
+        const headers = new HttpHeaders()
+            .append('Access-Control-Allow-Origin', '*')
+            .append('Access-Control-Allow-Methods', 'DELETE')
+            .append('X-Requested-With', 'XMLHttpRequest')
+            .append('Access-Control-Allow-Headers', 'Content-Type')
+            .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
+        // .append('Authorization', 'Bearer ' + this.storageService.getStorage('accessToken'));
+        return this._groupedContact.delete(`groupcontact/${id}`, headers)
+            .subscribe((res: { message: string }) => {
+                this.showNotification02('top', 'right');
+                this.collectionOfcon(this.page);
+            }, (httpErrorResponse: HttpErrorResponse) => {
+                // this.toastr.error('Ooops! something went wrong, contact is not deleted', 'Error', {timeOut: 3000});
+            })
     }
 
-    exportGroupContact():void{
-        window.open('http://localhost:8000/api/exportGroupedContact',"_blank")
+    exportGroupContact(): void {
+        window.open('http://localhost:8000/api/exportGroupedContact', "_blank")
     }
 
     applyFilter(filterValue: string) {
         this.dataSource.filter = filterValue.trim().toLowerCase();
     }
 
-    showNotification02(from, align){
-        const type = ['','info','success','warning','danger'];
+    showNotification02(from, align) {
+        const type = ['', 'info', 'success', 'warning', 'danger'];
 
         const color = Math.floor((Math.random() * 4) + 1);
 
@@ -196,7 +197,7 @@ export class GroupedContactListComponent implements OnInit {
             icon: "danger",
             message: " Group Contact<b>  deleted Successfully !!.</b>"
 
-        },{
+        }, {
             type: type[color],
             timer: 4000,
             placement: {

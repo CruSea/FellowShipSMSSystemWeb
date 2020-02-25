@@ -1,108 +1,109 @@
-
-    <div class="row">
-      <div class="col-lg-3 col-md-6 col-sm-6">
+<div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-6">
         <div class="card card-stats">
-          <div class="card-header card-header-warning card-header-icon">
-            <div class="card-icon">
-              <i class="material-icons">content_copy</i>
+            <div class="card-header card-header-warning card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">content_copy</i>
+                </div>
+                <p class="card-category">Total Bulk Message</p>
+                <h3 class="card-title">{{total_bulk_count}}
+                    <small>Msg</small>
+                </h3>
             </div>
-            <p class="card-category">Total Bulk Message</p>
-            <h3 class="card-title">{{total_bulk_count}}
-              <small>Msg</small>
-            </h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <a>Get More Space...</a>
+            <div class="card-footer">
+                <div class="stats">
+                    <a>Get More Space...</a>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-stats">
-          <div class="card-header card-header-success card-header-icon">
-            <div class="card-icon">
-              <i class="material-icons">store</i>
-            </div>
-            <p class="card-category">Total Group Message</p>
-            <h3 class="card-title">{{total_group_message_count}}
-            <small>Msg</small> </h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <i class="material-icons">date_range</i> Last 24 Hours
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-stats">
-          <div class="card-header card-header-danger card-header-icon">
-            <div class="card-icon">
-              <i class="material-icons">info_outline</i>
-            </div>
-            <p class="card-category">Number of Groups</p>
-            <h3 class="card-title">{{total_group_count}}</h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <i class="material-icons">local_offer</i>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-stats">
-          <div class="card-header card-header-info card-header-icon">
-            <div class="card-icon">
-              <i class="material-icons">person_outline</i>
-            </div>
-            <p class="card-category">Total Members</p>
-            <h3 class="card-title">{{total_Campus_contact}}</h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <i class="material-icons">update</i> Just Updated
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-
-  <table id="unid" style="width: 100%">
-    <tr>
-      <th>
-        <div style=" width: 780px; margin-left: 40px;">
-          <div class="row">
-            <div class="card shadow mb-4">
-              <canvas id="bar"></canvas>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-success card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">store</i>
+                </div>
+                <p class="card-category">Total Group Message</p>
+                <h3 class="card-title">{{total_group_message_count}}
+                    <small>Msg</small>
+                </h3>
             </div>
-          </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">date_range</i> Last 24 Hours
+                </div>
+            </div>
         </div>
-      </th>
-      <th>
-        <div class="card" style="height: 140px; width: 400px;margin-left: 20px;">
-          <div style="float:right; margin-right: 70px;">
-            <div style="float: right;margin-top: 40px"><h4>Total Birr Collected :</h4>
-              <h5 style="color: orange"> {{total_message_cost}} Birr </h5></div>
-          <img src="../assets/img/price_icon.png"  style="width: 100px;height: 150px;margin-bottom: 10px">
-          </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-danger card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">info_outline</i>
+                </div>
+                <p class="card-category">Number of Groups</p>
+                <h3 class="card-title">{{total_group_count}}</h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">local_offer</i>
+                </div>
+            </div>
         </div>
-        <div class="card" style="float: left;margin-top: 5px; height: 240px; width: 400px;margin-left: 20px; margin-right: 40px">
-          <table>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-info card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">person_outline</i>
+                </div>
+                <p class="card-category">Total Members</p>
+                <h3 class="card-title">{{total_Campus_contact}}</h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">update</i> Just Updated
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-          </table>
-        </div>
-      </th>
+<table id="unid" style="width: 100%">
+    <tr>
+        <th>
+            <div style=" width: 780px; margin-left: 40px;">
+                <div class="row">
+                    <div class="card shadow mb-4">
+                        <canvas id="bar"></canvas>
+                    </div>
+                </div>
+            </div>
+        </th>
+        <th>
+            <div class="card" style="height: 140px; width: 400px;margin-left: 20px;">
+                <div style="float:right; margin-right: 70px;">
+                    <div style="float: right;margin-top: 40px"><h4>Total Birr Collected :</h4>
+                        <h5 style="color: orange"> {{total_message_cost}} Birr </h5></div>
+                    <img src="../assets/img/price_icon.png" style="width: 100px;height: 150px;margin-bottom: 10px">
+                </div>
+            </div>
+            <div class="card"
+                 style="float: left;margin-top: 5px; height: 240px; width: 400px;margin-left: 20px; margin-right: 40px">
+                <table>
+
+                </table>
+            </div>
+        </th>
     </tr>
-  </table>
-  <p> Google Map Here </p>
-  <mat-card>
+</table>
+<p> Google Map Here </p>
+<mat-card>
     <mat-card-content>
-      {{feb1}}
-      vjhvjgcvhgchfchfchcfhc
+        {{feb1}}
+        vjhvjgcvhgchfchfchcfhc
 
     </mat-card-content>
-  </mat-card>
+</mat-card>
 
 

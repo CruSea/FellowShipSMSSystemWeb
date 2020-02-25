@@ -5,11 +5,13 @@ import {Router} from "@angular/router";
 import {HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {RegisterService} from "../../service/register/register.service";
 import {StorageService} from "../../service/storage.service";
+
 declare let $: any;
+
 export interface RegisterModalInterface {
     first_name: string;
     last_name: string;
-    email:string;
+    email: string;
     university_name: string;
     university_city: string;
     campus: string;
@@ -49,7 +51,7 @@ export class RegisterAdminComponent implements OnInit {
     }
 
 
-    register(registerModalInterface:RegisterModalInterface) {
+    register(registerModalInterface: RegisterModalInterface) {
         const headers = new HttpHeaders()
             .append('Access-Control-Allow-Origin', '*')
             .append('Access-Control-Allow-Methods', 'POST')
@@ -57,10 +59,10 @@ export class RegisterAdminComponent implements OnInit {
             .append('Access-Control-Allow-Headers', 'Content-Type')
             .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
         //.append('Authorization', 'Bearer ' + this.storageService.getStorage('accessToken'));
-        return this.registerService.create(registerModalInterface,headers, '/register')
+        return this.registerService.create(registerModalInterface, headers, '/register')
             .subscribe((res: any) => {
                 console.log('registered successfully!!!!!!!!!');
-                this.showNotification('top','right')
+                this.showNotification('top', 'right')
                 //  this.toastr.success('new under graduate member added successfully', 'Contact', {timeOut: 3000});
             }, (httpErrorResponse: HttpErrorResponse) => {
                 //   this.toastr.error(httpErrorResponse.error.error, 'Error', {timeOut: 10000});
@@ -68,8 +70,8 @@ export class RegisterAdminComponent implements OnInit {
             })
     }
 
-    showNotification(from, align){
-        const type = ['','info','success','warning','danger'];
+    showNotification(from, align) {
+        const type = ['', 'info', 'success', 'warning', 'danger'];
 
         const color = Math.floor((Math.random() * 4) + 1);
 
@@ -77,7 +79,7 @@ export class RegisterAdminComponent implements OnInit {
             icon: "notifications",
             message: "Welcome to <b>Campus SMS</b> - Registered Successfully !!."
 
-        },{
+        }, {
             type: type[color],
             timer: 4000,
             placement: {

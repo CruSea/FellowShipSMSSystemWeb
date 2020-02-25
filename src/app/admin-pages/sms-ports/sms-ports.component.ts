@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SmsPortService} from "../../service/sms-port/sms-port.service";
 import {StorageService} from "../../service/storage.service";
 import {MatDialog} from "@angular/material";
@@ -6,9 +6,9 @@ import {HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {AddSmsPortComponent} from "./add-sms-port/add-sms-port.component";
 
 @Component({
-  selector: 'app-sms-ports',
-  templateUrl: './sms-ports.component.html',
-  styleUrls: ['./sms-ports.component.scss']
+    selector: 'app-sms-ports',
+    templateUrl: './sms-ports.component.html',
+    styleUrls: ['./sms-ports.component.scss']
 })
 export class SmsPortsComponent implements OnInit {
     animal: string;
@@ -21,7 +21,7 @@ export class SmsPortsComponent implements OnInit {
     total: number;
     page: number;
 
-    public dataSource:any;
+    public dataSource: any;
     ispopupOpened = false;
 
     constructor(private matDialog: MatDialog,
@@ -42,6 +42,7 @@ export class SmsPortsComponent implements OnInit {
             this.ispopupOpened = false;
         })
     }
+
     ngOnInit() {
         this.collectionOfcon(this.page);
     }
@@ -64,7 +65,7 @@ export class SmsPortsComponent implements OnInit {
             .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
         return this.smsportservice.gets(headers, '/sms-ports/?page=' + this.page)
             .subscribe((res: any) => {
-          console.log(res);
+                console.log(res);
                 this.loading = false;
                 this.dataSource = res.sms_ports;
                 this.total = res.sms_ports.total;

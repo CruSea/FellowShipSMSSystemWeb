@@ -25,6 +25,7 @@ export const MY_FORMATS = {
     },
 };
 declare let $: any;
+
 export interface ContactsModalInterface {
     fullname: string;
     phone: string;
@@ -67,14 +68,13 @@ export class GroupedContactsComponent implements OnInit {
         datepicker.close();
     }
 
-    constructor(
-        private _formBuilder: FormBuilder,
-        private _contactService: GroupedContactService,
-        private storageService: StorageService,
-        private activatedRoute: ActivatedRoute,
-        public dialogRef: MatDialogRef<GroupedContactsComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: number) {
-       this.group_id = data;
+    constructor(private _formBuilder: FormBuilder,
+                private _contactService: GroupedContactService,
+                private storageService: StorageService,
+                private activatedRoute: ActivatedRoute,
+                public dialogRef: MatDialogRef<GroupedContactsComponent>,
+                @Inject(MAT_DIALOG_DATA) public data: number) {
+        this.group_id = data;
     }
 
     onSubmit() {
@@ -94,11 +94,11 @@ export class GroupedContactsComponent implements OnInit {
             phone: ['', [Validators.required]],
             email: ['', [Validators.required]],
             acadamic_department: ['', [Validators.required]],
-           // fellow_department: ['', [Validators.required]],
+            // fellow_department: ['', [Validators.required]],
             gender: ['', [Validators.required]],
             //  fellowship_id: [null, [Validators.required]],
             graduation_year: ['', [Validators.required]],
-    });
+        });
     }
 
     contactsModal(contactsModalInterface: ContactsModalInterface) {
@@ -109,18 +109,18 @@ export class GroupedContactsComponent implements OnInit {
             .append('X-Requested-With', 'XMLHttpRequest')
             .append('Access-Control-Allow-Headers', 'Content-Type')
             .append('Authorization', `Bearer ${this.storageService.getStorage('accessToken')}`);
-        return this._contactService.create(contactsModalInterface, headers, '/groupcontact/'+ this.group_id)
+        return this._contactService.create(contactsModalInterface, headers, '/groupcontact/' + this.group_id)
             .subscribe((res: { message: string }) => {
                 console.log(res.message);
                 this.dialogRef.close();
-                this.showNotification002('top','right');
+                this.showNotification002('top', 'right');
             }, (httpErrorResponse: HttpErrorResponse) => {
                 console.log(httpErrorResponse.status);
                 console.log(httpErrorResponse);
             })
     }
 
-    showNotification002(from, align){
+    showNotification002(from, align) {
         const type = ['success'];
 
         const color = Math.floor((Math.random() * 4) + 1);
@@ -129,7 +129,7 @@ export class GroupedContactsComponent implements OnInit {
             icon: "notifications",
             message: " Grouped Contact <b>  Added Successfully !!.</b>"
 
-        },{
+        }, {
             type: type[color],
             timer: 4000,
             placement: {
